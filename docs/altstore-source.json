@@ -1,0 +1,27 @@
+{
+  "name": "Danny's Apps",
+  "identifier": "com.dannysapps.source",
+  "subtitle": "Apps I build, for my iPhone and iPad",
+  "description": "Every app here is built automatically from github.com/ynnadcor/dannys-apps.",
+  "iconURL": "https://raw.githubusercontent.com/ynnadcor/dannys-apps/main/docs/icons/engine-academy-512.png",
+  "website": "https://ynnadcor.github.io/dannys-apps/",
+  "tintColor": "E4352B",
+  "apps": [
+    {
+      "name": "Engine Academy",
+      "bundleIdentifier": "com.dannysapps.engineacademy",
+      "developerName": "Danny",
+      "subtitle": "Learn engine design, build an inline-8",
+      "localizedDescription": "Labs, mission briefings, quiz and field manual for designing an engine from first principles. Works offline. Progress and notes are saved on the device.",
+      "iconURL": "https://raw.githubusercontent.com/ynnadcor/dannys-apps/main/docs/icons/engine-academy-512.png",
+      "tintColor": "E4352B",
+      "category": "other",
+      "versions": [],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      }
+    }
+  ],
+  "news": []
+}

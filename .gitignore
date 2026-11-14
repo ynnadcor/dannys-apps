@@ -1,0 +1,6 @@
+apps/*/Web/
+apps/*/build/
+apps/*/Payload/
+apps/*/*.xcodeproj/
+*.ipa
+__pycache__/
