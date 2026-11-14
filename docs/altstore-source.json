@@ -16,7 +16,17 @@
       "iconURL": "https://raw.githubusercontent.com/ynnadcor/dannys-apps/main/docs/icons/engine-academy-512.png",
       "tintColor": "E4352B",
       "category": "other",
-      "versions": [],
+      "versions": [
+        {
+          "version": "1.0.1",
+          "buildVersion": "1",
+          "date": "2026-11-14T03:31:43Z",
+          "localizedDescription": "Danny's Apps: hub, Engine Academy web app and iOS build",
+          "downloadURL": "https://github.com/ynnadcor/dannys-apps/releases/download/engine-academy-v1.0.1/EngineAcademy.ipa",
+          "size": 278056,
+          "minOSVersion": "15.0"
+        }
+      ],
       "appPermissions": {
         "entitlements": [],
         "privacy": {}
