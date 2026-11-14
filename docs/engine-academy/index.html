@@ -36,7 +36,6 @@
 header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--m1) 0 33.33%,var(--m2) 33.33% 66.66%,var(--m3) 66.66%)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
-@media (max-width:600px){.brand b{font-size:20px}.brand span{display:none}.gauges{gap:2px 10px;font-size:11px}header.top{padding-block:8px;gap:4px 12px}}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);
   padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
@@ -55,15 +54,28 @@ nav.rail a{display:flex;justify-content:space-between;gap:8px;padding:7px 10px;b
 nav.rail a:hover{background:var(--soft)}
 nav.rail a.on{background:var(--soft);color:var(--ink);box-shadow:inset 3px 0 var(--accent)}
 nav.rail a small{font:500 11px var(--f-mono);opacity:.7}
+.brand em{font-style:normal}
+.navbtn{display:none;align-items:center;gap:6px;max-width:58vw;white-space:nowrap;flex:none}
+.navbtn span{overflow:hidden;text-overflow:ellipsis}
+nav.rail .gauges{display:none}
+/* Phones: one-row header with a Labs button; the rail becomes a full-screen menu under the header. */
 @media (max-width:820px){
-  .shell{grid-template-columns:minmax(0,1fr)}
-  nav.rail{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px}
-  nav.rail .grp{display:none}
-  nav.rail a{white-space:nowrap;border:1px solid var(--line)}
-  nav.rail a small{display:none}
+  .shell{grid-template-columns:minmax(0,1fr);padding-top:14px}
+  header.top{flex-wrap:nowrap;padding-block:8px;gap:10px}
+  .brand b{font-size:21px}.brand span,.brand em{display:none}
+  header.top>.gauges{display:none}
+  .navbtn{display:inline-flex}
+  nav.rail{position:fixed;inset:0;z-index:4;display:none;flex-direction:column;gap:0;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);
+    padding:calc(env(safe-area-inset-top,0px) + 66px) max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+  html.navopen nav.rail{display:flex}
+  html.navopen body{overflow:hidden}
+  nav.rail .gauges{display:flex;padding:2px 10px 6px}
+  nav.rail .grp{margin-top:16px}
+  nav.rail a{padding:13px 10px;font-size:16px;border-radius:0;border-bottom:1px solid var(--line)}
+  h1{font-size:32px}
 }
 main{min-width:0}
-section.bay{display:none}
+section.bay{display:none;scroll-margin-top:90px}
 section.bay.on{display:block}
 h1{font:700 40px/1.05 var(--f-disp);text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px;text-wrap:balance}
 h2{font:600 24px/1.15 var(--f-disp);text-transform:uppercase;letter-spacing:.02em;margin:28px 0 8px;text-wrap:balance}
@@ -75,7 +87,7 @@ p{max-width:68ch;margin:0 0 10px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;align-items:start}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
 .panel.flat{background:transparent}
-canvas{display:block;width:100%;max-width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;touch-action:none}
+canvas{display:block;width:100%;max-width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px}
 svg{display:block;max-width:100%}
 label.f{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:8px;align-items:center;margin:6px 0;font-size:14px}
 label.f small{display:block;color:var(--muted);font-size:12px}
@@ -144,15 +156,43 @@ th{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;col
 .chap summary{cursor:pointer;font-weight:600}
 .toc-btn{font-size:12px;padding:5px 10px}
 .crank-sel label{font:600 11px var(--f-mono);color:var(--muted);text-align:center;display:block}
+/* Previous / next lab */
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:14px;border-top:1px solid var(--line)}
+.pn a{display:flex;flex-direction:column;gap:2px;max-width:48%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600}
+.pn a small{font:500 11px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.pn a.nx{margin-left:auto;text-align:right}
+/* Touch screens (html.touch): -/+ steppers, finger-sized targets, and 16px inputs so iOS Safari does not zoom on focus. */
+.step{display:flex;min-width:0}
+.step button{display:none}
+html.touch label.f{grid-template-columns:minmax(0,1fr) 150px}
+html.touch .step button{display:block;flex:none;width:42px;padding:0;background:var(--soft);color:var(--ink);border:1px solid var(--line);font:600 20px/1 var(--f-mono);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html.touch .step button:first-child{border-radius:6px 0 0 6px;border-right:0}
+html.touch .step button:last-child{border-radius:0 6px 6px 0;border-left:0}
+html.touch .step input{border-radius:0;text-align:center;padding-inline:2px}
+html.touch input,html.touch select,html.touch textarea{font-size:16px}
+html.touch input[type=number],html.touch select{min-height:42px}
+html.touch button{min-height:42px;touch-action:manipulation}
+html.touch a,html.touch summary,html.touch label{touch-action:manipulation}
+html.touch input[type=checkbox],html.touch input[type=radio]{width:22px;height:22px}
+html.touch input[type=range]{-webkit-appearance:none;appearance:none;height:40px;background:transparent;margin:6px 0}
+html.touch input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--metal)}
+html.touch input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:var(--ink);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--metal2)}
+html.touch input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--ink)}
+@media (max-width:820px){
+  .crank-sel{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .work{font-size:12px}
+  .lesson{padding:10px 0}
+}
 </style>
 
 <header class="top">
-  <div class="brand"><b>THECAR Engine Academy</b><span>inline-8 · v1</span></div>
+  <div class="brand"><b><em>THECAR </em>Engine Academy</b><span>inline-8 · v1</span></div>
   <div class="gauges" id="gauges"></div>
+  <button class="ghost navbtn" id="navBtn" aria-expanded="false" aria-controls="rail"><span id="navCur">Garage map</span> ▾</button>
 </header>
 
 <div class="shell">
-<nav class="rail" id="rail"></nav>
+<nav class="rail" id="rail"><div class="gauges" id="gauges2"></div></nav>
 <main>
 
 <!-- ============ MAP ============ -->
@@ -522,6 +562,10 @@ th{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;col
 (()=>{
 "use strict";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+// Touch device (phone, iPad): enables steppers and finger-sized controls in CSS.
+const TOUCH=matchMedia("(pointer:coarse)").matches||matchMedia("(hover:none)").matches;
+if(TOUCH)document.documentElement.classList.add("touch");
+const tapWord=s=>TOUCH?s.replace(/\bClick\b/g,"Tap").replace(/\bclick\b/g,"tap"):s;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const fmt=(x,d=1)=>Number.isFinite(x)?x.toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d}):"—";
 const store={get(k,d){try{const v=localStorage.getItem("thecar."+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
@@ -545,15 +589,36 @@ BAYS.forEach(([g,items])=>{const d=document.createElement("div");d.className="gr
 let current="map";
 function route(){const id=(location.hash||"#map").slice(1);const ok=$$("section.bay").some(s=>s.id===id);current=ok?id:"map";
   $$("section.bay").forEach(s=>s.classList.toggle("on",s.id===current));$$("nav.rail a").forEach(a=>a.classList.toggle("on",a.dataset.id===current));
+  const cur=ORDER.find(b=>b[0]===current);$("#navCur").textContent=cur?cur[1]:"Menu";navOpen(false);
   requestAnimationFrame(()=>redrawAll())}
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0)});
+/* Phone menu: the Labs button opens the rail as a full-screen list. */
+const ORDER=BAYS.flatMap(([,items])=>items);
+function navOpen(on){document.documentElement.classList.toggle("navopen",on);$("#navBtn").setAttribute("aria-expanded",on)}
+$("#navBtn").onclick=()=>navOpen(!document.documentElement.classList.contains("navopen"));
+rail.addEventListener("click",e=>{if(e.target.closest("a"))navOpen(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")navOpen(false)});
+/* Previous / next lab buttons at the bottom of every bay. */
+function addPrevNext(){$$("section.bay").forEach(s=>{const i=ORDER.findIndex(b=>b[0]===s.id);if(i<0)return;const p=ORDER[i-1],n=ORDER[i+1];
+  const d=document.createElement("nav");d.className="pn";d.setAttribute("aria-label","Previous and next");
+  d.innerHTML=(p?`<a href="#${p[0]}"><small>‹ Previous</small>${p[1]}</a>`:"")+(n?`<a class="nx" href="#${n[0]}"><small>Next ›</small>${n[1]}</a>`:"");s.appendChild(d)})}
+/* Number boxes get -/+ buttons on touch screens; hold to repeat. */
+function addSteppers(){$$('input[type=number]').forEach(inp=>{if(inp.parentElement.classList.contains("step"))return;
+  const lab=inp.closest("label");if(lab&&!lab.htmlFor&&inp.id)lab.htmlFor=inp.id;
+  const w=document.createElement("span");w.className="step";inp.replaceWith(w);
+  const mk=(txt,dir)=>{const b=document.createElement("button");b.type="button";b.textContent=txt;b.tabIndex=-1;b.setAttribute("aria-hidden","true");
+    const bump=()=>{try{dir>0?inp.stepUp():inp.stepDown()}catch(e){return}inp.dispatchEvent(new Event("input",{bubbles:true}));inp.dispatchEvent(new Event("change",{bubbles:true}))};
+    let t1,t2;const stop=()=>{clearTimeout(t1);clearInterval(t2)};
+    b.addEventListener("pointerdown",e=>{e.preventDefault();stop();bump();t1=setTimeout(()=>{t2=setInterval(bump,70)},450)});
+    ["pointerup","pointerleave","pointercancel"].forEach(ev=>b.addEventListener(ev,stop));return b};
+  w.append(mk("−",-1),inp,mk("+",1))})}
 
 /* ---------------- XP + GAUGES ---------------- */
 let xp=store.get("xp",0);
 function addXP(n){xp+=n;store.set("xp",xp);gauges()}
 function daysTo(s){return Math.ceil((new Date(s+"T00:00:00")-new Date())/864e5)}
 function gauges(){const done=Object.values(store.get("lessons",{})).filter(Boolean).length;
-  $("#gauges").innerHTML=`<span>Design package <b>${daysTo("2027-02-01")} d</b></span><span>UT app <b>${daysTo("2027-03-01")} d</b></span><span>Lessons <b>${done}/36</b></span><span class="xp">XP <b class="xp">${xp}</b></span>`}
+  $("#gauges").innerHTML=$("#gauges2").innerHTML=`<span>Design package <b>${daysTo("2027-02-01")} d</b></span><span>UT app <b>${daysTo("2027-03-01")} d</b></span><span>Lessons <b>${done}/36</b></span><span class="xp">XP <b class="xp">${xp}</b></span>`}
 
 /* ---------------- MAP ---------------- */
 const UNITS=[["Unit 1 · Foundations",[[1,"Four-stroke cycle and engine timing","cylinder"],[2,"Units, algebra, estimation, uncertainty",""],[3,"Bore, stroke, displacement, piston speed","geometry"],[4,"Compression ratio and chamber volume","geometry"],[5,"Torque, power, rpm, BMEP","power"],[6,"Thermodynamics, efficiency, energy balance","thermo"],[7,"Combustion, lambda, knock, pre-ignition","thermo"]]],
@@ -1964,19 +2029,47 @@ const css2=`<style>
 .ctl td:first-child{font-weight:600;white-space:nowrap}
 .ctl td{font-size:13px}
 .gnotes textarea{min-height:110px}
+.mdock{display:none}
+@media (max-width:820px){
+ /* Controls table becomes one card per control. */
+ table.ctl,table.ctl tbody,table.ctl tr,table.ctl td{display:block;width:100%}
+ table.ctl tr:first-child{display:none}
+ table.ctl tr{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;background:var(--bg)}
+ table.ctl td{border:0;padding:2px 0;font-size:14px;white-space:normal!important}
+ table.ctl td:first-child{font:700 16px var(--f-body);margin-bottom:4px}
+ table.ctl td:nth-child(2)::before{content:"What it is: ";color:var(--muted)}
+ table.ctl td:nth-child(3)::before{content:"Turn it up: ";color:var(--muted)}
+ table.ctl td:nth-child(4)::before{content:"Why: ";color:var(--muted)}
+ /* Mission dock: the current mission stays on screen while you work the lab. */
+ .mdock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:3;background:var(--panel);border:0;border-top:3px solid;
+  border-image:linear-gradient(90deg,var(--m1) 0 33.33%,var(--m2) 33.33% 66.66%,var(--m3) 66.66%) 1;box-shadow:0 -10px 30px rgba(0,0,0,.55);
+  padding:0 max(12px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+ .mdh{display:flex;align-items:center;gap:8px;padding:6px 0}
+ .mdh .mdt{flex:1;min-width:0;background:transparent;color:var(--ink);text-align:left;padding:2px 0;font:700 17px/1.1 var(--f-disp);text-transform:uppercase;letter-spacing:.03em}
+ .mdh .mdt small{display:block;margin-top:2px;font:500 12px var(--f-mono);text-transform:none;letter-spacing:0;color:var(--muted)}
+ .mdh .mdt small.set{color:var(--good)}
+ .mdh .ghost{width:44px;padding:0;font-size:22px}
+ .mdb{max-height:30vh;overflow-y:auto;overscroll-behavior:contain;padding-bottom:4px}
+ .mdb p{margin:0 0 6px}
+ .mdo{margin:0 0 6px;max-height:22vh;overflow-y:auto}
+ #cylCanvas{max-width:min(100%,300px);margin-inline:auto}
+ .mdb .mans{margin:8px 0 0}
+ .mdock.min .mdb{display:none}
+}
 </style>`;
 document.head.insertAdjacentHTML("beforeend",css2);
 
 function render(id){const g=G[id];const sec=document.getElementById(id);if(!g||!sec)return;
  const st=store.get("guide."+id,{});const total=g.steps.length;
- const el=document.createElement("details");el.className="guide";el.open=store.get("guideOpen."+id,true);
+ const phone=matchMedia("(max-width:820px)").matches;
+ const el=document.createElement("details");el.className="guide";el.open=store.get("guideOpen."+id,!phone);
  el.innerHTML=`<summary><span>Mission briefing</span><small id="gp-${id}"></small></summary><div class="gb">
  <h3>What this lab is for</h3><p>${g.why}</p>
  <h3>Do I calculate anything?</h3><p>${g.calc}</p>
  <h3>How to read the screen</h3><p>${g.read}</p>
  <h3>What every control does</h3><div class="tw"><table class="ctl"><tr><th>Control</th><th>What it is</th><th>Turn it up and…</th><th>Why</th></tr>${g.ctl.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("")}</table></div>
  <h3>Missions: predict first, then check</h3><p class="src" style="margin-top:0">Say your prediction out loud or write it down <i>before</i> you press the button. Guessing wrong and finding out why is what makes it stick.</p>
- ${g.steps.map((s,i)=>`<div class="mstep${st[i]?" done":""}" data-i="${i}"><div class="mnum">${i+1}</div><div><p><b>Do:</b> ${s.d}</p><p><b>Predict:</b> ${s.p}</p><div class="row">${s.c?`<span class="mstat">○ not set yet</span>`:""}<button class="ghost mrev">Show what happens</button></div><div class="mans" ${st[i]?"":"hidden"}>${s.a}</div></div></div>`).join("")}
+ ${g.steps.map((s,i)=>`<div class="mstep${st[i]?" done":""}" data-i="${i}"><div class="mnum">${i+1}</div><div><p><b>Do:</b> ${tapWord(s.d)}</p><p><b>Predict:</b> ${s.p}</p><div class="row">${s.c?`<span class="mstat">○ not set yet</span>`:""}<button class="ghost mrev">Show what happens</button></div><div class="mans" ${st[i]?"":"hidden"}>${s.a}</div></div></div>`).join("")}
  <h3>Rules to remember</h3><ul style="padding-left:20px;margin:0">${g.rule.map(r=>`<li>${r}</li>`).join("")}</ul>
  <h3>What you decide for your inline-8</h3><p>${g.decide}</p>
  <h3>My notes</h3><div class="gnotes"><textarea id="gn-${id}" placeholder="In your own words: what did you learn, what surprised you, what number did you decide on and why?" aria-label="My notes for this lab"></textarea>
@@ -1986,11 +2079,33 @@ function render(id){const g=G[id];const sec=document.getElementById(id);if(!g||!
  el.addEventListener("toggle",()=>store.set("guideOpen."+id,el.open));
  const ta=el.querySelector("#gn-"+id);ta.value=store.get("notes."+id,"");ta.addEventListener("input",()=>store.set("notes."+id,ta.value));
  el.querySelector("#gc-"+id).onclick=()=>copyText(`## ${sec.querySelector("h1").textContent} notes (${new Date().toISOString().slice(0,10)})\n\n${ta.value}`,el.querySelector("#gm-"+id));
- const prog=()=>{const s=store.get("guide."+id,{});el.querySelector("#gp-"+id).textContent=`${Object.values(s).filter(Boolean).length}/${total} missions · click to ${el.open?"hide":"show"}`};
- const check=()=>{el.querySelectorAll(".mstep").forEach(d=>{const s=g.steps[+d.dataset.i];if(!s.c)return;let okk=false;try{okk=s.c()}catch(e){}const m=d.querySelector(".mstat");m.textContent=okk?"✓ set — now press the button":"○ not set yet";m.classList.toggle("set",okk)});prog()};
- el.querySelectorAll(".mrev").forEach(b=>b.onclick=()=>{const d=b.closest(".mstep"),i=+d.dataset.i;d.querySelector(".mans").hidden=false;const s=store.get("guide."+id,{});if(!s[i]){s[i]=1;store.set("guide."+id,s);addXP(5)}d.classList.add("done");prog()});
+ const nDone=()=>Object.values(store.get("guide."+id,{})).filter(Boolean).length;
+ const isSet=s=>{if(!s.c)return null;try{return!!s.c()}catch(e){return false}};
+ const prog=()=>{el.querySelector("#gp-"+id).textContent=tapWord(`${nDone()}/${total} missions · click to ${el.open?"hide":"show"}`)};
+ // Mission dock (shown on phones by CSS): one mission at a time, pinned to the bottom of the screen.
+ const dock=document.createElement("div");dock.className="mdock"+(store.get("dockMin",false)?" min":"");
+ dock.innerHTML=`<div class="mdh"><button class="ghost mdp" aria-label="Previous mission">‹</button><button class="mdt" aria-label="Show or hide the prediction and answer"></button><button class="ghost mdn" aria-label="Next mission">›</button></div><p class="mdo"></p><div class="mdb"></div>`;
+ sec.appendChild(dock);
+ let cur=Math.max(0,g.steps.findIndex((_,i)=>!st[i]));
+ const dockHead=()=>{const done=!!store.get("guide."+id,{})[cur],ok=isSet(g.steps[cur]);
+  const stat=done?"✓ done":ok==null?"":ok?"✓ set, now tap Show what happens":"○ not set yet";
+  dock.querySelector(".mdt").innerHTML=`Mission ${cur+1} of ${total}<small class="${ok&&!done?"set":""}">${stat?stat+" · ":""}${nDone()}/${total} done · tap ${dock.classList.contains("min")?"for more":"to shrink"}</small>`;
+  dock.querySelector(".mdp").disabled=cur===0;dock.querySelector(".mdn").disabled=cur===total-1};
+ const dockBody=()=>{const s=g.steps[cur],done=!!store.get("guide."+id,{})[cur];
+  dock.querySelector(".mdo").innerHTML=`<b>Do:</b> ${tapWord(s.d)}`;
+  dock.querySelector(".mdb").innerHTML=`<p><b>Predict:</b> ${s.p}</p>${done?"":`<button class="mdrev">Show what happens</button>`}<div class="mans" ${done?"":"hidden"}>${s.a}</div>${done&&cur<total-1?`<button class="ghost mdgo" style="margin-top:8px">Next mission ›</button>`:""}`;
+  const r=dock.querySelector(".mdrev");if(r)r.onclick=()=>reveal(cur);const n=dock.querySelector(".mdgo");if(n)n.onclick=()=>go(cur+1);dockHead()};
+ const go=i=>{cur=Math.min(total-1,Math.max(0,i));dock.classList.remove("min");store.set("dockMin",false);dockBody();dock.querySelector(".mdb").scrollTop=0};
+ dock.querySelector(".mdp").onclick=()=>go(cur-1);dock.querySelector(".mdn").onclick=()=>go(cur+1);
+ dock.querySelector(".mdt").onclick=()=>{const m=dock.classList.toggle("min");store.set("dockMin",m);dockHead()};
+ // Keep the page's last lines above the dock.
+ new ResizeObserver(()=>{sec.style.paddingBottom=dock.offsetHeight?dock.offsetHeight+16+"px":""}).observe(dock);
+ const reveal=i=>{const s=store.get("guide."+id,{});if(!s[i]){s[i]=1;store.set("guide."+id,s);addXP(5)}
+  const d=el.querySelector(`.mstep[data-i="${i}"]`);d.classList.add("done");d.querySelector(".mans").hidden=false;prog();if(i===cur)dockBody();else dockHead()};
+ const check=()=>{el.querySelectorAll(".mstep").forEach(d=>{const okk=isSet(g.steps[+d.dataset.i]);if(okk==null)return;const m=d.querySelector(".mstat");m.textContent=okk?tapWord("✓ set — now press the button"):"○ not set yet";m.classList.toggle("set",okk)});prog();dockHead()};
+ el.querySelectorAll(".mrev").forEach(b=>b.onclick=()=>reveal(+b.closest(".mstep").dataset.i));
  ["input","change","click"].forEach(ev=>sec.addEventListener(ev,()=>setTimeout(check,0)));
- el.addEventListener("toggle",prog);check()}
+ el.addEventListener("toggle",prog);dockBody();check()}
 Object.keys(G).forEach(render);
 })();
 
@@ -1998,7 +2113,7 @@ Object.keys(G).forEach(render);
 function redrawAll(){gauges();if(current==="cylinder")drawCyl();if(current==="geometry")geo();if(current==="power")power();if(current==="thermo")thermo();
   if(current==="balance"){balCalc();drawBal()}if(current==="cooling"){loop();heat()}if(current==="airflow"){air();drag()}if(current==="fit")fit();if(current==="cad")cad();if(LABS[current])LABS[current]()}
 renderLessons();buildCrankSel();balCalc();torsion();eLoad();qScore();nextQ();$("#gSrc").innerHTML=PRESETS[4][5];
-route();requestAnimationFrame(balLoop);
+addPrevNext();addSteppers();route();requestAnimationFrame(balLoop);
 window.addEventListener("resize",()=>redrawAll());
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",redrawAll)}catch(e){}
 new MutationObserver(redrawAll).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
