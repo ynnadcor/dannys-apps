@@ -18,6 +18,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.0.2",
+          "buildVersion": "2",
+          "date": "2026-11-15T00:05:53Z",
+          "localizedDescription": "Engine Academy: phone layout and touch controls",
+          "downloadURL": "https://github.com/ynnadcor/dannys-apps/releases/download/engine-academy-v1.0.2/EngineAcademy.ipa",
+          "size": 281227,
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "1.0.1",
           "buildVersion": "1",
           "date": "2026-11-14T03:31:43Z",
