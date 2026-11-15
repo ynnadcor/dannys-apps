@@ -18,6 +18,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.0.3",
+          "buildVersion": "3",
+          "date": "2026-11-15T01:27:03Z",
+          "localizedDescription": "Engine Academy: full redesign",
+          "downloadURL": "https://github.com/ynnadcor/dannys-apps/releases/download/engine-academy-v1.0.3/EngineAcademy.ipa",
+          "size": 287798,
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "1.0.2",
           "buildVersion": "2",
           "date": "2026-11-15T00:05:53Z",
