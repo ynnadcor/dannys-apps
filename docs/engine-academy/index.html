@@ -250,6 +250,69 @@ a.card:active{transform:scale(.985)}
 .pn a{display:flex;flex-direction:column;gap:3px;max-width:48%;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;font-weight:650}
 .pn a small{font:600 10.5px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .pn a.nx{margin-left:auto;text-align:right}
+/* ---------- Big targets: 48px minimum everywhere, for thumbs ---------- */
+body{font-size:16px}
+button{min-height:48px;font-size:15px}
+.row>button.ghost{min-height:46px;font-size:14px;padding:0 16px}
+.toc-btn{min-height:44px!important}
+.step{width:170px;border-radius:14px}
+.step input{height:52px;font-size:17px}
+.step button{width:52px;min-height:52px}
+input[type=number],input[type=text],select{height:52px;border-radius:14px}
+label.f{padding:12px 0;font-size:16px}
+input[type=range]{height:48px}
+input[type=range]::-webkit-slider-thumb{width:32px;height:32px;margin-top:-13px;transition:transform .15s}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.18)}
+input[type=checkbox],input[type=radio]{width:26px;height:26px;border-radius:8px}
+input[type=radio]{border-radius:50%}
+label.row{min-height:48px;gap:10px!important;cursor:pointer}
+summary{min-height:48px;display:flex;align-items:center;cursor:pointer}
+.back{min-height:48px;padding-right:12px;font-size:16px}
+.tabbar a{min-height:58px;justify-content:center;font-size:11.5px}
+.tabbar svg{width:26px;height:26px}
+a.card:active,.lcard:active,.lgo:active,.pn a:active{transform:scale(.98)}
+.lcard{padding:16px;min-height:82px}
+.pn a{min-height:64px;justify-content:center}
+a.pill{min-height:46px;padding:0 16px;color:var(--ink);text-decoration:none;font-size:13.5px}
+/* Lesson rows: tick box on the left, the rest of the row opens the lab. */
+.lesson{grid-template-columns:52px minmax(0,1fr);gap:2px;padding:0}
+.lchk{display:grid;place-items:center;align-self:stretch;min-height:62px;cursor:pointer}
+.lesson a.lgo,.lgo{display:grid;grid-template-columns:minmax(0,1fr) 22px;align-items:center;gap:8px;min-height:62px;padding:8px 4px 8px 0;margin:0;background:none;border-radius:12px;color:var(--ink);text-decoration:none;font:inherit;white-space:normal}
+.lgo .lt b{display:block;font-weight:600;font-size:15px;line-height:1.3}
+.lgo .lt small{display:block;font:600 13px var(--f-body);color:var(--accent);margin-top:3px}
+div.lgo .lt small{color:var(--dim);font-weight:500}
+.lesson.done .lt b{color:var(--dim);text-decoration:line-through}
+.lesson.done span{text-decoration:none}
+/* Changed readouts flash blue with an arrow. */
+.chg{animation:chg 1.2s var(--ease)}
+@keyframes chg{0%{color:var(--accent);text-shadow:0 0 14px color-mix(in srgb,var(--accent) 70%,transparent)}100%{text-shadow:0 0 0 transparent}}
+.chg.up::after,.chg.down::after{display:inline-block;margin-left:6px;font-size:.7em;color:var(--accent);animation:arrow 1.3s var(--ease) forwards}
+.chg.up::after{content:"\25B2"} .chg.down::after{content:"\25BC"}
+@keyframes arrow{0%{opacity:0;transform:translateY(4px)}15%{opacity:1;transform:none}75%{opacity:1}100%{opacity:0}}
+/* Blue ring on the control the current mission needs. */
+.hint{box-shadow:0 0 0 2px var(--accent);animation:ring 1.4s ease-in-out 3}
+label.f.hint{border-radius:14px;margin-inline:-10px;padding-inline:10px;background:color-mix(in srgb,var(--accent) 7%,transparent)}
+@keyframes ring{0%,100%{box-shadow:0 0 0 2px var(--accent)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 22%,transparent)}}
+/* Toast */
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + var(--barh) + 12px);z-index:40;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100% - 32px);
+  padding:12px 18px 12px 14px;border-radius:16px;background:var(--raise);border:1px solid color-mix(in srgb,var(--good) 45%,transparent);box-shadow:0 14px 40px rgba(0,0,0,.65);color:var(--good);
+  transform:translate(-50%,-24px);opacity:0;pointer-events:none;transition:transform .4s var(--ease),opacity .25s}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast span{display:flex;flex-direction:column;color:var(--muted);font-size:13px;line-height:1.35}
+.toast b{color:var(--ink);font:800 15px var(--f-disp);font-stretch:118%;text-transform:uppercase}
+.toast.big{border-color:var(--good);background:color-mix(in srgb,var(--good) 16%,var(--raise))}
+/* First-visit coach card */
+.coach{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 14%,var(--panel)),var(--panel) 70%);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:var(--r);padding:18px}
+.coach>b{font:800 18px var(--f-disp);font-stretch:118%;text-transform:uppercase}
+.coach ol{list-style:none;margin:14px 0 10px;padding:0;display:grid;gap:12px}
+.coach li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;font-size:15.5px}
+.coach li span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--bg);font:700 13px var(--f-mono)}
+.coach em{font-style:normal;color:var(--accent);font-weight:650}
+.coach p{color:var(--muted);font-size:14px}
+/* Cards rise in when a list opens. */
+.lcard,.urow{animation:rise .45s var(--ease) both;animation-delay:calc(min(var(--i,0),14)*30ms)}
+@keyframes rise{from{opacity:.25;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.chg,.hint,.lcard,.urow,.chg::after{animation:none!important}.toast{transition:none}}
 </style>
 
 <header class="appbar">
@@ -737,14 +800,15 @@ const plain=h=>{const d=document.createElement("div");d.innerHTML=h;return d.tex
 /* Labs screen: one card per lab with its mission progress. */
 function renderLabs(){$("#labsCount").textContent=`${ORDER.length} labs · ${ORDER.reduce((n,[id])=>n+((missionsOf(id)||{}).done||0),0)} missions done`;
   $("#labGrid").innerHTML=LABGROUPS.map(([g,items])=>`<div class="lgrp"><h2>${g}<small>${items.length} ${items.length>1?"labs":"lab"}</small></h2><div class="lcards">${items.map(([id,n,l,ic])=>{const m=missionsOf(id);const full=m&&m.done===m.total;
-    return`<a class="lcard${full?" done":""}" href="#${id}"><span class="itile">${ico(full?"check":ic,24)}</span><span><b>${n}</b><small>${l}${m?` · ${m.done}/${m.total} missions`:""}</small>${m?`<span class="bar"><i style="width:${100*m.done/m.total}%"></i></span>`:""}</span><span class="chev">${ico("chev",18)}</span></a>`}).join("")}</div></div>`).join("")}
-$("#libGrid").innerHTML=LIB.map(([id,n,d,ic])=>`<a class="lcard" href="#${id}"><span class="itile">${ico(ic,24)}</span><span><b>${n}</b><small>${d}</small></span><span class="chev">${ico("chev",18)}</span></a>`).join("");
+    return`<a class="lcard${full?" done":""}" href="#${id}" style="--i:${ORDER.findIndex(b=>b[0]===id)}"><span class="itile">${ico(full?"check":ic,24)}</span><span><b>${n}</b><small>${l}${m?` · ${m.done}/${m.total} missions`:""}</small>${m?`<span class="bar"><i style="width:${100*m.done/m.total}%"></i></span>`:""}</span><span class="chev">${ico("chev",18)}</span></a>`}).join("")}</div></div>`).join("")}
+$("#libGrid").innerHTML=LIB.map(([id,n,d,ic],k)=>`<a class="lcard" href="#${id}" style="--i:${k}"><span class="itile">${ico(ic,24)}</span><span><b>${n}</b><small>${d}</small></span><span class="chev">${ico("chev",18)}</span></a>`).join("");
 
 /* Home: sprint countdown drawn as a tachometer. One tick per week of the 12-week sprint; the last two weeks are the redline. */
 const SPRINT_START="2026-11-09",PKG="2027-02-01";
 const dayN=s=>new Date(s+"T00:00:00");
-function tach(){const cx=160,cy=158,R=124,total=(dayN(PKG)-dayN(SPRINT_START))/864e5;
-  const el=(new Date()-dayN(SPRINT_START))/864e5,f=Math.min(1,Math.max(0,el/total));
+// fv / shown let the startup sweep move the needle and count the number up; by default they show today.
+function tach(fv,shown){const cx=160,cy=158,R=124,total=(dayN(PKG)-dayN(SPRINT_START))/864e5;
+  const el=(new Date()-dayN(SPRINT_START))/864e5,f=fv!=null?fv:Math.min(1,Math.max(0,el/total));
   const pt=(t,r)=>{const a=(210-240*t)*deg;return[cx+r*Math.cos(a),cy-r*Math.sin(a)]};
   const arc=(t0,t1,r)=>{const[a,b]=pt(t0,r),[c,d]=pt(t1,r);return`M${a.toFixed(1)} ${b.toFixed(1)}A${r} ${r} 0 ${(t1-t0)*240>180?1:0} 1 ${c.toFixed(1)} ${d.toFixed(1)}`};
   let s=`<path d="${arc(0,1,R)}" style="fill:none;stroke:var(--soft);stroke-width:8"/><path d="${arc(10/12,1,R)}" style="fill:none;stroke:var(--hot);stroke-width:8"/>`;
@@ -754,12 +818,21 @@ function tach(){const cx=160,cy=158,R=124,total=(dayN(PKG)-dayN(SPRINT_START))/8
     if(maj){const[tx,ty]=pt(t,R-40);s+=`<text x="${tx.toFixed(1)}" y="${(ty+4).toFixed(1)}" text-anchor="middle" style="font:600 12px var(--f-mono);fill:${red?"var(--hot)":"var(--muted)"}">${k/2}</text>`}}
   const[n1x,n1y]=pt(f,R-30),[n2x,n2y]=pt(f,R+7);
   s+=`<line x1="${n1x.toFixed(1)}" y1="${n1y.toFixed(1)}" x2="${n2x.toFixed(1)}" y2="${n2y.toFixed(1)}" style="stroke:var(--hot);stroke-width:4;stroke-linecap:round"/>`;
-  const left=Math.max(0,daysTo(PKG)),wk=Math.min(12,Math.floor(el/7)+1);
+  const left=shown!=null?shown:Math.max(0,daysTo(PKG)),wk=Math.min(12,Math.floor(el/7)+1);
   s+=`<text x="${cx}" y="${cy-8}" text-anchor="middle" style="font:800 68px var(--f-disp);font-stretch:118%;fill:var(--ink);letter-spacing:-1px">${left}</text>`;
   s+=`<text x="${cx}" y="${cy+14}" text-anchor="middle" style="font:600 10px var(--f-mono);letter-spacing:.14em;fill:var(--muted)">DAYS TO</text><text x="${cx}" y="${cy+28}" text-anchor="middle" style="font:600 10px var(--f-mono);letter-spacing:.14em;fill:var(--muted)">DESIGN PACKAGE</text>`;
   s+=`<text x="${cx}" y="${cy+56}" text-anchor="middle" style="font:700 11px var(--f-mono);letter-spacing:.12em;fill:var(--accent)">${el<0?"STARTS NOV 9":`WEEK ${wk} OF 12`}</text>`;
   return s}
-function renderHome(){$("#tach").innerHTML=tach();
+/* Startup sweep, like a BMW cluster at ignition: needle to the redline and back to today, once per app launch. */
+let swept=false;
+function sweepTach(){const total=(dayN(PKG)-dayN(SPRINT_START))/864e5,el=(new Date()-dayN(SPRINT_START))/864e5,f=Math.min(1,Math.max(0,el/total)),left=Math.max(0,daysTo(PKG));
+  if(swept||matchMedia("(prefers-reduced-motion:reduce)").matches){$("#tach").innerHTML=tach();return}
+  swept=true;const t0=performance.now(),up=650,down=900,ease=t=>1-Math.pow(1-t,3);
+  const step=now=>{const t=now-t0;let fv,sh;
+    if(t<up){const k=ease(t/up);fv=k;sh=Math.round(left*k)}else{const k=ease(Math.min(1,(t-up)/down));fv=1+(f-1)*k;sh=left}
+    $("#tach").innerHTML=tach(fv,sh);if(t<up+down&&current==="home")requestAnimationFrame(step);else $("#tach").innerHTML=tach()};
+  requestAnimationFrame(step)}
+function renderHome(){sweepTach();
   const done=Object.values(store.get("lessons",{})).filter(Boolean).length;
   $("#clRead").innerHTML=`<div><small>UT app</small><b>${daysTo("2027-03-01")}</b><span>days · Mar 1</span></div><div><small>Supplements</small><b>${daysTo("2027-03-10")}</b><span>days · Mar 10</span></div><div><small>Lessons</small><b>${done}<span style="font-size:15px;color:var(--dim)">/36</span></b><span>signed off</span></div>`;
   const last=isLab(store.get("last",""))?store.get("last"):"cylinder",L=ORDER.find(b=>b[0]===last),m=missionsOf(last);
@@ -794,6 +867,22 @@ function enhanceRanges(){$$('input[type=range]').forEach(r=>{const l=r.parentEle
   document.addEventListener("input",e=>{if(e.target.type==="range")syncRange(e.target)});
   document.addEventListener("click",()=>setTimeout(()=>$$("section.bay.on input[type=range]").forEach(syncRange),0))}
 
+/* Readouts that change flash blue with an arrow (▲ went up, ▼ went down), so cause and effect is visible. */
+const numOf=t=>{const m=(t||"").replace(/,/g,"").replace(/−/g,"-").match(/-?\d+(?:\.\d+)?/);return m?+m[0]:NaN};
+function flash(el,dir){el.classList.remove("chg","up","down");void el.offsetWidth;el.classList.add("chg");if(dir)el.classList.add(dir);clearTimeout(el._ct);el._ct=setTimeout(()=>el.classList.remove("chg","up","down"),1400)}
+function watchChanges(pane){const prev=new Map(),last=new Map();let queued=false;
+  const scan=()=>{queued=false;const now=performance.now(),items=[];
+    pane.querySelectorAll("dl.kv").forEach((dl,i)=>dl.querySelectorAll("dt").forEach(dt=>{const dd=dt.nextElementSibling;if(dd)items.push(["k"+i+dt.textContent,dd])}));
+    pane.querySelectorAll(".big,.stroke-name").forEach((e,i)=>items.push(["b"+(e.id||i),e]));
+    items.forEach(([k,el])=>{const t=el.textContent.trim(),p=prev.get(k);prev.set(k,t);if(p==null||p===t)return;
+      // Values that change every frame (an animation playing) are not flashed.
+      const fast=now-(last.get(k)||0)<350;last.set(k,now);if(fast||!pane.offsetParent)return;
+      const a=numOf(p),b=numOf(t);flash(el,Number.isFinite(a)&&Number.isFinite(b)&&a!==b?(b>a?"up":"down"):"")})};
+  new MutationObserver(()=>{if(!queued){queued=true;setTimeout(scan,16)}}).observe(pane,{childList:true,subtree:true,characterData:true});scan()}
+/* Small confirmation that slides in under the top bar. */
+function toast(html,big){let t=$("#toast");if(!t){t=document.createElement("div");t.id="toast";t.setAttribute("role","status");document.body.appendChild(t)}
+  t.className="toast"+(big?" big":"");t.innerHTML=html;void t.offsetWidth;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),big?3400:2300)}
+
 /* ---------------- XP + GAUGES ---------------- */
 let xp=store.get("xp",0);
 function addXP(n){xp+=n;store.set("xp",xp);gauges()}
@@ -810,7 +899,9 @@ const UNITS=[["Unit 1 · Foundations",[[1,"Four-stroke cycle and engine timing",
 function renderLessons(){const st=store.get("lessons",{});let h="";
   UNITS.forEach(([u,ls])=>{const d=ls.filter(l=>st[l[0]]).length;
     h+=`<div class="unit-h"><h3 style="margin:0">${u}</h3><span class="out">${d}/${ls.length}</span></div><div class="bar"><i style="width:${100*d/ls.length}%"></i></div>`;
-    ls.forEach(([n,t,lab])=>{h+=`<div class="lesson ${st[n]?"done":""}"><input type="checkbox" id="les${n}" data-n="${n}" ${st[n]?"checked":""} aria-label="Lesson ${n} done"><span>L${n} · ${t}</span>${lab?`<a href="#${lab}">open lab</a>`:"<span></span>"}</div>`})});
+    // Whole row opens the lab; the big box on the left ticks the lesson off.
+    ls.forEach(([n,t,lab])=>{const body=`<span class="lt"><b>L${n} · ${t}</b><small>${lab?"Open "+nameOf(lab):"Paper lesson · no lab"}</small></span>`;
+      h+=`<div class="lesson ${st[n]?"done":""}"><label class="lchk" for="les${n}"><input type="checkbox" id="les${n}" data-n="${n}" ${st[n]?"checked":""} aria-label="Lesson ${n} done"></label>${lab?`<a class="lgo" href="#${lab}">${body}<span class="chev">${ico("chev",20)}</span></a>`:`<div class="lgo">${body}</div>`}</div>`})});
   $("#lessonList").innerHTML=h;
   $$("#lessonList input").forEach(i=>i.onchange=()=>{const s=store.get("lessons",{});s[i.dataset.n]=i.checked;store.set("lessons",s);if(i.checked)addXP(25);renderLessons();gauges()})}
 const SPRINT=[["Nov 9–15","L1–2","Cylinder Lab, Lesson 1 drawing"],["Nov 16–22","L3–5","Geometry Bench, Dyno Room"],["Nov 23–29","L6–7","Heat & Efficiency"],["Nov 30–Dec 13","Finals","School first; quiz 15 min/day"],["Dec 14–20","L8–11","Requirements, Will It Fit?, measure your 540i"],["Dec 21–27","L12–15","Firing & Balance; freeze architecture"],["Dec 28–Jan 3","L16–21","Head, valves, intake, NA vs turbo"],["Jan 4–10","L24–29","Loads, crank, bearings, cooling"],["Jan 11–17","L32","CAD master model in Onshape"],["Jan 18–24","L33–34","Performance model, first FEA"],["Jan 25–31","L35–36","Portfolio, design review"],["Feb 1","Target","Virtual package done"]];
@@ -2196,7 +2287,7 @@ const css2=`<style>
 /* Lab screens: segmented Lab / Guide / Notes, guide cards, mission dock. */
 .seg{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--barh) + 10px);z-index:8;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;margin:6px 0 18px;
  background:var(--glass);-webkit-backdrop-filter:saturate(1.5) blur(18px);backdrop-filter:saturate(1.5) blur(18px);border:1px solid var(--line);border-radius:14px}
-.seg button{min-height:40px;border-radius:10px;background:transparent;color:var(--muted);font:650 14px var(--f-body);padding:0 6px}
+.seg button{min-height:48px;border-radius:10px;background:transparent;color:var(--muted);font:650 15px var(--f-body);padding:0 6px}
 .seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
 .seg button small{font:600 11px var(--f-mono);opacity:.75;margin-left:5px}
 .pane{display:flex;flex-direction:column;gap:14px}
@@ -2228,18 +2319,27 @@ const css2=`<style>
 .bay[data-pane="guide"] .mdock,.bay[data-pane="notes"] .mdock{display:none}
 @media (min-width:980px){.mdock{left:var(--side)}}
 .mdh{display:flex;align-items:center;gap:10px}
-.mdh .mdt{flex:1;min-width:0;display:block;background:transparent;color:var(--ink);text-align:left;padding:2px 0;min-height:40px;border-radius:8px}
+.mdh .mdt{flex:1;min-width:0;display:block;background:transparent;color:var(--ink);text-align:left;padding:2px 0;min-height:50px;border-radius:8px}
 .mdh .mdt:active{transform:none}
 .mdt b{font:800 15px/1.1 var(--f-disp);font-stretch:120%;text-transform:uppercase;letter-spacing:.02em}
 .mdt small{display:block;margin-top:4px;font:500 12px/1.3 var(--f-mono);color:var(--muted)}
 .mdt small.set{color:var(--good)}
-.mdh .ghost{width:42px;min-height:42px;padding:0;display:grid;place-items:center;flex:none}
-.mdo{margin:10px 0 0;font-size:15px;line-height:1.45;max-height:22vh;overflow-y:auto}
+.mdh .ghost{width:50px;min-height:50px;padding:0;display:grid;place-items:center;flex:none}
+.mdo{margin:10px 0 0;font-size:16px;line-height:1.45;max-height:22vh;overflow-y:auto}
 .mdb{max-height:30vh;overflow-y:auto;overscroll-behavior:contain;margin-top:8px}
 .mdb p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
 .mdb p b{color:var(--ink)}
 .mdb .mans{margin:0 0 10px}
 .mdock.min .mdb{display:none}
+.mbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.mdfind,.mdgo{display:inline-flex;align-items:center;gap:6px}
+.mdgo{margin-top:2px}
+.mdock.ready{border-top-color:var(--good)}
+.mdock.ready .mdrev{background:var(--good);animation:glow 1.3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--good) 25%,transparent)}}
+.mdock.burst .mprog{animation:bar 1s var(--ease)}
+@keyframes bar{30%{height:5px;box-shadow:0 0 18px 2px var(--accent)}100%{height:2px;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.mdock.ready .mdrev,.mdock.burst .mprog{animation:none}}
 </style>`;
 document.head.insertAdjacentHTML("beforeend",css2);
 GUIDES=G;
@@ -2282,18 +2382,38 @@ function render(id){const g=G[id];const sec=document.getElementById(id);if(!g||!
   dock.querySelector(".mdt").innerHTML=`<b>Mission ${cur+1} of ${total}</b><small class="${ok&&!done?"set":""}">${stat?stat+" · ":""}tap ${dock.classList.contains("min")?"for more":"to shrink"}</small>`;
   dock.querySelector(".mprog").style.width=100*nDone()/total+"%";
   dock.querySelector(".mdp").disabled=cur===0;dock.querySelector(".mdn").disabled=cur===total-1};
- const dockBody=()=>{const s=g.steps[cur],done=!!store.get("guide."+id,{})[cur];
+ // Which controls a mission talks about: bold words in its "Do" line matched to buttons and control rows in the lab.
+ const norm=x=>(x||"").toLowerCase().replace(/\s+/g," ").trim();
+ const targetsFor=s=>{const d=document.createElement("div");d.innerHTML=s.d;
+  const ph=[...d.querySelectorAll("b,i")].map(b=>norm(b.textContent)).filter(t=>t.length>1&&!/^[\d.,\s−+%°:-]+$/.test(t));const out=new Set();
+  lab.querySelectorAll("button,label.f,label.row").forEach(el=>{if(el.closest(".step,.coach"))return;
+   const t=el.matches("label.f")?norm(((el.querySelector(":scope>span")||el).firstChild||{}).textContent):norm(el.textContent);
+   if(t&&ph.some(p=>el.matches("button")?t===p||t.startsWith(p):t.startsWith(p)))out.add(el)});return[...out]};
+ let hinted=[];
+ const setHints=list=>{hinted.forEach(e=>e.classList.remove("hint"));hinted=list;hinted.forEach(e=>{e.classList.remove("hint");void e.offsetWidth;e.classList.add("hint")})};
+ const dockBody=()=>{const s=g.steps[cur],done=!!store.get("guide."+id,{})[cur],tg=done?[]:targetsFor(s);
   dock.querySelector(".mdo").innerHTML=`<b>Do:</b> ${tapWord(s.d)}`;
-  dock.querySelector(".mdb").innerHTML=`<p><b>Predict:</b> ${s.p}</p>${done?`<div class="mans">${s.a}</div>`:`<button class="mdrev">Show what happens</button>`}${done&&cur<total-1?`<button class="ghost mdgo">Next mission ${ico("chev",16)}</button>`:""}`;
-  const r=dock.querySelector(".mdrev");if(r)r.onclick=()=>reveal(cur);const n=dock.querySelector(".mdgo");if(n){n.style.display="inline-flex";n.style.alignItems="center";n.style.gap="4px";n.onclick=()=>go(cur+1)}dockHead()};
+  dock.querySelector(".mdb").innerHTML=`<p><b>Predict:</b> ${s.p}</p><div class="mbtns">${done?"":`<button class="mdrev">Show what happens</button>`}${tg.length?`<button class="ghost mdfind">${ico("target",18)} Show me</button>`:""}</div>${done?`<div class="mans">${s.a}</div>`:""}${done&&cur<total-1?`<button class="ghost mdgo">Next mission ${ico("chev",18)}</button>`:""}`;
+  const r=dock.querySelector(".mdrev");if(r)r.onclick=()=>reveal(cur);const n=dock.querySelector(".mdgo");if(n)n.onclick=()=>go(cur+1);
+  const f=dock.querySelector(".mdfind");if(f)f.onclick=()=>{setHints(tg);tg[0].scrollIntoView({behavior:"smooth",block:"center"})};
+  setHints(tg);dockHead()};
  const go=i=>{cur=Math.min(total-1,Math.max(0,i));dock.classList.remove("min");store.set("dockMin",false);dockBody();dock.querySelector(".mdb").scrollTop=0};
  dock.querySelector(".mdp").onclick=()=>go(cur-1);dock.querySelector(".mdn").onclick=()=>go(cur+1);
  dock.querySelector(".mdt").onclick=()=>{const m=dock.classList.toggle("min");store.set("dockMin",m);dockHead()};
  // Keep the last lines of the page above the dock.
  new ResizeObserver(()=>{sec.style.paddingBottom=dock.offsetHeight?dock.offsetHeight+20+"px":""}).observe(dock);
- const reveal=i=>{const s=store.get("guide."+id,{});if(!s[i]){s[i]=1;store.set("guide."+id,s);addXP(5)}
-  const d=guide.querySelector(`.mstep[data-i="${i}"]`);d.classList.add("done");d.querySelector(".mans").hidden=false;prog();if(i===cur)dockBody();else dockHead()};
- const check=()=>{guide.querySelectorAll(".mstep").forEach(d=>{const okk=isSet(g.steps[+d.dataset.i]);if(okk==null)return;const m=d.querySelector(".mstat");m.textContent=okk?"✓ set · now check it":"○ not set yet";m.classList.toggle("set",okk)});prog();dockHead()};
+ const reveal=i=>{const s=store.get("guide."+id,{});const first=!s[i];if(first){s[i]=1;store.set("guide."+id,s);addXP(5)}
+  const d=guide.querySelector(`.mstep[data-i="${i}"]`);d.classList.add("done");d.querySelector(".mans").hidden=false;prog();if(i===cur)dockBody();else dockHead();
+  if(first){const all=nDone()===total;toast(all?`${ico("check",20)}<span><b>Lab complete</b>All ${total} missions done · +5 XP</span>`:`${ico("check",20)}<span><b>Mission ${i+1} done</b>+5 XP · ${nDone()}/${total} in this lab</span>`,all);
+   dock.classList.remove("burst");void dock.offsetWidth;dock.classList.add("burst")}};
+ const check=()=>{guide.querySelectorAll(".mstep").forEach(d=>{const okk=isSet(g.steps[+d.dataset.i]);if(okk==null)return;const m=d.querySelector(".mstat");m.textContent=okk?"✓ set · now check it":"○ not set yet";m.classList.toggle("set",okk)});prog();dockHead();
+  // Once the mission's setting is right, the rings go away and the Show button glows green.
+  const ready=isSet(g.steps[cur])===true&&!store.get("guide."+id,{})[cur];dock.classList.toggle("ready",ready);if(ready&&hinted.length)setHints([])};
+ // First visit: a three-step card explaining how a lab works.
+ if(!store.get("coachDone",false)){const c=document.createElement("div");c.className="coach";
+  c.innerHTML=`<b>How a lab works</b><ol><li><span>1</span><div>Read the mission in the bar at the bottom.</div></li><li><span>2</span><div>Change the control with the <em>blue ring</em>. Tap <em>Show me</em> if you can't find it.</div></li><li><span>3</span><div>Say your prediction out loud, then tap <em>Show what happens</em>.</div></li></ol><p>Numbers that change flash blue with an arrow, so you can see what affects what.</p><button>Got it</button>`;
+  c.querySelector("button").onclick=()=>{store.set("coachDone",true);$$(".coach").forEach(x=>x.remove())};lab.prepend(c)}
+ watchChanges(lab);
  guide.querySelectorAll(".mrev").forEach(b=>b.onclick=()=>reveal(+b.closest(".mstep").dataset.i));
  ["input","change","click"].forEach(ev=>sec.addEventListener(ev,()=>setTimeout(check,0)));
  dockBody();check()}
