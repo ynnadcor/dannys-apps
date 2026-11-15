@@ -18,6 +18,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.0.4",
+          "buildVersion": "4",
+          "date": "2026-11-15T02:57:31Z",
+          "localizedDescription": "Engine Academy: big tap targets, mission guidance, motion",
+          "downloadURL": "https://github.com/ynnadcor/dannys-apps/releases/download/engine-academy-v1.0.4/EngineAcademy.ipa",
+          "size": 291373,
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "1.0.3",
           "buildVersion": "3",
           "date": "2026-11-15T01:27:03Z",
