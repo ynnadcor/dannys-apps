@@ -2,7 +2,7 @@
 
 Run after every change to the source file:
     python tools/sync_engine_academy.py
-Then commit and push. The iPhone/iPad build and the web app both update from docs/engine-academy/.
+Then commit and push. The website (GitHub Pages) updates from docs/engine-academy/.
 """
 import hashlib
 import os

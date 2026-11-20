@@ -21,20 +21,18 @@ p{color:var(--muted);margin:0 0 12px;max-width:60ch}
 .app img{width:72px;height:72px;border-radius:16px}
 .app h2{font:700 24px/1.1 "Saira Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0 0 4px}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-a.btn,button{font:600 13px "IBM Plex Sans",system-ui,sans-serif;border-radius:8px;padding:9px 14px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
+a.btn{font:600 13px "IBM Plex Sans",system-ui,sans-serif;border-radius:8px;padding:9px 14px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
 a.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 h3{font:600 12px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:28px 0 8px}
-code{font:500 13px "IBM Plex Mono",monospace;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:block;overflow-x:auto;white-space:nowrap;color:var(--ink)}
 ol{padding-left:20px;color:var(--muted);max-width:62ch}
 li{margin-bottom:6px}
-#msg{font:500 12px "IBM Plex Mono",monospace;color:var(--muted);align-self:center}
 </style>
 </head>
 <body>
 <main>
   <div class="stripe"></div>
   <h1>Danny's Apps</h1>
-  <p>Apps I build. Open one in the browser, add it to the Home Screen, or install it through SideStore or AltStore.</p>
+  <p>Apps I build. Open one in the browser, or add it to the Home Screen.</p>
 
   <div class="app">
     <img src="engine-academy/icon-180.png" alt="">
@@ -45,33 +43,12 @@ li{margin-bottom:6px}
     </div>
   </div>
 
-  <h3>Option 1 · Home Screen (iPhone and iPad, no expiry)</h3>
+  <h3>Add to your Home Screen (iPhone and iPad)</h3>
   <ol>
     <li>Open <b>Engine Academy</b> above in <b>Safari</b>.</li>
     <li>Tap the <b>Share</b> button, then <b>Add to Home Screen</b>.</li>
     <li>Open it once while online. After that it works offline.</li>
   </ol>
-
-  <h3>Option 2 · SideStore or AltStore source</h3>
-  <code id="src"></code>
-  <div class="row"><button id="copy">Copy source link</button><span id="msg"></span></div>
-  <ol>
-    <li>In SideStore or AltStore, open <b>Sources</b>, tap <b>+</b>, paste the link.</li>
-    <li>Open <b>Danny's Apps</b> and install <b>Engine Academy</b>.</li>
-    <li>With a free Apple ID, refresh the app at least every 7 days. A free ID allows 3 sideloaded apps at once, SideStore included.</li>
-  </ol>
 </main>
-<script>
-// Build the raw source URL from where this page is hosted: <owner>.github.io/<repo>/
-const owner = location.hostname.endsWith(".github.io") ? location.hostname.split(".")[0] : "OWNER";
-const repo = location.pathname.split("/").filter(Boolean)[0] || "dannys-apps";
-const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/docs/altstore-source.json`;
-document.getElementById("src").textContent = url;
-document.getElementById("copy").onclick = async () => {
-  const m = document.getElementById("msg");
-  try { await navigator.clipboard.writeText(url); m.textContent = "Copied"; }
-  catch (e) { m.textContent = "Select the link and copy it"; }
-};
-</script>
 </body>
 </html>
