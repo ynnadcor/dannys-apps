@@ -326,9 +326,16 @@ label.f.hint{border-radius:14px;margin-inline:-10px;padding-inline:10px;backgrou
 <main>
 
 <!-- ============ HOME ============ -->
+<style>
+.measure{display:grid;gap:8px;background:var(--raise);padding:16px;border-radius:12px}.measure strong{font-size:2rem}.measure progress{width:100%;accent-color:var(--accent)}.bay[data-pane="experiment"] .mdock,.bay[data-pane="experiment"]>.lede{display:none}.seg{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bay[data-pane="learn"]>.lede{display:none}
+.lesson{border:1px solid var(--line2);border-top:3px solid var(--accent);background:var(--panel);padding:clamp(18px,4vw,36px);max-width:680px;border-radius:16px;margin:18px auto}
+.lesson h2{font-size:clamp(24px,4vw,38px);margin:12px 0 18px}.lesson h3{font-size:1rem;margin:20px 0 4px;color:var(--accent)}
+.lesson p{line-height:1.55;margin:8px 0 18px}.lesson textarea{width:100%;display:block;margin:10px 0 16px}.lesson .my-answer{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
 <section class="bay" id="home">
   <div class="home-head"><div class="eyebrow">THECAR · inline-8 program</div><h1>Engine Academy</h1></div>
-  <div class="panel cluster"><svg id="tach" viewBox="0 0 320 238" role="img" aria-label="Sprint countdown dial"></svg><div class="cl-read" id="clRead"></div></div>
+  <div class="panel card"><h2>Start with one cylinder</h2><p>Trap a charge of air, move the piston and predict what the pressure gauge will do.</p><a href="#cylinder">Start learning →</a></div><div class="panel cluster"><svg id="tach" viewBox="0 0 320 238" role="img" aria-label="Sprint countdown dial"></svg><div class="cl-read" id="clRead"></div></div>
   <div class="hgrid"><a class="panel card" id="contCard" href="#cylinder"></a><a class="panel card" id="weekCard" href="#map"></a></div>
   <div class="hgrid"><a class="panel card" id="unitCard" href="#map"></a><a class="panel card" id="quizCard" href="#quiz"></a></div>
 </section>
@@ -727,6 +734,25 @@ label.f.hint{border-radius:14px;margin-inline:-10px;padding-inline:10px;backgrou
   <div class="panel" style="margin-top:16px"><h3 style="margin-top:0">How credible is each source?</h3><p><b>Tier 1: cite these.</b> Manufacturer technical documents (BMW ST1505 training manual, BMW PressClub), engineering textbooks (Heywood, Taylor, Shigley&#39;s), standards (ISO, ASME, SAE), peer-reviewed or SAE papers.</p><p><b>Tier 2: supporting only.</b> University teaching pages and established trade press (BMWBlog, HP Academy). Use them to find a Tier 1 source or to explain an idea, never as the only proof of a number.</p><p><b>Tier 3: starting point only.</b> Wikipedia and forums. Follow their references to the original. Do not cite them in your portfolio.</p><p><b>Honesty note on textbook citations.</b> Chapter and section numbers for Heywood, Taylor, Shigley&#39;s and the others come from my knowledge of those books, not from pages I opened. The equations are standard results, but before you cite one in your portfolio, open the book (college library or interlibrary loan) and record the real page number. That is also evidence you did the work yourself.</p><p><b>Still unverified:</b> B58 bore spacing (not stated in ST1505), Heywood&#39;s valve-area constant, and every value tagged “assumed”.</p></div><div class="note" style="margin-top:16px"><b>Conflicts found while checking.</b> Some sources disagree on whether BMW's S63 and S68 V8s share bore and stroke figures (89 × 88.3 mm is listed for the S68). The US M5 press release's 738 lb-ft is the hybrid system torque; the V8 alone makes 750 N·m (553 lb-ft). One site lists the M196 bore as 70 mm while most give 76 mm; 76 × 68.8 mm matches the 2,497 cc displacement, so 76 is right. Bore spacing for the B58 is still unverified. BMW ST501 and ST041 do give 91 mm for the N52, N54 and S54 (84 to 87 mm bores).</div>
 </section>
 
+<section class="bay" id="course"><div class="eyebrow">Inline-eight engineering</div><h1>Design course</h1><div id="course-root"></div></section>
+
+<style>
+.eng-path{display:grid;grid-template-columns:minmax(200px,.65fr) minmax(0,1.7fr);gap:24px;align-items:start}.eng-index,.eng-chapter{background:#101113;border:1px solid #303236;border-radius:12px;padding:clamp(16px,2vw,30px)}.eng-index summary,.eng-chapter summary{cursor:pointer;padding:10px 0;font-weight:650}.eng-index ol{margin:0;padding-left:2em}.eng-index button{background:transparent;color:#cbd1d8;border:0;border-bottom:1px solid #292b30;border-radius:0;width:100%;text-align:left;min-height:44px}.eng-index button[aria-current=step]{color:#96cfff}.eng-chapter h2{font:650 clamp(24px,3vw,42px)/1.12 system-ui,sans-serif;text-transform:none;letter-spacing:-.04em}.eng-chapter h3{font:600 20px/1.3 system-ui,sans-serif;text-transform:none}.eng-chapter p,.eng-chapter label,.eng-chapter details{font:400 16px/1.65 system-ui,sans-serif;max-width:75ch;white-space:pre-line}.eng-equation{padding:16px;background:#191c21;border-left:3px solid #62afff;font:500 18px/1.6 monospace;overflow-wrap:anywhere;white-space:pre-line}.eng-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin:16px 0}.eng-chapter input,.eng-chapter textarea{width:100%;margin:8px 0;display:block}.eng-chapter [role=status]{color:#abd7ff}.eng-chapter hr{border:0;border-top:1px solid #34383e;margin:24px 0}@media(max-width:800px){.eng-path{grid-template-columns:1fr;gap:12px}.eng-index ol{max-height:240px;overflow:auto}}
+</style>
+<section class="bay" id="designstudio">
+<h1>Engine design studio</h1>
+<p class="lede">Build your inline engine specification. Adjust a dimension, quantify the tradeoff, and record the evidence behind each decision.</p>
+<label>Design name<input id="dsname" maxlength="100"></label>
+<div id="dsdrawing"></div><div id="dsmetrics"></div>
+<nav id="dsnav" aria-label="Design studio sections"></nav><div id="dswork"></div><p id="dsmessage" role="status"></p>
+</section>
+<style>
+#designstudio{color:#eff1f5}#designstudio label{display:grid;gap:7px;font:550 14px/1.4 system-ui;color:#c6cbd1}#designstudio input,#designstudio textarea,#designstudio select{width:100%;background:#0b0c0e;color:#eee;border:1px solid #45494f;border-radius:6px;padding:10px;font:inherit;min-height:46px}#designstudio button{min-height:46px;background:#1c1e22;color:#eee;border:1px solid #464a4e;padding:9px 14px;border-radius:7px}#designstudio button[aria-pressed=true]{background:#e9edf1;color:#111}#dsdrawing{margin-top:18px;background:repeating-linear-gradient(90deg,transparent 0 23px,#ffffff08 23px 24px),#101113;border:1px solid #333;border-radius:10px 10px 0 0;padding:10px 18px}#dsdrawing svg{display:block;width:100%;max-height:145px}#dsdrawing small{font:12px/1.4 monospace;color:#a2a9b3}#dsmetrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));border:1px solid #333}.dsmetric{display:grid;gap:6px;padding:14px;background:#0d0e0f;color:#b7bfc7;font:13px/1.4 system-ui}.dsmetric b{color:white;font:600 22px/1.1 monospace}#dsnav,.dscontrols{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}#dswork{background:#131416;border:1px solid #35383d;border-radius:10px;padding:clamp(14px,3vw,30px)}#dswork h2,#dswork h3{font:600 22px/1.2 system-ui;text-transform:none;letter-spacing:-.035em}#dswork p{line-height:1.6}#dswork .dsfields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;margin:16px 0}.dscalc{padding:13px 0;border-top:1px solid #34363b;color:#dbe4ed;font:500 15px/1.6 monospace}.dscalc small{display:block;color:#bec4c9;font:14px/1.5 system-ui}.dsevidence{border-top:1px solid #444;padding:10px 0;display:grid;gap:8px}#dsmessage{color:#a2d2ff}
+</style>
+
+<section class="bay" id="verification"><div class="eyebrow">Inline-eight design dossier</div><h1>Design review</h1><p class="lede">Defend your design from a blank sheet. Record drawing revisions, calculations and remaining uncertainties. A completed dossier supports a prototype decision. Building and validating hardware requires manufacturing, inspection and controlled physical tests.</p><p id="vr-progress"></p><div id="vr-reviews"></div><button id="vr-download">Download my review notes</button><p id="vr-status" role="status"></p></section>
+<style>#verification details{border:1px solid #34383e;border-radius:10px;margin:12px 0;background:#111316}#verification summary{cursor:pointer;min-height:48px;padding:15px 18px;font-weight:650}#verification .vr-body{padding:0 18px 20px;max-width:76ch}#verification .vr-body p{line-height:1.55}#verification .vr-body h3{font:600 1rem system-ui;margin:18px 0 4px;color:#b5d7ff}#verification label{display:block;margin:16px 0}#verification textarea,#verification select{display:block;padding:10px;border:1px solid #414955;border-radius:5px;background:#090a0c;color:#f2f4f6;min-height:44px;width:100%;margin:6px 0;font:inherit}#verification a{color:#a1cfff}</style>
+
 </main>
 </div>
 <nav class="tabbar" id="tabbar" aria-label="Sections"></nav>
@@ -786,8 +812,8 @@ const LABGROUPS=[
  ["Inline-8 design",[["balance","Firing & Balance","L12–13","wave"],["twist","Crank Torsion","L13, L26","wave"],["cooling","Cooling Loop","L29","drop"],["airflow","Airflow Tunnel","L19","wind"],["fit","Will It Fit?","L11","box"],["cad","CAD Dojo","L32–34","compass"]]],
  ["Your engine",[["bench","Benchmarks & 600 hp","Targets","target"]]],
  ["Parts: Units 3–4",[["chamber","Combustion Chamber","L16","chamber"],["valves","Valvetrain","L17–18","valve"],["exhaust","Exhaust Pulses","L20","exhaust"],["boost","Turbo vs NA","L21","turbo"],["fuel","Fuel & Injectors","L22–23","fuel"],["rod","Rod & Piston Loads","L24–25","rod"],["bearings","Crank & Bearings","L26–27","bearing"],["oil","Oil Flow","L27","drop"],["bolts","Head Bolt Clamp","L28, L30","fastener"],["stack","Tolerance Stack","L31","layers"]]]];
-const LIB=[["manual","Field Manual","The theory behind every lab, in note form","book"],["history","Engine History","Who built what, and why","clock"],["explain","Explain Bay","Explain it in your own words, then check","pen"],["sources","Sources","Where every number comes from","link"]];
-const TABS=[["home","Home","home"],["labs","Labs","flask"],["quiz","Quiz","bolt"],["library","Library","book"],["map","Progress","flag"]];
+const LIB=[["verification","Capstone review","Assemble design evidence and plan validation","target"],["quiz","Quiz","Practice engine concepts and calculations","bolt"],["map","Progress","Track workbook evidence","flag"],["manual","Field Manual","The theory behind every lab, in note form","book"],["history","Engine History","Who built what, and why","clock"],["explain","Explain Bay","Explain it in your own words, then check","pen"],["sources","Sources","Where every number comes from","link"]];
+const TABS=[["home","Home","home"],["course","Course","book"],["labs","Labs","flask"],["designstudio","My engine","compass"],["library","Library","layers"]];
 const ORDER=LABGROUPS.flatMap(([,items])=>items);
 const isLab=id=>ORDER.some(b=>b[0]===id), isLib=id=>LIB.some(b=>b[0]===id);
 const tabOf=id=>isLab(id)?"labs":isLib(id)?"library":id;
@@ -850,6 +876,15 @@ function sweepTach(){const total=(dayN(PKG)-dayN(SPRINT_START))/864e5,el=(new Da
     $("#tach").innerHTML=tach(fv,sh);if(t<up+down&&current==="home")requestAnimationFrame(step);else $("#tach").innerHTML=tach()};
   requestAnimationFrame(step)}
 function renderHome(){sweepTach();
+ const experiments=[...document.querySelectorAll(".bay")].filter(section=>section.querySelector('[data-p="experiment"]'));
+ const upcoming=experiments.find(section=>!store.get("experiment.done."+section.id,false));
+ const card=document.querySelector("#home .panel.card");
+ if(card&&experiments.length){
+ const link=card.querySelector("a");link.href=upcoming?"#"+upcoming.id:"#quiz";
+ card.querySelector("h2").textContent=upcoming?upcoming.querySelector('.workbench h2').textContent:"Try a mixed quiz";
+ card.querySelector("p").textContent=experiments.filter(section=>store.get("experiment.done."+section.id,false)).length+" of "+experiments.length+" applied questions solved";
+ link.textContent=upcoming?"Start experiment →":"Practice across topics →";
+ }
   const done=Object.values(store.get("lessons",{})).filter(Boolean).length;
   $("#clRead").innerHTML=`<div><small>UT app</small><b>${daysTo("2027-03-01")}</b><span>days · Mar 1</span></div><div><small>Supplements</small><b>${daysTo("2027-03-10")}</b><span>days · Mar 10</span></div><div><small>Lessons</small><b>${done}<span style="font-size:15px;color:var(--dim)">/36</span></b><span>signed off</span></div>`;
   const last=isLab(store.get("last",""))?store.get("last"):"cylinder",L=ORDER.find(b=>b[0]===last),m=missionsOf(last);
@@ -902,7 +937,17 @@ function toast(html,big){let t=$("#toast");if(!t){t=document.createElement("div"
 
 /* ---------------- XP + GAUGES ---------------- */
 let xp=store.get("xp",0);
-function addXP(n){xp+=n;store.set("xp",xp);gauges()}
+function addXP(n){xp=Math.max(0,xp+n);store.set("xp",xp);gauges()}
+/* Grade a typed explanation against the reference text: which key ideas did it use? */
+function gradeText(ans,ref){
+ const stop=new Set("alone simply really about above after again along always another around because before being below between cannot could doesn every first going happens having into itself makes might more most much never other over same should since some something still such than that their them then there these they thing think this those through under until very what when where which while will with without would your yours".split(" "));
+ const stem=w=>w.toLowerCase().replace(/[^a-z0-9]/g,"").replace(/(ing|ed|es|s)$/,"");
+ const words={};ref.replace(/<[^>]+>/g," ").split(/\s+/).forEach(w=>{const s=stem(w);if(s.length>4&&!stop.has(s)&&!words[s])words[s]=w.replace(/[^A-Za-z0-9-]/g,"").toLowerCase()});
+ const keys=Object.keys(words).slice(0,14);const mine=ans.split(/\s+/).map(stem).filter(m=>m.length>3);
+ const hit=keys.filter(k=>mine.some(m=>m===k||(m.length>4&&(m.startsWith(k)||k.startsWith(m)))));
+ const score=keys.length?hit.length/keys.length:0;
+ return{score,pass:score>=0.25&&ans.trim().split(/\s+/).length>=5,hit:hit.map(k=>words[k]),miss:keys.filter(k=>!hit.includes(k)).map(k=>words[k])}}
+function verdictHTML(ok,title,body){return `<div class="verdict ${ok?"ok":"bad"}"><b>${ok?"✓ Correct":"✗ Not right"}${title?" · "+title:""}</b>${body?`<p>${body}</p>`:""}</div>`}
 function daysTo(s){return Math.ceil((new Date(s+"T00:00:00")-new Date())/864e5)}
 function gauges(){$("#xpChip").innerHTML=`<b>LV ${Math.floor(xp/100)+1}</b>${xp} XP`;
   $("#sideFoot").innerHTML=`<b>${Math.max(0,daysTo(PKG))}</b> days to Feb 1<br><b>${daysTo("2027-03-01")}</b> days to UT app`}
@@ -2863,7 +2908,7 @@ const css2=`<style>
  background:var(--glass);-webkit-backdrop-filter:saturate(1.5) blur(20px);backdrop-filter:saturate(1.5) blur(20px);border-top:1px solid var(--line)}
 .mdock .mprog{position:absolute;left:0;top:-1px;height:2px;background:var(--accent);transition:width .4s var(--ease)}
 .mdin{max-width:760px;margin:0 auto}
-.bay[data-pane="guide"] .mdock,.bay[data-pane="notes"] .mdock{display:none}
+.bay[data-pane="learn"] .mdock,.bay[data-pane="guide"] .mdock,.bay[data-pane="notes"] .mdock{display:none}
 @media (min-width:980px){.mdock{left:var(--side)}}
 .mdh{display:flex;align-items:center;gap:10px}
 .mdh .mdt{flex:1;min-width:0;display:block;background:transparent;color:var(--ink);text-align:left;padding:2px 0;min-height:50px;border-radius:8px}
@@ -2891,6 +2936,98 @@ const css2=`<style>
 document.head.insertAdjacentHTML("beforeend",css2);
 GUIDES=G;
 
+function experimentIllustration(id, value, min, max, leak) {
+  const x = Number(value);
+  const fraction = Math.max(0, Math.min(1, (x-min)/(max-min || 1)));
+  const steel = "#acbfd0", dim = "#557088", air = "#5ce0da", hot = "#ffae70", white = "#e0edf3";
+  const f = n => Number(n.toFixed(2));
+  const line = (x1,y1,x2,y2,color=steel,width=2,dash="") => `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-dasharray="${dash}"/>`;
+  const box = (x,y,w,h,fill,stroke=steel,r=2) => `<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="${r}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`;
+  const circle = (x,y,r,fill,stroke=steel) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`;
+  const path = (d,color=steel,width=2,fill="none") => `<path d="${d}" stroke="${color}" stroke-width="${width}" stroke-linejoin="round" stroke-linecap="round" fill="${fill}"/>`;
+  const label = (x,y,t,color=white) => `<text x="${x}" y="${y}" font-family="system-ui,sans-serif" font-weight="600" font-size="14" fill="${color}">${t}</text>`;
+  const arrow = (x1,y1,x2,y2,c=air) => {
+    const a=Math.atan2(y2-y1,x2-x1);
+    return line(x1,y1,x2,y2,c,3)+path(`M${x2-9*Math.cos(a-.5)} ${y2-9*Math.sin(a-.5)} L${x2} ${y2} L${x2-9*Math.cos(a+.5)} ${y2-9*Math.sin(a+.5)}`,c,3);
+  };
+  const dimLine=(a,b,y,t)=>line(a,y,b,y,air,1)+line(a,y-5,a,y+5,air)+line(b,y-5,b,y+5,air)+label((a+b)/2-22,y-7,t,air);
+  const bore=(cx,w,top,piston)=>box(cx-w/2-7,top,w+14,144,"#293f51",dim,4)+box(cx-w/2,top+6,w,130,"#102535",dim)+box(cx-w/2+2,top+8,w-4,piston-top-8,"#173d49","#173d49")+line(cx,piston+13,cx+15,top+146,dim,9)+box(cx-w/2+3,piston,w-6,20,"#809baa",steel,3)+line(cx-w/2+4,piston+5,cx+w/2-4,piston+5,"#2e485a",2);
+  const shaft=(y=112)=>box(65,y-10,265,20,"#405b70",steel,5);
+  const values = {
+    cylinder:"Compression stroke",geometry:"Cylinder cross-section",chamber:"Clearance at top dead center",power:"Torque at the crank",bench:"Torque required at the crank",balance:"Firing events over two revolutions",exhaust:"Pulse timing at the collector",twist:"Shaft under static torque",cooling:"Heat carried by coolant",airflow:"Air passing a moving body",fit:"Block length, top view",cad:"Linked bore pattern, top view",valves:"Valve event over crank angle",boost:"Intake charge at constant pressure",fuel:"Injector open time",rod:"Inertial loading at fixed geometry",bearings:"Projected bearing area",oil:"Flow resistance in a round passage",bolts:"Gas loading under the head",stack:"Worst-case assembly clearance",thermo:"Ideal Otto cycle"
+  };
+  let g="";
+  if(id==="cylinder"){
+    const top=52, p=165-104*x/100;
+    g=bore(184,138,top,p);
+    g+=path("M115 64 L115 48 L153 48 L153 60 M204 60 L204 48 L244 48 L255 38",dim,7);
+    g+=line(144,28,144,59,steel,4)+line(134,60,154,60,air,5);
+    const lift=leak?8:0;
+    g+=line(216,28+lift,216,59+lift,steel,4)+line(206,60+lift,226,60+lift,leak?hot:air,5);
+    for(let i=0;i<15;i++)g+=circle(125+(i%5)*26,70+Math.floor(i/5)*(p-80)/3,1.8,air,air);
+    g+=label(36,31,"Intake")+line(83,33,134,45,dim,1)+label(263,35,"Exhaust")+line(257,37,226,48,dim,1);
+    g+=label(271,110,leak?"Port open":"Trapped air",leak?hot:air)+line(247,95,268,103,dim,1);
+    g+=arrow(76,152,76,111)+label(26,176,"Piston rises",air);
+    if(leak)g+=arrow(224,85,254,54,hot);
+  }else if(["geometry","chamber","thermo","rod","bolts"].includes(id)){
+    const w=id==="geometry"?88+52*fraction:112;
+    const top=52,p=id==="chamber"?76+40*fraction:id==="thermo"?100-38*fraction:123;
+    g=bore(176,w,top,p);
+    if(id==="geometry")g+=dimLine(176-w/2,176+w/2,44,f(x)+" mm")+label(258,107,"Bore width",air)+label(258,132,"Fixed stroke");
+    if(id==="chamber")g+=label(248,84,"Clearance",air)+label(248,104,f(x)+" cc",air)+line(223,72,243,79,dim,1);
+    if(id==="thermo")g+=label(248,87,"Higher ratio",air)+label(248,106,"Smaller space")+label(248,125,"at the top");
+    if(id==="bolts"){g+=box(100,42,152,12,"#5a7184");[109,243].forEach(i=>{g+=line(i,35,i,79,steel,5)+box(i-7,31,14,7,"#8499a7")});g+=arrow(177,95,177,85-52*fraction,hot)+label(259,74,"Gas force",hot)}
+    if(id==="rod"){g+=arrow(176,124,176,110-52*fraction,hot)+label(250,105,"Relative load",hot)+label(250,128,f((x/3000)**2)+" ×")}
+  }else if(id==="fit"||id==="cad"){
+    const pitch=30+8*fraction,start=47,end=start+pitch*7;
+    g=box(start-17,80,end-start+34,55,"#263d4f",steel,8);
+    for(let i=0;i<8;i++){g+=circle(start+i*pitch,107,12,"#101e2a",air)+line(start+i*pitch,63,start+i*pitch,143,dim,1,"3 5")}
+    g+=dimLine(start,start+pitch,72,"Pitch")+dimLine(start,end,164,"7 gaps");
+    g+=label(50,192,id==="fit"?"End allowances add to this span.":"All centers follow one dimension.");
+  }else if(id==="balance"||id==="exhaust"||id==="valves"||id==="fuel"){
+    g+=line(38,147,350,147,dim);
+    if(id==="fuel"){
+      g+=box(39,83,310,43,"#172d3b",dim)+box(40,84,Math.max(1,308*x/100),41,"#27736f",air);
+      g+=label(40,67,"Open fraction",air)+label(40,172,"0%")+label(310,172,"100%")+label(40,197,"One injection period");
+    }else if(id==="valves"){
+      const width=265*min/x;g+=path(`M42 146 Q${42+width/2} 8 ${42+width} 146`,air,4)+label(47,57,"Valve lift",air)+label(41,170,"0 ms")+label(293,170,"Time");
+      g+=label(42,198,"Same crank angle, changing duration");
+    }else{
+      const n=id==="balance"?Math.round(x):Math.max(2,Math.floor(x/650));
+      for(let i=0;i<n;i++){const pos=42+i*305/n;g+=line(pos,146,pos,82,i===0?hot:air,3)+circle(pos,82,3,i===0?hot:air,i===0?hot:air)}
+      g+=label(40,60,id==="balance"?"One mark per cylinder firing":"Successive arrivals",air)+label(40,171,"0")+label(295,171,id==="balance"?"720°":"Time");
+    }
+  }else if(id==="twist"||id==="bearings"||id==="oil"){
+    if(id==="twist"){
+      g=shaft()+box(58,72,16,79,"#455d70")+line(77,103,308,104+16*(1-fraction),air,3)+label(50,177,"Fixed end")+label(245,177,"Loaded end")+path("M301 79 Q345 81 326 103",hot,3);
+    }else if(id==="bearings"){
+      const w=55+85*fraction;g=shaft()+box(196-w/2,85,w,53,"#4b7173",air,5)+dimLine(196-w/2,196+w/2,162,"Width")+arrow(196,41,196,79,hot)+label(220,57,"10 kN load",hot);
+    }else{
+      const radius=11+25*fraction;g=box(43,108-radius,286,radius*2,"#173d49",steel,8)+line(55,108,316,108,dim,1,"4 5")+arrow(100,108,214,108)+label(122,180,"Same oil flow",air)+line(252,108,252,108-radius,hot,3)+label(267,97,"r",hot);
+    }
+  }else if(id==="cooling"){
+    g=box(146,70,101,67,"#534036",hot,6)+label(158,108,"40 kW",hot)+path("M48 170 L48 109 L135 109 M255 109 L319 109 L319 166",air,6)+arrow(63,109,110,109,air)+arrow(268,109,307,109,hot)+label(36,192,"Cool inlet",air)+label(263,192,"Warm outlet",hot);
+    for(let i=0;i<Math.round(2+6*fraction);i++)g+=circle(64+i*10,129,2,air,air)
+  }else if(id==="airflow"){
+    g=path("M73 140 L91 115 L142 107 L173 81 L226 81 L267 109 L299 116 L318 140 Z",steel,2,"#334b5d")+circle(128,140,16,"#0d1a23",steel)+circle(268,140,16,"#0d1a23",steel);
+    for(let i=0;i<4;i++)g+=arrow(47,51+i*16,66+48*fraction,51+i*16,air);
+    g+=label(91,187,"Drag power grows with speed cubed.");
+  }else if(id==="boost"){
+    g=box(81,49,200,113,"#173d49",air,8);
+    const n=Math.round(45*293.15/(273.15+x));for(let i=0;i<n;i++){const u=((i*47)%181),v=((i*31)%91);g+=circle(92+u,61+v,2.2,air,air)}
+    g+=label(88,190,"Fixed volume at 2 bar absolute");
+  }else if(id==="stack"){
+    const gap=42*(1-fraction);g=box(55,77,132+(42-gap)/2,61,"#405969",steel)+box(187+gap/2+21,77,119+(42-gap)/2,61,"#536153",steel);
+    g+=dimLine(187+(42-gap)/2,208+gap/2,164,"Gap")+label(52,59,"Part A")+label(269,59,"Part B")+label(77,196,"Both errors reduce clearance.");
+  }else if(id==="power"||id==="bench"){
+    const angle=(-145+110*fraction)*Math.PI/180;g=circle(151,109,64,"#182d3b",steel)+circle(151,109,13,"#4d6778",air);
+    const px=151+44*Math.cos(angle),py=109+44*Math.sin(angle);
+    g+=line(151,109,px,py,steel,11)+circle(px,py,6,"#7590a1",steel)+path("M91 83 Q110 26 170 38",air,3)+arrow(152,35,174,39)+label(240,88,"Crank speed",air)+label(240,112,Math.round(x)+" rpm")+label(240,145,id==="power"?"Fixed torque":"Fixed power",hot);
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 380 216" role="img" aria-label="${values[id]||"Experiment diagram"}" style="display:block;max-height:370px"><title>${values[id]||"Experiment diagram"}</title>${g}</svg>`;
+}
+
+const experiments={"cylinder":["Can this cylinder hold pressure?","On the compression stroke the piston rises. The intake and exhaust valves should seal the air inside. Think of pushing a bicycle pump with its outlet covered.","Bring the piston halfway up with both valves sealed. What happens to pressure?","It rises|It stays at intake pressure","The same air occupies less space. It pushes harder on the walls.","Piston travel","%","Ideal pressure (open port held at 1 bar)","bar",0,80,10,0,x=>Math.pow(100/(100-x),1.35),"Now imagine the exhaust valve is wide open during compression. Which trace would you expect?","Nearly flat near exhaust pressure|The same steep rise","Gas can escape through the open port. A rising piston alone cannot trap the charge."],"geometry":["Where do the extra cubic centimeters come from?","Imagine cutting a circle the size of the piston crown. Its area times the distance traveled gives the volume swept in one stroke.","At fixed stroke, doubling bore would give how much swept volume?","Four times|Twice","Both dimensions of the circular area grow with bore.","Bore","mm","Volume per cylinder at 86 mm stroke","cc",60,90,2,72,x=>Math.PI*x*x*86/4000,"Keep bore fixed and double stroke instead. What happens?","Volume doubles|Volume quadruples","Stroke enters the volume calculation only once."],"power":["Why can the same torque make more power?","Imagine lifting the same weight through the same height twice as often. Each lift takes the same work. More lifts per second means more power.","Hold torque at 300 Nm and double crank speed. Predict the power.","It doubles|It stays fixed","Each turn delivers the same work, and twice as many turns happen each second.","Engine speed","rpm","Power at 300 Nm","kW",2000,6000,500,3000,x=>300*x/9549,"If speed doubles while torque halves, what happens to power?","It stays the same|It doubles","Power depends on the product of speed and torque."],"thermo":["What does compression buy you?","An ideal Otto cycle uses a fixed quantity of gas and ignores heat leaks and friction. Its compression ratio compares the largest and smallest volumes.","If compression ratio rises in this ideal model, what happens to efficiency?","It rises|It falls","More expansion after heat addition extracts a larger fraction of the added energy.","Compression ratio",":1","Ideal efficiency (γ = 1.35)","%",6,16,1,8,x=>100*(1-x**(-0.35)),"Does this graph alone establish a safe compression ratio for pump gas?","No, knock margin needs evidence|Yes, use its highest value","The ideal model contains no fuel chemistry or knock prediction."],"balance":["How often should an eight fire?","A four-stroke cylinder fires once per two crank turns. Imagine placing equally spaced firing marks around a 720-degree strip.","For even firing, adding cylinders does what to the gap?","Shortens it|Lengthens it","More events share the same 720 degrees.","Cylinder count","","Even firing interval","°",2,12,1,6,x=>720/x,"Does a 90° firing interval prove an inline-eight has no rocking couple?","No, force locations also matter|Yes, equal gaps prove balance","Firing gaps describe timing. A rocking couple depends on forces and their distances along the crank."],"twist":["How far does the crank wind up?","Picture a long shaft held at one end while you twist the other. For small elastic twists its torsional stiffness links torque to angle.","At fixed torque, doubling stiffness does what to twist?","Halves it|Doubles it","The shaft resists rotation more strongly.","Torsional stiffness","Nm/°","Static twist at 300 Nm","°",50,300,25,100,x=>300/x,"Can a shaft with small static twist still vibrate strongly at a particular RPM?","Yes, excitation can approach resonance|No, static stiffness rules it out","A static calculation omits the changing firing loads, inertia and damping."],"cooling":["Why does coolant heat up along the block?","A fixed heat input is shared by each kilogram of coolant passing through. Assume water with heat capacity 4.18 kJ/kg·K.","At the same 40 kW heat load, doubling flow does what to the temperature rise?","Halves it|Doubles it","Twice the mass carries the same heat each second.","Mass flow","kg/s","Bulk temperature rise","°C",0.5,3,0.25,1,x=>40/(4.18*x),"The average outlet temperature looks good. Could the rear cylinder still run hot?","Yes, local flow can be uneven|No, one outlet covers every cylinder","A bulk average combines branches and can hide a poorly supplied passage."],"airflow":["Why does highway speed cost so much power?","The car pushes air aside. In still air drag force grows with speed squared. Power is that force times road speed.","Double speed with the same body and air density. How much aerodynamic power?","Eight times|Four times","Four times the force acts at twice the speed.","Road speed","m/s","Drag power at ρ=1.2 kg/m³, CdA=0.65 m²","kW",10,40,2,20,x=>0.5*1.2*.65*x**3/1000,"At the same speed, halve CdA. How does drag power change?","It halves|It falls to one eighth","CdA enters once. The cube applies to speed."],"fit":["Can eight bores fit in the bay?","Lay eight bore centers on a ruler. There are seven gaps between the first and last centers. For this sketch allow 90 mm total beyond the end centers.","Add 2 mm to each center spacing. How much longer is the sketch?","14 mm|16 mm","Seven gaps each grow by 2 mm.","Bore pitch","mm","Sketched length including ends","mm",76,100,2,80,x=>7*x+90,"Does a bare block that fits prove the assembled engine fits?","No, check drives and service space|Yes, block length sets the limit","Accessories, mounts and installation clearances occupy additional space."],"cad":["Will your bore pattern follow a design change?","In a parametric sketch, place the first center at zero. Constrain every following center to a multiple of one pitch dimension.","If pitch grows by 1 mm, how far does the eighth center move?","7 mm|1 mm","The last center is seven pitch intervals from the datum.","Master pitch","mm","Eighth-center coordinate","mm",75,95,1,80,x=>7*x,"Only the second center moves after a pitch edit. What should you inspect?","Pattern constraints|Display zoom","A linked pattern updates all dependent positions. Zoom only changes the view."],"bench":["What must 600 hp mean at the crank?","A horsepower target also needs a speed. Mechanical horsepower equals torque in lb-ft times rpm divided by about 5252.","Move the 600 hp target to a higher RPM. Required torque does what?","Falls|Rises","More revolutions deliver the same work per second with less work per turn.","Target speed","rpm","Torque for 600 mechanical hp","lb-ft",4000,8000,500,6000,x=>600*5252/x,"Does meeting this torque on paper prove the engine can reach it?","No, airflow and load limits need validation|Yes, the power equation proves feasibility","The calculation states the demand. It does not demonstrate cylinder filling or durability."],"chamber":["What happens when clearance volume shrinks?","At the top of the stroke, a small volume remains above the piston. Add 400 cc of swept volume to find the bottom volume.","Shrink the remaining space at the top. Which way does compression ratio move?","Up|Down","The same swept volume gets added to a smaller clearance volume.","Clearance volume","cc","Geometric compression ratio",":1",30,70,5,50,x=>1+400/x,"Add a thicker gasket while keeping everything else fixed. Which way does the ratio move?","Down|Up","The gasket adds clearance volume above the piston."],"valves":["How much opening time is available?","A valve event covers a crank-angle window. A crank turning faster passes through the same window in less time.","With a fixed 240° event, double RPM. How does open time change?","It halves|It doubles","The angular window stays fixed as degrees per second double.","Engine speed","rpm","Time for 240 crank degrees","ms",2000,8000,500,3000,x=>40000/x,"At fixed RPM, making the event 300° instead of 240° does what?","Adds open time|Shortens open time","A larger angular window takes longer at the same speed."],"exhaust":["When does the next exhaust pulse arrive?","An evenly firing four-stroke eight has one firing event every 90 crank degrees. Here all eight feed one ideal collector with equal travel times.","Raise RPM. What happens to the time between pulses?","It gets shorter|It stays fixed","The crank covers the same angle in less time.","Engine speed","rpm","Time between collector pulses","ms",1500,7500,500,3000,x=>15000/x,"Do unequal runner lengths preserve those exact arrival gaps?","Not necessarily|Always","A longer path can delay a pulse before it reaches the collector."],"boost":["Why does charge temperature matter?","At fixed absolute pressure, cooler air packs more mass into the same volume. The ideal gas model uses temperature measured from absolute zero.","At 2 bar absolute, heating the intake charge does what to density?","Lowers it|Raises it","Faster-moving molecules need less mass per volume to produce the same pressure.","Charge temperature","°C","Ideal air density at 200 kPa","kg/m³",20,120,10,40,x=>200000/(287*(273.15+x)),"At the same temperature, double absolute pressure. What happens to density?","It doubles|It halves","At fixed temperature the ideal gas relation makes density proportional to absolute pressure."],"fuel":["How much injector capacity is available?","An injector rated at 500 cc/min delivers that rate when continuously open at its rated pressure conditions. Duty cycle is the fraction of time open.","At 50% duty, what average flow does the ideal injector deliver?","250 cc/min|500 cc/min","Half the open time gives half the continuous flow.","Duty cycle","%","Ideal average flow per injector","cc/min",10,100,5,50,x=>5*x,"At 100% duty, can a longer command add more open time?","No, it is already continuously open|Yes, duty can extend the cycle","No closed interval remains. Real injectors also have opening delays."],"rod":["Why does RPM load the rod so quickly?","At fixed geometry and piston mass, the leading inertial force term scales with crank speed squared. Normalize the value at 3000 rpm to one.","At 6000 rpm, what is the relative inertial load?","Four times|Twice","The piston reverses direction more often and at higher velocity.","Engine speed","rpm","Relative inertial force","×",1500,7500,500,3000,x=>(x/3000)**2,"Hold speed fixed and halve reciprocating mass. What happens to this force?","It halves|It drops to one quarter","Mass enters linearly in force equals mass times acceleration."],"bearings":["Where does bearing load go?","A simple screening calculation spreads bearing load over projected area, diameter times width. Take a 50 mm journal carrying 10 kN.","Increase bearing width. Predict average projected pressure.","It falls|It rises","The same force is distributed across more area.","Bearing width","mm","Average projected pressure","MPa",10,30,2,20,x=>10000/(50*x),"Can average pressure alone tell you the minimum oil film thickness?","No, speed, viscosity and clearance matter|Yes, pressure sets film thickness","The average omits the oil wedge and local pressure distribution."],"oil":["What does a restrictive passage do?","For this model oil moves steadily through a round tube in laminar flow. Hold viscosity, flow and length fixed.","Double passage radius. What happens to required pressure drop?","Falls by a factor of 16|Falls by a factor of two","Flow resistance in this model varies inversely with radius to the fourth power.","Passage radius","mm","Pressure drop relative to a 2 mm passage","×",1,4,0.25,2,x=>(2/x)**4,"At fixed radius and flow, thicker oil requires what?","More pressure drop|Less pressure drop","Higher viscosity means greater resistance to shearing motion."],"bolts":["What tries to lift the cylinder head?","Gas pressure pushes against the area enclosed by the bore. For a simplified separating force use a 72 mm bore and uniform pressure.","Double peak gas pressure with the same bore. Predict separating force.","It doubles|It quadruples","Pressure is force per area. The area has stayed fixed.","Gas pressure","bar","Gas force over one bore","kN",20,120,10,60,x=>x*.1*Math.PI*36**2/1000,"Is this force enough information to pick a head bolt torque?","No, joint and preload data are needed|Yes, divide by bolt count","Joint stiffness, load sharing, friction and bolt limits affect the required preload."],"stack":["Can every part be in spec and still interfere?","Two independent dimensions can each consume some of a nominal 0.30 mm gap. For a worst-case check, push both toward the smallest gap.","Allow each part ±0.10 mm. What minimum gap remains?","0.10 mm|0.20 mm","Both adverse errors subtract from the gap: 0.30 − 0.10 − 0.10.","Tolerance on each part","mm","Worst-case remaining gap","mm",0,0.15,0.01,0.05,x=>.30-2*x,"Does this worst-case result tell you how often that gap occurs?","No, you need process distributions|Yes, it is the average gap","Worst-case limits bound possibilities. They do not assign probabilities."]};
 function render(id){const g=G[id];const sec=document.getElementById(id);if(!g||!sec)return;
  const st=store.get("guide."+id,{});const total=g.steps.length;
  // Split the screen: the header stays on top, the existing lab moves into the Lab pane.
@@ -2907,13 +3044,151 @@ function render(id){const g=G[id];const sec=document.getElementById(id);if(!g||!
  notes.innerHTML=`<div class="gcard gnotes"><h3>My notes</h3><p class="src" style="margin:0 0 10px">In your own words: what did you learn, what surprised you, what number did you decide on and why? Saved on this device as you type.</p>
  <textarea id="gn-${id}" placeholder="Write here…" aria-label="My notes for this lab"></textarea>
  <div class="row" style="margin-top:10px"><button id="gc-${id}">Copy for learning log</button><span class="out" id="gm-${id}"></span></div></div>`;
+ const learn=document.createElement("div");
+ learn.className="pane tutor";
+ learn.dataset.pane="learn";
+
+ const experiment=document.createElement("div");
+ experiment.className="pane";experiment.dataset.pane="experiment";
+ const [title,setup,prediction,choices,mechanism,variable,unit,result,outputUnit,min,max,step,initial,model,transfer,answers,explanation]=experiments[id];
+ let value=initial,stage=0,feedback="",moved=false;
+ const options=(pair,kind)=>{
+   const items=pair.split("|").map((label,i)=>({label,correct:i===0}));
+   if((title.length+(kind==="apply"?1:0))%2)items.reverse();
+   return items.map(item=>`<button class="ghost" data-choice="${item.correct}">${item.label}</button>`).join("");
+ };
+
+ let leak=false, starting=model(initial);
+ const formatReading=y=>new Intl.NumberFormat("en-US",{maximumFractionDigits:2}).format(y)+" "+outputUnit;
+ function paintExperiment(){
+   const art=stage<2?'<figure class="bench-view"><figcaption>'+sec.querySelector("h1").textContent+' · simplified model</figcaption><div class="mechanical-view"></div><div class="bench-instruments"><div><small>'+variable+'</small><output class="setting"></output></div><div><small>'+result+'</small><output class="live-result"></output></div></div></figure>':"";
+   let body="";
+   if(stage===0)body=`<p class="case-brief">${setup}</p>${id==="geometry"?"<p><b>Bore</b> is the width across the cylinder. <b>Stroke</b> is how far the piston travels. For this test, the piston travels 86 mm every time.</p>":""}<h3>${prediction}</h3><div class="bench-options">${options(choices,"predict")}</div>`;
+   if(stage===1)body=`<div role="status">${feedback}</div><p>${mechanism}</p><p class="drive-task"><b>Your test</b> Move ${variable.toLowerCase()} from ${initial} ${unit} to ${initial===max?min:max} ${unit}. Watch the drawing and compare the two readings.</p><label class="adjust">${variable}<input type="range" min="${min}" max="${max}" step="${step}" value="${value}"></label>${id==="cylinder"?'<label class="valve-switch"><input type="checkbox" class="leak"> Hold exhaust valve open</label>':""}<div class="sweep-controls"><button type="button" class="ghost" data-sweep>Play the change</button></div><p class="baseline">Starting reading: ${formatReading(starting)} at ${initial} ${unit}.</p><button data-next disabled>Check my understanding</button>`;
+   if(stage===2)body=`<h3>${transfer}</h3><div class="bench-options">${options(answers,"apply")}</div>`;
+   if(stage===3)body=`${feedback}<p>${explanation}</p><h3>Explain it to another engine builder</h3><p class="src">Your explanation is checked against the key ideas above. Use them in your own sentence.</p><label>What changed, and what caused it?<textarea rows="3" aria-label="Your experiment takeaway"></textarea></label><div class="row"><button data-save>Save takeaway</button><button class="ghost" data-restart>Run again</button><button class="ghost" data-open>Explore full lab</button></div><p role="status"></p>`;
+   experiment.innerHTML=`<article class="workbench"><header class="bench-head"><div class="bench-step">Experiment ${String(Object.keys(experiments).indexOf(id)+1).padStart(2,"0")} / 21</div><h2>${title}</h2></header><div class="bench-layout ${art?"":"recap-layout"}">${art}<div class="bench-task"><div class="bench-phase">${["Make a prediction","Test the model","Apply from memory","Teach it back"][stage]}</div>${body}</div></div></article>`;
+   const slider=experiment.querySelector("input[type=range]");
+   const toggle=experiment.querySelector(".leak");
+   const display=()=>{
+     if(stage>=2)return;
+     experiment.querySelector(".mechanical-view").innerHTML=experimentIllustration(id,value,min,max,leak);
+     experiment.querySelector(".setting").textContent=value+" "+unit;
+     experiment.querySelector(".live-result").textContent=formatReading(leak?1:model(value));
+     if(slider)experiment.querySelector("[data-next]").disabled=!moved;
+   };
+   const play=experiment.querySelector("[data-sweep]");
+   let animation;
+   if(play)play.onclick=()=>{
+     if(animation){cancelAnimationFrame(animation);animation=0;play.textContent="Play the change";return}
+     const from=value,to=from>=max?min:max,start=performance.now();
+     play.textContent="Pause";
+     function tick(now){
+       if(!play.isConnected||!experiment.getClientRects().length){animation=0;play.textContent="Play the change";return}
+       const fraction=Math.min(1,(now-start)/3500);
+       slider.value=String(from+(to-from)*fraction);
+       slider.dispatchEvent(new Event("input"));
+       if(fraction<1)animation=requestAnimationFrame(tick);
+       else{animation=0;play.textContent="Play the change"}
+     }
+     animation=requestAnimationFrame(tick)
+   };
+   if(slider)slider.addEventListener("pointerdown",()=>{cancelAnimationFrame(animation);animation=0;play.textContent="Play the change"});
+   if(slider)slider.oninput=()=>{value=Number(slider.value);moved=moved||value!==initial;display()};
+   if(toggle){toggle.checked=leak;toggle.onchange=()=>{leak=toggle.checked;moved=moved||Math.abs(model(value)-1)>0.001;display()}}
+   display();
+   const note=experiment.querySelector("textarea");
+   if(note){note.value=store.get("experiment.note."+id,"");note.oninput=()=>{experiment.querySelector("[data-save]").disabled=!note.value.trim()};note.oninput()}
+ }
+
+ experiment.onclick=e=>{
+   const b=e.target.closest("button");if(!b||b.hasAttribute("data-sweep"))return;
+   if(b.hasAttribute("data-sweep"))return;
+   if(b.hasAttribute("data-open")){show("lab");return}
+   if(b.hasAttribute("data-save")){const txt=experiment.querySelector("textarea").value,gr=gradeText(txt,explanation+" "+mechanism),st=experiment.querySelector('[role="status"]');
+     store.set("experiment.note."+id,txt);
+     if(gr.pass){if(!store.get("experiment.teach."+id,false)){addXP(10);store.set("experiment.teach."+id,true)}st.innerHTML=verdictHTML(true,"explanation",Math.round(gr.score*100)+"% of the key ideas. You used: "+gr.hit.join(", ")+(gr.miss.length?". Still missing: "+gr.miss.slice(0,6).join(", "):"")+".")}
+     else{addXP(-3);st.innerHTML=verdictHTML(false,"explanation",Math.round(gr.score*100)+"% of the key ideas (25% and 5+ words to pass). Missing: <b>"+gr.miss.slice(0,8).join(", ")+"</b>. Reread the explanation, then say what changed AND what caused it.")}
+     return}
+   if(b.hasAttribute("data-restart")){stage=0;leak=false;moved=false;value=initial;feedback=""}
+   if(b.hasAttribute("data-next")){stage=2;feedback=""}
+   if(b.hasAttribute("data-choice")){
+     const right=b.dataset.choice==="true";
+     const correct=(stage===0?choices:answers).split("|")[0];
+     if(right){addXP(10);toast("+10 XP · correct")}else{addXP(-5);toast("−5 XP · wrong")}
+     if(stage===0){feedback=verdictHTML(right,"your prediction",right?"Now test it and see why.":"The right prediction was: <b>"+correct+"</b>. Test it to see why you were off.");stage=1}
+     else if(right){if(!store.get("experiment.done."+id,false))addXP(15);stage=3;store.set("experiment.done."+id,true);feedback=verdictHTML(true,"applied from memory","+15 XP bonus for solving the experiment.")}
+     else{feedback=verdictHTML(false,"","You chose “"+b.textContent+"”. The right answer is <b>"+correct+"</b>. "+explanation+" Run the test again, then answer.");stage=1;moved=false;value=initial}
+   }
+   paintExperiment();
+ };
+ paintExperiment();
+
+ const deck=g.ctl.map(([name,meaning,effect,reason])=>({name,meaning,effect,reason}));
+ if(id==="cylinder")deck.unshift({
+   name:"One cylinder, four strokes",
+   meaning:"Picture a bicycle pump with your thumb over the outlet. Push the handle in and the trapped air pushes back. The piston does something similar on its way up during compression.",
+   effect:"Follow one charge of air: the piston moves down to draw it in, up to squeeze it, down as burning gas expands, then up to push exhaust out.",
+   reason:"Each trip from one end to the other takes half a crank turn. Four trips take two turns. The piston travels down twice, but only the expansion stroke delivers combustion work.",
+   question:"The piston moves down twice in a cycle. What makes those two downward strokes different, and how many crank turns separate one intake stroke from the next?"
+ });
+ const records=()=>store.get("recall.v1."+id,{});
+ let index=0,phase="study",draft="",usedAnswer=false,resultHTML="";
+ function chooseCard(){
+   const history=records();
+   const now=Date.now();
+   const due=deck.findIndex((_,i)=>history[i] && history[i].due<=now);
+   const fresh=deck.findIndex((_,i)=>!history[i]);
+   index=due>=0?due:fresh;
+   phase=index<0?"rest":history[index]?"recall":"study";
+   draft="";
+ }
+ function drawLesson(){
+   const card=deck[index];
+   if(phase==="rest"){
+     const next=Math.min(...Object.values(records()).map(r=>r.due));
+     learn.innerHTML='<article class="study-card"><h2>Caught up for now</h2><p>Your next recall check is due '+new Date(next).toLocaleString()+'. Try a mission to use what you remembered.</p><button data-action="lab">Open simulator</button> <button data-action="repeat" class="ghost">Practice again</button></article>';
+     return;
+   }
+   const reviewed=Object.keys(records()).length;
+   const head='<div class="eyebrow">'+reviewed+' of '+deck.length+' concepts practiced</div><h2>'+card.name+'</h2>';
+   const question=card.question||"What does this control represent, and what changes when you adjust it?";
+   const study='<p>'+card.meaning+'</p><h3>What changes?</h3><p>'+card.effect+'</p><h3>Why it matters</h3><p>'+card.reason+'</p><button data-action="recall">Try from memory</button>';
+   const recall='<p>'+question+'</p><label>Your explanation<textarea rows="3" placeholder="Use your own words. A sentence is enough."></textarea></label><div class="row"><button disabled data-action="compare">Check my recall</button><button class="ghost" data-action="stuck">Show me the answer</button></div>';
+   const others=deck.filter((_,i)=>i!==index).map(c=>c.effect);const opts=[card.effect,...others.slice(0,2)];const order=opts.map((o,i)=>[o,i]).sort((a,b)=>((a[1]+index)%3)-((b[1]+index)%3));
+   const gr=gradeText(draft,card.effect+" "+card.reason);
+   const compare=usedAnswer?'<div class="verdict bad"><b>✗ Answer shown, so no credit</b><p>Read it. This card comes back in a minute.</p></div><p>'+card.meaning+' '+card.effect+'</p><p>'+card.reason+'</p><div class="row"><button data-action="again">Next</button></div>'
+     :'<h3>Your explanation</h3><p class="my-answer"></p>'+verdictHTML(gr.pass,"key ideas",Math.round(gr.score*100)+"% of the key ideas. "+(gr.hit.length?"You got: "+gr.hit.join(", ")+". ":"")+(gr.miss.length?"Missing: <b>"+gr.miss.slice(0,6).join(", ")+"</b>.":""))+'<h3>Now prove it: which is true for “'+card.name+'”?</h3><div class="bench-options">'+order.map(([o,i])=>'<button class="ghost" data-action="pick" data-ok="'+(i===0)+'">'+o+'</button>').join("")+'</div>';
+   learn.innerHTML='<article class="study-card">'+head+(phase==="study"?study:phase==="recall"?recall:phase==="result"?resultHTML:compare)+'</article>';
+   const input=learn.querySelector("textarea");
+   if(input){input.value=draft;input.oninput=()=>{draft=input.value;learn.querySelector("[data-action=compare]").disabled=!draft.trim()};input.oninput()}
+   const answer=learn.querySelector(".my-answer");if(answer){answer.textContent=draft||"Reviewed the answer.";if(usedAnswer)learn.querySelector("[data-action=got]").hidden=true}
+ }
+ learn.onclick=e=>{
+   const action=e.target.closest("button")?.dataset.action;if(!action)return;
+   if(action==="lab"){show("lab");return}
+   if(action==="repeat"){index=deck.reduce((best,_,i)=>records()[i].due<records()[best].due?i:best,0);draft="";phase="recall"}
+   if(action==="recall"){usedAnswer=false;phase="recall"}
+   if(action==="compare"||action==="stuck"){usedAnswer=action==="stuck";phase="compare"}
+   if(action==="pick"){const b=e.target.closest("button"),card=deck[index],ok=b.dataset.ok==="true",gr=gradeText(draft,card.effect+" "+card.reason),pass=ok&&gr.pass;
+     addXP(pass?10:-5);toast(pass?"+10 XP · recall passed":"−5 XP · recall failed");
+     resultHTML=verdictHTML(pass,pass?"recall passed":"recall failed",(ok?"Question right. ":"Question wrong: the true statement was “"+card.effect+"”. ")+(gr.pass?"Your explanation had the key ideas.":"Your explanation missed key ideas: "+gr.miss.slice(0,6).join(", ")+".")+(pass?" Next check is scheduled later.":" This card comes back in 1 minute."))+'<p>'+card.meaning+' '+card.effect+'</p><p>'+card.reason+'</p><div class="row"><button data-action="'+(pass?"got":"again")+'">Next card</button></div>';
+     phase="result";drawLesson();return}
+   if(action==="again"||action==="got"){
+     const history=records();const level=action==="again"?0:Math.min(4,(history[index]?.level||0)+1);
+     history[index]={level,due:Date.now()+[60000,86400000,259200000,604800000,1209600000][level]};
+     store.set("recall.v1."+id,history);chooseCard();
+   }
+   drawLesson();
+ };
+ chooseCard();drawLesson();
  const seg=document.createElement("div");seg.className="seg";seg.setAttribute("role","tablist");seg.setAttribute("aria-label","Lab sections");
- seg.innerHTML=`<button role="tab" data-p="lab">Lab</button><button role="tab" data-p="guide">Guide<small id="gp-${id}"></small></button><button role="tab" data-p="notes">Notes</button>`;
- sec.append(seg,lab,guide,notes);
- const show=p=>{sec.dataset.pane=p;[lab,guide,notes].forEach(x=>x.hidden=x.dataset.pane!==p);seg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.p===p));
+ seg.innerHTML=`<button role="tab" data-p="experiment">Try it</button><button role="tab" data-p="learn">Recall</button><button role="tab" data-p="lab">Lab</button><button role="tab" data-p="guide">Guide<small id="gp-${id}"></small></button><button role="tab" data-p="notes">Notes</button>`;
+ sec.append(seg,experiment,learn,lab,guide,notes);
+ const show=p=>{sec.dataset.pane=p;[experiment,learn,lab,guide,notes].forEach(x=>x.hidden=x.dataset.pane!==p);seg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.p===p));
   if(p==="lab")requestAnimationFrame(()=>redrawAll())};
  seg.addEventListener("click",e=>{const b=e.target.closest("button[data-p]");if(!b)return;show(b.dataset.p);const top=seg.getBoundingClientRect().top;if(top<0||top>innerHeight*.5)sec.scrollIntoView({block:"start"})});
- show("lab");
+ show("experiment");
  const ta=notes.querySelector("textarea");ta.value=store.get("notes."+id,"");ta.addEventListener("input",()=>store.set("notes."+id,ta.value));
  notes.querySelector("#gc-"+id).onclick=()=>copyText(`## ${sec.querySelector("h1").textContent} notes (${new Date().toISOString().slice(0,10)})\n\n${ta.value}`,notes.querySelector("#gm-"+id));
  const nDone=()=>Object.values(store.get("guide."+id,{})).filter(Boolean).length;
@@ -2977,7 +3252,668 @@ try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",redrawA
 new MutationObserver(redrawAll).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 })();
 </script>
+<style>
+:root{--bg:#0a1420;--panel:#101e2b;--raise:#162838;--soft:#223749;--line:#273b4b;--line2:#3a5061;--ink:#f4eee1;--muted:#b1bfc6;--dim:#90a5ad;--accent:#85d7e3;--glass:#101d2af2}
+body{background:var(--bg);color:var(--ink)}main{max-width:1340px}.bay>h1{font-family:"Archivo",Arial,sans-serif;letter-spacing:-.045em;text-transform:none;font-stretch:normal;font-size:clamp(30px,4vw,54px)}
+section.bay .seg{grid-template-columns:repeat(5,minmax(0,1fr));position:static;max-width:680px;background:transparent;border:0;border-bottom:1px solid var(--line2);box-shadow:none;border-radius:0;padding:0;gap:0}.seg button[role=tab]{min-width:0;background:transparent;color:#b1c2cd;border-radius:0;padding:12px 4px}.seg button[aria-selected=true]{background:transparent!important;color:#f2c477!important;box-shadow:inset 0 -2px #f2c477!important}
+.workbench,.study-card{display:block;width:100%;margin:0;background:transparent;color:var(--ink)}.bench-head{margin:26px 0 18px}.bench-step,.bench-phase,.bench-view figcaption,.bench-instruments small{font:600 11px/1.4 ui-monospace,Consolas,monospace;text-transform:uppercase;letter-spacing:.09em;color:#9ebdc6}.workbench h2,.study-card h2{font:600 clamp(25px,2.7vw,39px)/1.12 "Archivo",Arial,sans-serif;letter-spacing:-.045em;text-transform:none;margin:8px 0;color:var(--ink)}
+.bench-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(18px,2vw,32px);align-items:start}.bench-view{margin:0;min-width:0;overflow:hidden;border:1px solid #375366;border-radius:12px;background-color:#102434;background-image:linear-gradient(#8fbbce0c 1px,transparent 1px),linear-gradient(90deg,#8fbbce0c 1px,transparent 1px);background-size:20px 20px}.bench-view figcaption{padding:15px 18px;border-bottom:1px solid #304656}.mechanical-view{display:grid;place-items:center;padding:12px}.mechanical-view svg{width:100%;height:auto;max-height:330px;display:block}.bench-instruments{display:grid;grid-template-columns:.85fr 1.15fr;border-top:1px solid #365061;background:#0d1b27}.bench-instruments>div{padding:14px;display:grid;gap:6px;align-content:start}.bench-instruments>div+div{border-left:1px solid #304656}.bench-instruments output{font:600 clamp(20px,2vw,30px)/1.2 ui-monospace,monospace;color:#a4e2ec}
+.bench-task,.study-card{background:#132332;border:1px solid #334959;border-radius:12px;padding:clamp(18px,2.3vw,34px);min-width:0}.bench-phase{color:#f1c47d}.bench-task p,.study-card p{font:400 16px/1.55 system-ui,sans-serif;color:#d8e1e3;margin:12px 0 18px}.bench-task h3,.study-card h3{font:600 clamp(18px,1.4vw,22px)/1.32 system-ui,sans-serif;text-transform:none;letter-spacing:-.02em;margin:18px 0 12px}.bench-options{display:grid;gap:8px}.bench-task button,.study-card button{min-height:44px;background:#f5c680;color:#192330;border-radius:7px}.bench-task .ghost,.study-card .ghost{border:1px solid #607987;background:#1b3040;color:#f2efe6}.bench-options button{text-align:left;padding:12px 16px}.bench-task button:hover,.study-card button:hover{filter:brightness(1.14)}.bench-task input[type=range]{display:block;width:100%;margin:16px 0;accent-color:#fac780}.valve-switch,.adjust{display:block;font-weight:600}.bench-task textarea,.study-card textarea{display:block;width:100%;margin:12px 0}.recap-layout,.study-card{max-width:760px}.verdict{border-radius:8px;padding:12px 14px;margin:12px 0;border:1px solid}.verdict b{font:700 16px system-ui,sans-serif}.verdict p{margin:6px 0 0!important}.verdict.ok{background:#12301f;border-color:#3fb26b;color:#c9f2d6}.verdict.ok b{color:#5fd88a}.verdict.bad{background:#3a1516;border-color:#e4352b;color:#f6d2cf}.verdict.bad b{color:#ff6a5f}.recap-layout{grid-template-columns:1fr}.study-card{margin-top:22px}
+@media(max-width:800px){.bench-layout{grid-template-columns:1fr;gap:12px}.bench-head{margin:16px 0 12px}.mechanical-view svg{max-height:185px}.bench-view figcaption{padding:8px 12px}.bench-instruments>div{padding:8px 12px}.bench-instruments output{font-size:19px}.bench-task{padding:18px}.seg button small{display:none}.bay .seg button{font-size:13px}}
+</style>
+<style>#home .home-head h1,#labs>h1{font-family:var(--f-body),sans-serif;font-size:clamp(2.7rem,5vw,4.3rem);letter-spacing:-.065em;text-transform:none;line-height:1.03;color:#f5efdf}#home .home-head{margin-bottom:20px}#home>.panel.card{display:none}
+.catalog-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr);border:1px solid #39505c;border-radius:18px;overflow:hidden;background:#112431}.catalog-intro{padding:clamp(22px,3.6vw,44px)}.catalog-kicker,#labs #labsCount,#home .home-head .eyebrow{font:600 .78rem/1.5 var(--f-mono),monospace;letter-spacing:.075em;color:#9adcd9}.catalog-intro h2{font:650 clamp(1.85rem,3.3vw,3.25rem)/1.06 var(--f-body),sans-serif;letter-spacing:-.045em;text-transform:none;color:#f5efdf;margin:12px 0}.catalog-intro p{font:400 1.05rem/1.5 var(--f-body),sans-serif;color:#c3d0d3;margin:12px 0 22px}.catalog-main-action{display:inline-flex;align-items:center;justify-content:center;background:#f7bd69;color:#182027;padding:12px 19px;font:700 1rem/1.3 var(--f-body),sans-serif;text-decoration:none;border-radius:8px}.catalog-main-action:hover{background:#ffce89}.catalog-drawing{display:grid;align-content:center;min-width:0;background-color:#112733;background-image:linear-gradient(#77c7cc10 1px,transparent 1px),linear-gradient(90deg,#77c7cc10 1px,transparent 1px);background-size:18px 18px;border-left:1px solid #304956;padding:12px}.catalog-plate{display:block;width:100%;height:auto}
+.catalog-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 28px}.catalog-shortcuts a{display:grid;align-content:start;gap:6px;text-decoration:none;padding:18px;background:#13232d;color:#f5efdf;border:1px solid #324854;border-radius:10px}.catalog-shortcuts a:hover,#labs .lcard:hover{border-color:#7abbbd;background:#1a303c}.catalog-shortcuts b{font-size:1.04rem}.catalog-shortcuts span,.catalog-desc{font:400 .97rem/1.45 var(--f-body),sans-serif;color:#bfcdcf}.catalog-details summary{cursor:pointer;color:#b9d3d5;padding:15px 0;font-size:1rem}.catalog-details[open] summary{margin-bottom:6px}.catalog-details .cluster{margin-bottom:15px}
+.catalog-filter{display:grid;gap:6px;margin:20px 0;max-width:34rem;font-size:.93rem;font-weight:650;color:#e6e3d8}.catalog-filter input{max-width:100%;width:100%;border-radius:8px;border:1px solid #48616e;background:#132631;color:#f4f0e5;padding:12px 14px;font:inherit;font-weight:400}.catalog-filter input::placeholder{color:#abc0c6}#labs .lgrp h2{font:650 1.45rem/1.3 var(--f-body),sans-serif;letter-spacing:-.035em;text-transform:none;color:#f1ebdc}#labs .lcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#labs .lcard{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:start;gap:12px;min-height:108px;padding:16px 14px;border:1px solid #334954;border-radius:10px;background:#152631;color:#f4efdf;box-shadow:none}#labs .lcard .itile{background:#203c47;color:#99dbd6;border-color:#3c5862;width:40px;height:40px}#labs .lcard b{font-size:1.1rem;color:#f4efdf}#labs .catalog-desc{display:block;margin:4px 0 8px}#labs .lcard small{color:#aec2c7}#labs .catalog-solved{display:block;color:#94dad4;font-size:.85rem}#labs [hidden]{display:none!important}
+@media(max-width:740px){.catalog-hero{grid-template-columns:1fr}.catalog-drawing{border-left:0;border-top:1px solid #304956;padding:4px 14px}.catalog-plate{height:104px}.catalog-shortcuts{grid-template-columns:1fr;gap:7px}.catalog-shortcuts a{padding:12px 15px}#labs .lcards{grid-template-columns:1fr}#labs .lcard{min-height:88px}}
+</style>
+<script>(()=>{
+const home=document.getElementById('home'), labs=document.getElementById('labs');
+if(!home||!labs)return;
+const chapters={
+ cylinder:'Compare a sealed cylinder with an open valve.',geometry:'Find which dimension changes displacement fastest.',power:'Read power from torque and crank speed.',thermo:'Predict how compression changes ideal efficiency.',
+ balance:'Space eight firing events across two crank turns.',twist:'Measure crankshaft twist under load.',cooling:'Connect coolant flow to temperature rise.',airflow:'Find the power needed to push air aside.',fit:'Measure the space an eight-cylinder block needs.',cad:'Control eight bore positions with one dimension.',
+ bench:'Work backward from 600 hp to required torque.',chamber:'Change chamber volume and compression ratio.',valves:'Compare valve-open time at different speeds.',exhaust:'Time the pulses arriving at a collector.',boost:'See how charge temperature changes air density.',fuel:'Match injector duty to delivered fuel.',rod:'Compare piston loads at two engine speeds.',bearings:'Spread a journal load over its bearing.',oil:'Change passage radius and measure pressure loss.',bolts:'Calculate the gas force lifting the head.',stack:'Find the smallest gap two parts can leave.'
+};
+function saved(key,fallback){try{return JSON.parse(localStorage.getItem('thecar.'+key))??fallback}catch{return fallback}}
+const ids=Object.keys(chapters);
+function plate(){
+const bores=Array.from({length:8},(_,i)=>`<g transform="translate(${42+33*i} 74)"><ellipse rx="17" ry="28" fill="#122b36" stroke="#71969d"/><ellipse rx="12" ry="22" fill="#0a1621" stroke="#91d8db"/><ellipse rx="9" ry="17" fill="none" stroke="#416675" stroke-dasharray="2 3"/></g>`).join('');
+return `<svg class="catalog-plate" viewBox="0 0 328 155" role="img" aria-label="Plan view of eight cylinder bores lined up in a single block"><g transform="translate(0 8)"><rect x="15" y="34" width="286" height="84" rx="12" fill="#172d37" stroke="#80b2b7"/><rect x="18" y="28" width="280" height="84" rx="10" fill="#19323c" stroke="#b3dbda"/>${bores}<g fill="#0c1b24" stroke="#92c0c2">${[28,61,94,127,160,193,226,259,288].map(x=>`<circle cx="${x}" cy="36" r="2"/><circle cx="${x}" cy="104" r="2"/>`).join('')}</g><path d="M28 122v11m260-11v11M28 128h260" fill="none" stroke="#78b4bc"/><path d="M29 128l6-3v6zm258 0l-6-3v6z" fill="#78b4bc"/><text x="158" y="147" text-anchor="middle" fill="#9ce0dd" font-family="monospace" font-size="9" letter-spacing="1.7">INLINE-EIGHT · BLOCK DECK</text></g></svg>`;
+}
+const hero=document.createElement('div');hero.className='catalog-hero';hero.innerHTML='<div class="catalog-intro"><div class="catalog-kicker">Your next experiment</div><h2></h2><p></p><a class="catalog-main-action"></a></div><div class="catalog-drawing">'+plate()+'</div>';
+home.querySelector('.home-head').after(hero);
+const extras=document.createElement('details');extras.className='catalog-details';extras.innerHTML='<summary>Your workbook and project schedule</summary>';
+home.append(extras);
+[...home.children].filter(el=>el.matches('.hgrid,.cluster')).forEach(el=>extras.append(el));
+const shortcuts=document.createElement('nav');shortcuts.className='catalog-shortcuts';shortcuts.setAttribute('aria-label','Study options');
+shortcuts.innerHTML='<a href="#labs"><b>Explore the labs</b><span>Choose a system to work on.</span></a><a href="#quiz"><b>Test your recall</b><span>Solve a mixed set of questions.</span></a><a href="#map"><b>Track your progress</b><span>Review your 36-lesson workbook.</span></a>';
+hero.after(shortcuts);shortcuts.innerHTML='<a href="#designstudio"><b>My engine</b><span>Size your inline-eight and save design revisions.</span></a><a href="#labs"><b>Experiment labs</b><span>Explore how each engine system responds.</span></a><a href="#verification"><b>Capstone review</b><span>Build your design evidence package.</span></a>';
+labs.querySelector('h1').textContent='Lab directory';
+labs.querySelector('.lede').textContent='Choose an engine system to investigate.';
+const filter=document.createElement('label');filter.className='catalog-filter';filter.innerHTML='<span>Find a lab</span><input type="search" placeholder="Try pressure, torque or cooling">';
+const grid=document.getElementById('labGrid');grid.before(filter);
+const empty=document.createElement('p');empty.className='catalog-empty';empty.textContent='No matching labs. Try a different search.';empty.hidden=true;grid.after(empty);
+function filterLabs(){const query=filter.querySelector('input').value.trim().toLowerCase();let count=0;grid.querySelectorAll('.lgrp').forEach(group=>{let groupCount=0;group.querySelectorAll('a.lcard').forEach(link=>{const hit=link.textContent.toLowerCase().includes(query);link.hidden=!hit;if(hit)groupCount++});group.hidden=groupCount===0;count+=groupCount});empty.hidden=count>0}
+function renderCatalog(){
+ if(home.classList.contains('on')){
+ const last=saved('last',''),finished=ids.filter(id=>saved('experiment.done.'+id,false)),next=ids.includes(last)&&!finished.includes(last)?last:ids.find(id=>!finished.includes(id));
+ const sec=next&&document.getElementById(next);
+ hero.querySelector('h2').textContent=sec?sec.querySelector('[data-pane="experiment"] h2')?.textContent||sec.querySelector('h1').textContent:'Ready for a mixed quiz?';
+ hero.querySelector('p').textContent=sec?chapters[next]:'Practice recalling the relationships you explored in the labs.';
+ const action=hero.querySelector('a');action.href=sec?'#'+next:'#quiz';action.textContent=sec?'Open experiment':'Start quiz';
+ hero.querySelector('.catalog-kicker').textContent=finished.length?finished.length+' / '+ids.length+' experiments solved':'Your next experiment';
+ }
+ if(labs.classList.contains('on')){
+ grid.querySelectorAll('.lcard').forEach(link=>{const id=link.hash.slice(1);const name=link.querySelector('b');if(!name||!chapters[id]||link.querySelector('.catalog-desc'))return;
+ const line=document.createElement('span');line.className='catalog-desc';line.textContent=chapters[id];name.after(line);
+ if(saved('experiment.done.'+id,false)){const done=document.createElement('span');done.className='catalog-solved';done.textContent='Experiment solved';line.after(done)}
+ });filterLabs()
+ }
+}
+filter.querySelector('input').oninput=filterLabs;
+window.addEventListener('hashchange',renderCatalog);
+renderCatalog();
+})();
+</script><style>
+:root{--bg:#080a0e;--panel:#13171d;--raise:#1b2129;--soft:#252d37;--line:#2c333c;--line2:#434c57;--ink:#f4f5f6;--muted:#b5bdc9;--dim:#98a4b3;--accent:#73bcff;--glass:#101317ee}
+.bench-task,.study-card,.catalog-hero,.catalog-shortcuts a,.catalog-filter input,#labs .lcard{background:#14181e;border-color:#343c46;color:#f3f5f7}
+.bench-view,.catalog-drawing{background-color:#10151c;border-color:#394451}
+.bench-instruments{background:#0b0e13;border-color:#394350}.bench-instruments output,.bench-phase,.catalog-kicker,.catalog-solved{color:#80c2ff}.bench-step,.bench-view figcaption,.bench-instruments small{color:#b1bbc6}
+.bench-task button,.study-card button,.catalog-hero .catalog-main-action{background:#9fd0ff;color:#081018}
+.bench-task .ghost,.study-card .ghost{background:#202832;border-color:#465767;color:#f4f6fa}
+.seg button[aria-selected=true]{color:#a7d7ff!important;box-shadow:inset 0 -3px #4da2f7!important}
+.bench-task p,.study-card p,.catalog-intro p{color:#d3d9e1}.workbench h2,.study-card h2,#home .home-head h1,#labs>h1,.catalog-intro h2{color:#f5f6f8}
+.bench-task .drive-task{padding:12px 16px;background:#101419;border-left:3px solid #499cee}.drive-task b{display:block;color:#96cfff}.sweep-controls{margin:8px 0}.bench-task input[type=range]{accent-color:#77bfff;min-height:44px}.valve-switch{padding:12px 0}.bench-task button,.catalog-main-action,.seg button[role=tab]{min-height:48px}.bench-view{box-shadow:inset 0 1px #ffffff15}.bench-instruments output{font-variant-numeric:tabular-nums}.bench-head{border-left:3px solid #338fe6;padding-left:14px}
+</style>
+<script>window.engineCourse = [
+  {
+    "title": "One charge, four strokes",
+    "goal": "Trace air through one cylinder.",
+    "theory": "The piston forms a moving floor. An open intake admits fresh charge on the downward intake stroke. Both valves close while the piston rises on compression. Burning gas pushes down during expansion. The piston rises again to expel exhaust. Each trip spans half a crank turn.",
+    "formula": "f = N/120",
+    "symbols": "N = crank revolutions per minute; f = cycles per second for one cylinder.",
+    "worked": "2400 rpm ÷ 60 = 40 turns/s. Two turns per cycle gives 20 cycles/s.",
+    "problem": "At 3600 rpm, how many cycles does ONE cylinder complete per second?",
+    "answer": 30,
+    "tolerance": 0.05,
+    "unit": "cycles/s",
+    "hint": "Convert to turns per second before dividing by two.",
+    "reason": "The crank passes top dead center twice per cycle. Valve state distinguishes the events.",
+    "decision": "Draw a 720° cycle from memory, marking piston direction, valve openings and the power stroke.",
+    "evidence": "Four labeled cylinder sections and your definition of a stroke.",
+    "lab": "cylinder"
+  },
+  {
+    "title": "Define performance at a test point",
+    "goal": "Specify a measurable engine requirement.",
+    "theory": "Crank power and wheel power describe different boundaries. Peak power also says little about part-load fuel use. Define where and at what speed a quantity is to be measured before comparing engine targets.",
+    "formula": "P(kW) = hp × 0.7457",
+    "symbols": "hp is US mechanical horsepower; kW is kilowatts. Record the intended engine speed separately.",
+    "worked": "A 400 hp crank target is 400 × 0.7457 = 298.28 kW at the crank.",
+    "problem": "Convert your 600 mechanical hp crank target to kW.",
+    "answer": 447.42,
+    "tolerance": 0.1,
+    "unit": "kW",
+    "hint": "Use the mechanical horsepower conversion supplied.",
+    "reason": "A requirement becomes testable when quantity, units, operating conditions and tolerance are specified.",
+    "decision": "Write distinct targets for peak output, consumption, service access and packaging.",
+    "evidence": "A requirements table with operating points and acceptance criteria.",
+    "lab": "bench"
+  },
+  {
+    "title": "Choose bore and stroke",
+    "goal": "Derive displacement from a cylinder sketch.",
+    "theory": "Bore is cylinder diameter. Stroke is piston travel from top to bottom. Draw a circle where the piston crown sits. Its area multiplied by travel gives swept volume. The small space remaining when the piston reaches the top is excluded.",
+    "formula": "Vd(L) = nπB²S/4,000,000",
+    "symbols": "B and S = bore and stroke in mm; n = cylinders. One liter is one million mm³.",
+    "worked": "An 80 × 80 mm cylinder sweeps π × 40² × 80 = 402,124 mm³. Eight displace 3.217 L.",
+    "problem": "Calculate total displacement for eight cylinders of 72 mm bore and 86 mm stroke.",
+    "answer": 2.8011948063880316,
+    "tolerance": 0.005,
+    "unit": "L",
+    "hint": "Use half the diameter for radius. Multiply by eight only once.",
+    "reason": "Volume grows with the square of bore but linearly with stroke. At fixed displacement, these dimensions trade off.",
+    "decision": "Compare an equal-displacement alternative and explain the effects on length and piston speed.",
+    "evidence": "Two dimensioned candidate cross sections and a selected configuration.",
+    "lab": "geometry"
+  },
+  {
+    "title": "Budget combustion-chamber volume",
+    "goal": "Turn compression ratio into a geometric volume.",
+    "theory": "At the bottom the trapped space is swept plus clearance volume. At the top only clearance remains. A gasket, combustion chamber, piston crown and deck offset each affect the final geometric ratio.",
+    "formula": "rc = (Vs + Vc)/Vc; Vc = Vs/(rc − 1)",
+    "symbols": "Vs and Vc are swept and clearance volume of ONE cylinder in matching units.",
+    "worked": "At 400 cc swept and 11:1 compression, 11Vc = 400 + Vc. Hence Vc = 40 cc.",
+    "problem": "A 350 cc cylinder needs a 10.5:1 geometric ratio. How many cc must remain at top dead center?",
+    "answer": 36.8421052631579,
+    "tolerance": 0.05,
+    "unit": "cc",
+    "hint": "Subtract one from the desired ratio before dividing.",
+    "reason": "Geometric compression alone cannot establish the knock limit. Actual trapped charge and fuel behavior also matter.",
+    "decision": "Allocate clearance volume into gasket, crown, chamber and deck terms.",
+    "evidence": "A signed volume budget with assumptions and a plan for volume measurement.",
+    "lab": "chamber"
+  },
+  {
+    "title": "Fit eight cylinders in the car",
+    "goal": "Establish a packaging envelope.",
+    "theory": "Eight cylinder centers have seven gaps between them. Pitch is the distance between adjacent centers. Add ends measured from end-center datums and separately account for accessories, the sump, mount positions and service access.",
+    "formula": "L = (n − 1)p + ef + er",
+    "symbols": "p = pitch; ef and er = distances from end-cylinder centers to envelope ends. All lengths in mm.",
+    "worked": "At 80 mm pitch plus 55 mm front and 45 mm rear, length is 7 × 80 + 55 + 45 = 660 mm.",
+    "problem": "At 82 mm pitch with 60 mm front and 50 mm rear end allowances, what is modeled length?",
+    "answer": 684,
+    "tolerance": 0.1,
+    "unit": "mm",
+    "hint": "Sketch the eight centers and count intervals.",
+    "reason": "A bare block footprint does not prove installation clearance for an assembled engine.",
+    "decision": "Choose bay datums, measure a usable envelope and reserve tool and accessory space.",
+    "evidence": "Dimensioned envelope and a list of remaining physical measurements.",
+    "lab": "fit"
+  },
+  {
+    "title": "Convert power to torque",
+    "goal": "Calculate how much torque your power target demands.",
+    "theory": "Twisting a shaft through one turn does work equal to torque times 2π radians. More turns per second mean more power at the same torque. Requiring peak power earlier raises the torque burden.",
+    "formula": "P = Tω; ω = 2πN/60",
+    "symbols": "P = watts; T = Nm; N = rpm; ω = rad/s.",
+    "worked": "300 kW at 6000 rpm requires 300,000/(2π × 6000/60) = 477.5 Nm.",
+    "problem": "For 447.42 kW at 6500 rpm, what crank torque is required?",
+    "answer": 657.3148120446998,
+    "tolerance": 0.8,
+    "unit": "Nm",
+    "hint": "Convert kW to watts before dividing by angular speed.",
+    "reason": "A torque requirement states what is demanded. Breathing and load calculations test whether it is plausible.",
+    "decision": "Choose two peak-power speed candidates and compare required torque.",
+    "evidence": "Two labeled torque/power points and a speed-selection rationale.",
+    "lab": "power"
+  },
+  {
+    "title": "Compare engines with BMEP",
+    "goal": "Normalize torque for displacement.",
+    "theory": "Over a four-stroke cycle the crank turns twice. Divide its brake work per cycle by swept volume to obtain brake mean effective pressure. This fictional constant pressure is useful for comparisons across engine sizes.",
+    "formula": "BMEP(bar) = 4πT/(100Vd[L])",
+    "symbols": "T = crank torque in Nm; Vd = TOTAL swept liters. Peak cylinder pressure is a separate quantity.",
+    "worked": "300 Nm over 3 L gives 4π × 300/(100 × 3) = 12.57 bar.",
+    "problem": "Find BMEP for a four-stroke producing 650 Nm from 2.8 L.",
+    "answer": 29.171931783333793,
+    "tolerance": 0.06,
+    "unit": "bar",
+    "hint": "Use total engine displacement at the stated torque point.",
+    "reason": "Higher BMEP means more torque per displaced liter. The actual maximum gas pressure will follow a different calculation.",
+    "decision": "Compare your target to two production engines at documented operating points.",
+    "evidence": "A benchmark table with measurement location, units and a source per row.",
+    "lab": "bench"
+  },
+  {
+    "title": "Compress a trapped gas",
+    "goal": "Estimate temperature rise in an ideal compression.",
+    "theory": "A piston does work on trapped gas. In a reversible adiabatic model there is no heat transfer and no mass exchange. Actual valve timing, wall heat and variable gas properties alter a real compression trace.",
+    "formula": "T₂ = T₁(V₁/V₂)^(γ−1)",
+    "symbols": "Temperatures in K; γ assumed constant; V₁/V₂ is the trapped-volume ratio.",
+    "worked": "A gas at 300 K compressed 8:1 with γ = 1.35 reaches 300 × 8^0.35 ≈ 621 K.",
+    "problem": "At 310 K and a 9:1 trapped ratio, assuming γ = 1.35, find final temperature.",
+    "answer": 668.8774767921238,
+    "tolerance": 1,
+    "unit": "K",
+    "hint": "Use 0.35 as the exponent.",
+    "reason": "The result is a modeled bulk temperature. It does not determine combustion phasing, allowable boost or fuel octane.",
+    "decision": "Draw a pressure-volume cycle and mark where real heat flow and openings violate the assumptions.",
+    "evidence": "Annotated cycle and sensitivity table for two compression ratios.",
+    "lab": "thermo"
+  },
+  {
+    "title": "Fill the engine with air",
+    "goal": "Convert cycle volume into air mass flow.",
+    "theory": "Every two crank turns a four-stroke could admit its displacement of air at a chosen reference density. Volumetric efficiency compares trapped mass against this reference. Be consistent with reference density when comparing boosted and naturally aspirated data.",
+    "formula": "ṁa = ρVd(N/120)ηv",
+    "symbols": "ρ = reference kg/m³; Vd in m³; N rpm; ηv fraction. Here ρ is manifold density.",
+    "worked": "3 L at 6000 rpm, 1.2 kg/m³ and 90% filling gives 1.2 × 0.003 × 50 × 0.90 = 0.162 kg/s.",
+    "problem": "At 6000 rpm, 2.8 L displacement, 1.90 kg/m³ manifold density and ηv = 0.95, what is trapped air flow?",
+    "answer": 0.2527,
+    "tolerance": 0.001,
+    "unit": "kg/s",
+    "hint": "Convert liters to m³, then count complete cycles each second.",
+    "reason": "Boost pressure alone is insufficient. Temperature changes density and restrictions change filling efficiency.",
+    "decision": "Estimate air demand at three speeds and flag the weakest input assumption.",
+    "evidence": "Air-demand table with reference state and efficiency range.",
+    "lab": "boost"
+  },
+  {
+    "title": "Time intake and exhaust events",
+    "goal": "Convert crank angle into the real time available.",
+    "theory": "A valve event covers a finite crank-angle window. At higher speed the crank crosses the window in less time. Pressure difference, port losses and effective curtain area also determine how much gas passes. Exhaust runners delay pulses before the collector.",
+    "formula": "Δt(ms) = 1000(θ/360)(60/N)",
+    "symbols": "θ = crank degrees; N = crank rpm. Cam degrees and crank degrees differ for four-strokes.",
+    "worked": "At 6000 rpm, one revolution takes 10 ms. A 240° opening spans 240/360 × 10 = 6.67 ms.",
+    "problem": "At 7200 rpm, how long in milliseconds is a 216° exhaust event?",
+    "answer": 5,
+    "tolerance": 0.03,
+    "unit": "ms",
+    "hint": "Calculate the time for one revolution first.",
+    "reason": "Duration is one breathing constraint. Lift history, pressure waves and overlap need separate evidence.",
+    "decision": "Sketch valve openings and exhaust events on a shared 720° axis and mark overlap.",
+    "evidence": "Event diagram specifying reference lift and two operating speeds.",
+    "lab": "valves"
+  },
+  {
+    "title": "Supply fuel and air together",
+    "goal": "Estimate total fuel demand from an assumed mixture requirement.",
+    "theory": "Air–fuel ratio is air mass divided by fuel mass. Lambda is actual AFR divided by the stoichiometric AFR specific to the fuel. Real injector delivery also depends on pressure differential, injector characterization and available injection time.",
+    "formula": "ṁfuel = ṁair/(λ AFRstoich)",
+    "symbols": "Mass flows in matching mass/time units. λ is dimensionless. Fuel properties stated in the exercise are assumptions.",
+    "worked": "For 0.210 kg/s air and actual AFR 14, fuel is 0.210/14 = 0.015 kg/s = 54 kg/h.",
+    "problem": "Assume 0.250 kg/s air, λ = 1 and AFRstoich = 14.0. What total fuel mass per hour does the model require?",
+    "answer": 64.28571428571428,
+    "tolerance": 0.1,
+    "unit": "kg/h",
+    "hint": "Divide by the actual AFR; multiply kg/s by 3600.",
+    "reason": "Mass demand does not prove the injection system can deliver it or that the assumed mixture is suitable.",
+    "decision": "Write a fuel mass budget and list timing, pressure and supplier data the hardware choice requires.",
+    "evidence": "A logged fuel assumption and injector verification checklist.",
+    "lab": "fuel"
+  },
+  {
+    "title": "Connect burn duration to crank angle",
+    "goal": "Explain why combustion phasing is expressed in degrees.",
+    "theory": "A spark starts a flame which takes time to propagate. The crank continues moving as pressure builds. Bore, mixture motion, residual gas and ignition location influence burn time. A crank-angle conversion alone cannot specify a calibration.",
+    "formula": "Δθ = 6NΔt",
+    "symbols": "N = rpm; Δt = seconds; Δθ = crank degrees.",
+    "worked": "At 3000 rpm, 1.5 ms occupies 6 × 3000 × 0.0015 = 27 crank degrees.",
+    "problem": "At 5000 rpm, how many crank degrees pass during a measured 1.2 ms interval?",
+    "answer": 36,
+    "tolerance": 0.1,
+    "unit": "°",
+    "hint": "Convert ms to seconds first.",
+    "reason": "A fixed elapsed time corresponds to more crank degrees at higher rpm.",
+    "decision": "Place spark, approximate burn interval and pressure peak on a cycle sketch. Label which values require test data.",
+    "evidence": "Combustion phasing diagram and measurement plan.",
+    "lab": "chamber"
+  },
+  {
+    "title": "Check firing intervals and moments",
+    "goal": "Distinguish even firing from mechanical balance.",
+    "theory": "Uniform firing in an eight-cylinder four-stroke means that eight events share 720°, giving 90° gaps. Equal and opposite inertia forces can cancel net force yet form a rocking moment if applied at different axial positions.",
+    "formula": "Δθ = 720/n; M = Fd",
+    "symbols": "n = cylinder count. For a pure couple, F = one of the opposite forces and d = perpendicular separation.",
+    "worked": "Two opposite forces of 200 N separated by 0.40 m sum to zero force and an 80 Nm couple.",
+    "problem": "Two equal opposite 300 N forces act on lines perpendicular to their 0.60 m separation. Find the couple magnitude.",
+    "answer": 180,
+    "tolerance": 0.1,
+    "unit": "Nm",
+    "hint": "Multiply one force by the spacing.",
+    "reason": "A firing sequence is a timing proposal. A balance claim needs both net-force and moment histories.",
+    "decision": "Map firing events to crank throws. Sum forces and moments about a common datum over a cycle.",
+    "evidence": "Firing chart, crank sketch and separate force/moment plots.",
+    "lab": "balance"
+  },
+  {
+    "title": "Screen rod and piston loads",
+    "goal": "Quantify the speed penalty in inertial loading.",
+    "theory": "A piston reverses at the top and bottom. In a first-order long-rod approximation, peak acceleration is crank radius times angular speed squared. Finite rod length and gas pressure contribute additional forces.",
+    "formula": "Fprimary ≈ mr(2πN/60)²",
+    "symbols": "m = equivalent reciprocating mass, kg; r = half stroke, m; N = rpm; force in N.",
+    "worked": "0.50 kg, 0.040 m radius and 6000 rpm gives 0.50 × 0.040 × 628.3² ≈ 7.90 kN.",
+    "problem": "At 6500 rpm estimate primary inertial load for 0.45 kg and 0.043 m radius. Give kN.",
+    "answer": 8.965301897839547,
+    "tolerance": 0.03,
+    "unit": "kN",
+    "hint": "Square angular speed, and divide newtons by 1000.",
+    "reason": "The rpm-squared result explains why an apparently small redline increase demands another load review.",
+    "decision": "Compare two speed cases and distinguish gas pressure from reciprocating inertia.",
+    "evidence": "A piston free-body diagram and provisional alternating load cases.",
+    "lab": "rod"
+  },
+  {
+    "title": "Screen a long crankshaft",
+    "goal": "Relate shaft geometry to elastic twist.",
+    "theory": "Torque winds up a long shaft. More material farther from its axis strongly resists this motion. Treat a uniform solid bar as a trend model; real crank geometry, rotating inertias and damping govern vibration.",
+    "formula": "φ = TL/(GJ); J = πd⁴/32",
+    "symbols": "φ = radians; T Nm; L and d meters; shear modulus G Pa; J m⁴.",
+    "worked": "At unchanged torque, material and diameter, increasing length from 0.60 to 0.90 m increases twist from 0.012 to 0.018 radians.",
+    "problem": "A uniform 40 mm shaft twists 2°. At unchanged torque, length and material, how many degrees would a 50 mm shaft twist?",
+    "answer": 0.8192000000000002,
+    "tolerance": 0.01,
+    "unit": "°",
+    "hint": "Multiply the old angle by (old diameter/new diameter)⁴.",
+    "reason": "Static resistance alone cannot rule out resonance driven by firing harmonics.",
+    "decision": "Draw a lumped torsional model showing inertias and elastic links along the crank.",
+    "evidence": "Static sensitivity calculation and a planned modal verification.",
+    "lab": "twist"
+  },
+  {
+    "title": "Carry heat from the block",
+    "goal": "Estimate required coolant mass flow.",
+    "theory": "Fuel energy leaves as shaft work, hot exhaust, heat into the jacket and other losses. A steady jacket balance connects heat absorbed to coolant flow and temperature rise. The average outlet reading may conceal a poorly fed rear cylinder.",
+    "formula": "Q̇ = ṁcpΔT",
+    "symbols": "Q̇ = kW; ṁ = kg/s; cp = kJ/(kg·K); ΔT = temperature difference in K.",
+    "worked": "A 40 kW load at cp = 4.0 and 10 K rise requires 40/(4 × 10) = 1.0 kg/s.",
+    "problem": "At 72 kW, cp = 3.8 kJ/(kg·K) and 12 K rise, find required mass flow.",
+    "answer": 1.5789473684210529,
+    "tolerance": 0.01,
+    "unit": "kg/s",
+    "hint": "Divide heat per second by heat gain per kg.",
+    "reason": "A flow target still needs a pressure-loss network, pump curve and head temperature evidence.",
+    "decision": "Sketch how to compare cooling at cylinders one and eight under a defined load.",
+    "evidence": "Cooling schematic, heat budget and sensor locations.",
+    "lab": "cooling"
+  },
+  {
+    "title": "Support and lubricate a journal",
+    "goal": "Calculate a bearing load index and interpret its limits.",
+    "theory": "A rotating journal draws oil into a thin converging film. Dividing force by projected area gives a first comparison. Oil viscosity, speed, clearance and temperature affect minimum film thickness and heat.",
+    "formula": "pavg = F/(db)",
+    "symbols": "F = radial N; journal diameter d and bearing width b in mm. N/mm² = MPa.",
+    "worked": "10,000 N over a 50 mm × 20 mm projected area gives 10 MPa.",
+    "problem": "A 55 mm journal and 18 mm bearing carry 12,000 N. Find average projected pressure.",
+    "answer": 12.121212121212121,
+    "tolerance": 0.04,
+    "unit": "MPa",
+    "hint": "Use diameter times width, not the curved surface area.",
+    "reason": "Similar average pressure does not imply equivalent minimum film thickness or durability.",
+    "decision": "Trace oil from pickup to the most distant journal and back. Specify hot-clearance and supply-data needs.",
+    "evidence": "Oil circuit and a bearing demand table.",
+    "lab": "bearings"
+  },
+  {
+    "title": "Model the head joint",
+    "goal": "Calculate the gas force that separates head and block.",
+    "theory": "A gas pressure difference acting across a bore produces a separating force. Bolt preload, head and block flexibility, gasket stiffness and load sharing affect actual joint behavior. Directly dividing the gas force among bolts is insufficient to specify bolt torque.",
+    "formula": "Fgas = ΔpπB²/4",
+    "symbols": "Δp = pressure difference Pa; B = bore m; F = N. 1 bar = 100,000 Pa.",
+    "worked": "80 bar across a 72 mm bore gives 8,000,000 × π × 0.072²/4 ≈ 32.6 kN.",
+    "problem": "For a hypothetical 90 bar pressure difference and a 76 mm bore, find gas force in kN.",
+    "answer": 40.82813812605295,
+    "tolerance": 0.12,
+    "unit": "kN",
+    "hint": "Use bore in meters and pressure in Pa.",
+    "reason": "A credible head joint design needs real peak-load evidence and a joint model.",
+    "decision": "Draw the load path from chamber pressure into fasteners, block and main structure.",
+    "evidence": "A joint free-body diagram with an assumed pressure case clearly marked.",
+    "lab": "bolts"
+  },
+  {
+    "title": "Select materials and screen thermal growth",
+    "goal": "Predict relative expansion of piston and bore.",
+    "theory": "Different materials grow different amounts as they heat. Use a reference size and temperature for each part. A first-order uniform thermal model shows sensitivity. Gradients, coatings, distortion, shape and supplier data are needed for real clearances.",
+    "formula": "ΔD = αD₀ΔT; ΔC = ΔDbore − ΔDpiston",
+    "symbols": "α = 1/K; D₀ = mm; ΔT = K; C is diametral clearance.",
+    "worked": "With α = 23 × 10⁻⁶/K, 75 mm and a 100 K rise, an aluminum sample expands 0.1725 mm. At α = 11 × 10⁻⁶/K an iron sample expands 0.0825 mm.",
+    "problem": "Assume equal 72 mm reference diameters and 80 K rise. For piston α = 23 × 10⁻⁶/K and bore α = 11 × 10⁻⁶/K, what positive amount of diametral clearance is lost?",
+    "answer": 0.06912,
+    "tolerance": 0.001,
+    "unit": "mm",
+    "hint": "Subtract bore growth from piston growth.",
+    "reason": "The higher-expansion part can consume clearance even if both parts heat by the same amount.",
+    "decision": "Compare two material systems across expansion, wear, machinability and evidence quality.",
+    "evidence": "A material trade study with thermal assumptions and source requirements.",
+    "lab": "stack"
+  },
+  {
+    "title": "Tolerance the assembly",
+    "goal": "Bound a functional clearance across manufacturing variation.",
+    "theory": "Trace the dimension chain between the surfaces defining a gap. At worst case, all individual deviations combine in the adverse direction. A statistical yield estimate requires process distributions, not just limit tolerances.",
+    "formula": "gmin = gnom − Σ|ti|",
+    "symbols": "g = functional gap; ti = maximum adverse contribution from dimension i. All in mm.",
+    "worked": "A 0.50 mm gap with adverse errors of 0.08, 0.12 and 0.05 mm can close to 0.25 mm.",
+    "problem": "A nominal 0.42 mm gap can lose 0.06, 0.09 and 0.04 mm. What is the worst-case remaining gap?",
+    "answer": 0.23,
+    "tolerance": 0.002,
+    "unit": "mm",
+    "hint": "Subtract each adverse contribution once.",
+    "reason": "Cold manufacturing limits are one budget. Hot growth, operating deflection and surface finish need further checks.",
+    "decision": "Name reference datums, tolerances, and an inspection operation for each contributing dimension.",
+    "evidence": "A dimension chain, drawing revision and inspection plan.",
+    "lab": "stack"
+  },
+  {
+    "title": "Build the CAD skeleton",
+    "goal": "Make a block layout regenerate from one master pitch.",
+    "theory": "Use crank axis, front face and deck plane as named datums. Constrain the bore pattern, then add bolt paths, oil galleries, water jackets, accessories and reserved service envelopes. Test parameter updates before detailing geometry.",
+    "formula": "xi = x₁ + (i − 1)p",
+    "symbols": "xi = center coordinate of cylinder i; x₁ = first bore center from front datum; p = bore pitch.",
+    "worked": "If x₁ = 45 mm and p = 80 mm, cylinder five is at 45 + 4 × 80 = 365 mm.",
+    "problem": "With x₁ = 52 mm and pitch = 81 mm, how far from the front datum is cylinder eight?",
+    "answer": 619,
+    "tolerance": 0.1,
+    "unit": "mm",
+    "hint": "Count seven intervals from cylinder one.",
+    "reason": "A properly constrained skeleton propagates pitch changes to all dependent bore centers and reveals interference.",
+    "decision": "Create the parametric skeleton; change pitch; regenerate and review affected passages, supports and external clearance.",
+    "evidence": "A CAD file, dimensioned section and regeneration check.",
+    "lab": "cad"
+  },
+  {
+    "title": "Estimate daily cruise consumption",
+    "goal": "Connect vehicle power demand to an engine fuel map.",
+    "theory": "Steady wheel demand and driveline efficiency set engine brake power. Brake-specific fuel consumption is fuel mass per brake kWh at a particular engine speed and load. Capture the assumptions before using this estimate to compare vehicles or hybrid configurations.",
+    "formula": "Pcrank = Pwheel/η; ṁfuel = Pcrank × BSFC/1000",
+    "symbols": "P in kW; η driveline efficiency fraction; BSFC g/kWh; fuel in kg/h.",
+    "worked": "At 15 kW wheel load, η = 0.90 and assumed BSFC 270 g/kWh, fuel = (15/0.9) × 270/1000 = 4.50 kg/h.",
+    "problem": "At 18 kW to the wheels, 0.90 efficiency and assumed 250 g/kWh at that point, find fuel consumption.",
+    "answer": 5,
+    "tolerance": 0.02,
+    "unit": "kg/h",
+    "hint": "Calculate engine power before applying BSFC.",
+    "reason": "Meeting a peak-power goal does not establish a cruising MPG figure. Gear ratio, road load and operating map matter.",
+    "decision": "Document a cruise case and a sensitivity case, then state added evidence needed for gas, HEV and PHEV comparisons.",
+    "evidence": "A cruise-load budget and a labeled source for each efficiency assumption.",
+    "lab": "bench"
+  },
+  {
+    "title": "Design a validation campaign",
+    "goal": "Separate observed results, predictions and untested claims.",
+    "theory": "Decide on a claim, operating condition and acceptance criterion before comparing model and measurement. Identify instrument accuracy, repeatability and calibration, then inspect the difference. A single point cannot validate a map or lifetime.",
+    "formula": "relative error (%) = 100|ypred − ymeas|/|ymeas|",
+    "symbols": "Use consistent units and a nonzero measured reference. Use absolute differences near zero.",
+    "worked": "If 52 kW is predicted and 50 kW measured, the absolute discrepancy is 2 kW, or 4%. Compare it with measurement uncertainty.",
+    "problem": "A model predicts 74 Nm at a point independently measured at 70 Nm. What is the absolute relative error?",
+    "answer": 5.714285714285714,
+    "tolerance": 0.03,
+    "unit": "%",
+    "hint": "Divide the magnitude of the difference by the measured reference.",
+    "reason": "A design claim is only as strong as the evidence at the operating conditions it names.",
+    "decision": "Create a requirements-to-evidence matrix. For each gap name the test, facility, measurement method, pass threshold and next revision.",
+    "evidence": "A validation matrix, uncertainty budget and unresolved-risk register.",
+    "lab": "bench"
+  }
+];</script>
+<script>
+(()=>{
+const root=document.getElementById("course-root"), units=window.engineCourse, key="thecar.designcourse.v1";
+let book={active:0,units:{}};
+try{const data=JSON.parse(localStorage.getItem(key));if(data?.units)book=data}catch{}
+let i=Math.min(units.length-1,Math.max(0,Number(book.active)||0));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function save(){try{localStorage.setItem(key,JSON.stringify(book))}catch{}}
+function render(){
+const u=units[i],state=book.units[i]||(book.units[i]={}),done=Object.values(book.units).filter(x=>x.complete).length;
+root.innerHTML='<div class="eng-path"><details class="eng-index" '+(innerWidth>800?'open':'')+'><summary>Course outline</summary><p>'+done+' / '+units.length+' design records complete</p><ol>'+units.map((v,n)=>'<li><button data-unit="'+n+'" '+(n===i?'aria-current="step"':'')+'>'+esc(v.title)+(book.units[n]?.complete?' ✓':'')+'</button></li>').join('')+'</ol></details><article class="eng-chapter"><small>UNIT '+(i+1)+' / '+units.length+'</small><h2>'+esc(u.title)+'</h2><p>'+esc(u.goal)+'</p><h3>How it works</h3><p>'+esc(u.theory)+'</p><div class="eng-equation">'+esc(u.formula)+'</div><p>'+esc(u.symbols)+'</p><details><summary>Walk through a worked example</summary><p>'+esc(u.worked)+'</p></details><p><a href="#'+esc(u.lab.replace(/^#/,''))+'">Run the related lab</a></p><hr><h3>Calculate it yourself</h3><p>'+esc(u.problem)+'</p><label>Your result ('+esc(u.unit)+')<input type="number" step="any" data-result></label><button data-check>Check calculation</button><p role="status" data-feedback></p><details><summary>Show a hint</summary><p>'+esc(u.hint)+'</p></details><hr><h3>Apply it to your inline-eight</h3><p>'+esc(u.decision)+'</p><p>'+esc(u.evidence)+'</p><label>Your choice, working and evidence<textarea data-note rows="4"></textarea></label><small>Saved in this browser as you type.</small><div class="eng-actions"><a href="#designstudio">Open my engine</a><button data-finish>Finish unit</button></div><p role="status" data-status></p><div class="eng-actions"><button data-export>Export course notebook</button><a href="#verification">Capstone review</a></div></article></div>';
+const q=s=>root.querySelector(s), input=q('[data-result]'),note=q('[data-note]'),feedback=q('[data-feedback]');
+input.value=state.value??'';note.value=state.note||'';if(state.passed)feedback.textContent='Calculation checked. '+u.reason;
+input.oninput=()=>{Object.assign(state,{value:input.value,passed:false,complete:false});feedback.textContent='';save()};
+note.oninput=()=>{state.note=note.value;if(!note.value.trim())state.complete=false;save()};
+q('[data-check]').onclick=()=>{state.passed=input.value!==''&&Math.abs(Number(input.value)-u.answer)<=u.tolerance+1e-10;feedback.textContent=state.passed?'Correct. '+u.reason:'Try again. '+u.hint;save()};
+q('[data-finish]').onclick=()=>{if(!state.passed||!note.value.trim()){q('[data-status]').textContent='Check your calculation and record your design reasoning first.';return}state.complete=true;if(i<units.length-1)i++;else location.hash='verification';book.active=i;save();render();window.scrollTo(0,0)};
+root.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{i=Number(b.dataset.unit);book.active=i;save();render();window.scrollTo(0,0)});
+q('[data-export]').onclick=()=>{const lines=units.map((v,n)=>{const x=book.units[n]||{};return '## '+(n+1)+'. '+v.title+'\n\n'+(x.complete?'Completed':'In progress')+'\n\nCalculation: '+(x.value??'—')+' '+v.unit+'\n\n'+(x.note||'No design entry yet.')});const url=URL.createObjectURL(new Blob(['# Inline-eight course notebook\n\n'+lines.join('\n\n')],{type:'text/markdown'}));const a=document.createElement('a');a.href=url;a.download='inline-eight-course-notebook.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+}
+render();
+const hero=document.querySelector('.catalog-hero');
+function home(){if(!hero)return;hero.querySelector('.catalog-kicker').textContent='Inline-eight design course';hero.querySelector('h2').textContent=units[i].title;hero.querySelector('p').textContent=units[i].goal;const a=hero.querySelector('a');a.href='#course';a.textContent='Continue course'}
+home();window.addEventListener('hashchange',home);
+})();
+</script><script>
+(()=>{"use strict";
+const root=document.getElementById("designstudio");if(!root)return;
+const sel=q=>root.querySelector(q),key="thecar.designstudio.v1",tabs=["Dimensions","Power & loads","Evidence","Revisions"];
+const specs={
+n:["Cylinder count","",8,2,12,1],B:["Bore","mm",72,30,160,.1],S:["Stroke","mm",86,30,180,.1],V:["Clearance volume / cylinder","cc",39,5,180,.1],p:["Bore pitch","mm",82,35,200,.1],ends:["Combined end allowances beyond end centers","mm",100,20,350,1],bay:["Available block envelope","mm",690,200,2000,1],
+rpm:["Target speed","rpm",6500,500,16000,50],hp:["Target crank power","mechanical hp",600,10,2000,1],rod:["Rod length","mm",150,50,350,.1],mass:["Reciprocating mass / cylinder","g",500,50,2500,1],pressure:["Assumed net gas pressure","bar",100,10,300,1],ve:["Volumetric efficiency","%",90,30,150,1],density:["Intake reference density","kg/m³",1.18,.4,4,.01]};
+const topics=[["Packaging","Record bay measurements, accessory envelopes, mount travel and service access."],["Rotating assembly","Document the load cases, rod and crank stresses, fatigue margins, bearing-film analysis and torsional modes."],["Combustion & flow","Supply chamber geometry, valve schedule and measured or modeled airflow and knock margins."],["Lubrication & cooling","Track passage sizes, flow balance, pressure loss and local heat rejection."],["Manufacture & service","Record materials, datums, tolerances, machining access, assembly sequence and inspection methods."],["Validation plan","Define each instrumented test, operating case, pass criterion, uncertainty and reviewer."]];
+const statuses=["Open","Calculated","Evidence recorded","Reviewed"],ids=Object.keys(specs);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const f=(x,n=2)=>Number(x).toLocaleString("en-US",{maximumFractionDigits:n});
+const blank=()=>({name:"Inline-eight concept",v:Object.fromEntries(ids.map(k=>[k,specs[k][2]])),e:topics.map(()=>({status:"Open",note:""}))});
+let state={schema:1,design:blank(),revisions:[]},tab=0,storageError="";
+function check(d){
+ if(typeof d?.name!=="string"||d.name.length>100)throw Error("Invalid design name.");
+ for(const k of ids){const v=d.v?.[k],[,,,min,max]=specs[k];if(!Number.isFinite(v)||v<min||v>max||(k==="n"&&!Number.isInteger(v)))throw Error("Invalid "+specs[k][0]+".")}
+ if(!Array.isArray(d.e)||d.e.length!==topics.length||d.e.some(e=>!statuses.includes(e.status)||typeof e.note!=="string"||e.note.length>5000))throw Error("Invalid evidence.");
+ return {name:d.name,v:Object.fromEntries(ids.map(k=>[k,d.v[k]])),e:d.e.map(e=>({status:e.status,note:e.note}))}}
+function decode(s){const x=JSON.parse(s);if(x.schema!==1||!Array.isArray(x.revisions))throw Error("Expected a Design Studio v1 JSON file.");return {schema:1,design:check(x.design),revisions:x.revisions.map(r=>{if(!Number.isFinite(Date.parse(r.date)))throw Error("Invalid revision date");return {date:r.date,design:check(r.design)}})}}
+try{const s=localStorage.getItem(key);if(s)state=decode(s)}catch{storageError="Stored design unavailable. Export your design as a backup."}
+function msg(s){sel("#dsmessage").textContent=storageError||s}
+function save(){try{localStorage.setItem(key,JSON.stringify(state));storageError=""}catch{storageError="Browser storage unavailable. Export JSON to keep changes."}msg("")}
+function calc(v){
+ const cc=Math.PI*v.B**2*v.S/4000,L=cc*v.n/1000,kW=v.hp*.745699872,T=kW*60000/(2*Math.PI*v.rpm),length=(v.n-1)*v.p+v.ends,r=v.S/2000;
+ return {cc,L,kW,T,length,margin:v.bay-length,bridge:v.p-v.B,CR:1+cc/v.V,bmep:4*Math.PI*T/(100*L),speed:2*v.S/1000*v.rpm/60,fire:720/v.n,gas:v.pressure*.1*Math.PI*v.B**2/4000,inertia:v.mass/1000*r*(2*Math.PI*v.rpm/60)**2*(1+r/(v.rod/1000))/1000,flow:L/1000*v.rpm/120*v.ve/100*v.density}}
+const calcRow=(title,expr,val,note)=>'<div class="dscalc"><b>'+title+'</b><br>'+expr+' = '+val+'<small>'+note+'</small></div>';
+function analysis(v,c,mode){if(mode===0)return calcRow("Swept volume per cylinder","π × "+v.B+"² × "+v.S+" / 4000",f(c.cc)+" cc","Area times travel. Dividing mm³ by 1000 gives cm³.")+calcRow("Geometric compression ratio","1 + "+f(c.cc)+" / "+v.V,f(c.CR)+":1","Clearance volume includes chamber, gasket, piston crown and deck clearance at top dead center.")+calcRow("Bare-block length margin",v.bay+" − [("+v.n+" − 1) × "+v.p+" + "+v.ends+"]",f(c.margin)+" mm",c.margin<0?"Sketch exceeds available length.":"Check end drives, mounts and installation clearances in CAD.")+calcRow("Material between bore edges",v.p+" − "+v.B,f(c.bridge)+" mm",c.bridge<=0?"Adjacent bores touch or overlap.":"Check actual liner, wall and cooling-passage requirements.")+calcRow("Even-firing interval","720° / "+v.n,f(c.fire)+"°","Balance, firing order and crankshaft torsion require separate analysis.");
+ return calcRow("Torque required at crank",f(c.kW)+" kW × 60,000 / (2π × "+v.rpm+")",f(c.T)+" Nm","Target divided by angular speed. Achievable torque requires test or simulation evidence.")+calcRow("Required four-stroke BMEP","4π × "+f(c.T)+" / (100 × "+f(c.L,4)+")",f(c.bmep)+" bar","Cycle-averaged work demand. Compare against validated engines at comparable fuel and operating conditions.")+calcRow("Mean piston speed","2 × "+v.S/1000+" × "+v.rpm+" / 60",f(c.speed)+" m/s","A speed screen. Peak stress and fatigue require a detailed load history.")+calcRow("Peak gas load at assumed pressure","ΔP × πB² / 4",f(c.gas)+" kN","Uniform net pressure across the piston crown. Gas and inertial peaks generally occur at different crank angles.")+calcRow("Inertial load magnitude at TDC","m × r × ω² × (1 + r/l)",f(c.inertia)+" kN","Rigid centered slider-crank and constant speed. Use kg, metres and rad/s. r = half stroke, l = rod length.")+calcRow("Estimated mass flow","Vd × rpm/120 × VE × ρ",f(c.flow,3)+" kg/s","Four-stroke steady state, Vd in m³, VE referenced to the entered intake density. This alone cannot establish power.")}
+function drawing(v,c){const scale=Math.min(600/Math.max(c.length,(v.n-1)*v.p+v.B),78/v.B),x0=(640-c.length*scale)/2;
+ let bores="";for(let i=0;i<v.n;i++){const x=x0+(v.ends/2+i*v.p)*scale;bores+='<circle cx="'+x+'" cy="50" r="'+v.B*scale/2+'" fill="#111418" stroke="#bcd2e4" stroke-width="1.8"/><path d="M'+(x-4)+' 50h8m-4 -4v8" stroke="#73818c"/>'}
+ return '<svg viewBox="0 0 640 104" role="img" aria-label="Deck sketch with '+v.n+' bores at '+v.p+' millimeter pitch"><rect x="'+x0+'" y="5" width="'+c.length*scale+'" height="90" rx="8" fill="#212429" stroke="#737b85"/>'+bores+'</svg><small>Deck plan · relative bore scale · equal end allowances</small>'}
+function results(){const v=state.design.v,c=calc(v);sel("#dsdrawing").innerHTML=drawing(v,c);sel("#dsmetrics").innerHTML=[["Displacement",f(c.L,3)+" L"],["Compression ratio",f(c.CR)+":1"],["Required torque",f(c.T,1)+" Nm"],["Block length",f(c.length,1)+" mm"]].map(([k,x])=>'<div class="dsmetric">'+k+'<b>'+x+'</b></div>').join("");if(sel("#dsresults"))sel("#dsresults").innerHTML=analysis(v,c,tab)}
+function field(k){const [name,unit,,min,max,step]=specs[k];return '<label>'+name+(unit?' ('+unit+')':'')+'<input required type="number" inputmode="decimal" data-dskey="'+k+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+state.design.v[k]+'"></label>'}
+function render(){sel("#dsname").value=state.design.name;sel("#dsnav").innerHTML=tabs.map((s,i)=>'<button data-dstab="'+i+'" aria-pressed="'+(i===tab)+'">'+s+'</button>').join("");let h="";
+ if(tab<2)h='<h2>'+(tab===0?'Size the cylinders and block':'Evaluate the operating point')+'</h2><p>'+(tab===0?'Change bore while holding stroke fixed. Compare the gain in displacement with the loss of material between cylinders.':'Choose a power target and speed. Use the resulting torque and BMEP demands to plan your airflow and durability studies.')+'</p><div class="dsfields">'+(tab===0?ids.slice(0,7):ids.slice(7)).map(field).join("")+'</div><div id="dsresults"></div>';
+ else if(tab===2)h='<h2>Engineering evidence</h2><p>Record your method, result, limitations and reviewer. Statuses are self-reported. Mark reviewed only after a qualified reviewer has checked the work.</p>'+topics.map(([name,instruction],i)=>'<div class="dsevidence"><h3>'+name+'</h3><p>'+instruction+'</p><label>Evidence status<select data-dsstatus="'+i+'">'+statuses.map(s=>'<option'+(s===state.design.e[i].status?' selected':'')+'>'+s+'</option>').join('')+'</select></label><label>Reference, result and unresolved questions<textarea maxlength="5000" rows="3" data-dsnote="'+i+'">'+esc(state.design.e[i].note)+'</textarea></label></div>').join("");
+ else h='<h2>Design revisions</h2><p>Working changes save in this browser. Snapshot a revision before trying another set of assumptions. Export JSON for a backup or transfer.</p><div class="dscontrols">'+["Save revision","Export JSON","Import JSON","Print design sheet"].map((s,i)=>'<button data-dsact="'+i+'">'+s+'</button>').join("")+'</div><input type="file" id="dsfile" hidden accept=".json,application/json">'+(state.revisions.length?'<ol>'+state.revisions.map((r,i)=>'<li>'+esc(r.design.name)+' · '+esc(new Date(r.date).toLocaleString())+' <button data-dsrestore="'+i+'">Restore revision '+(i+1)+'</button></li>').reverse().join("")+'</ol>':'<p>No revisions saved yet.</p>');
+ sel("#dswork").innerHTML=h;results();msg("")}
+root.addEventListener("input",e=>{const t=e.target;if(t.id==="dsname")state.design.name=t.value;else if(t.dataset.dskey){if(!t.validity.valid){msg("Outside allowed range or step. Results use the last valid value.");return}state.design.v[t.dataset.dskey]=t.valueAsNumber;results()}else if(t.dataset.dsnote!==undefined)state.design.e[+t.dataset.dsnote].note=t.value;else if(t.dataset.dsstatus!==undefined)state.design.e[+t.dataset.dsstatus].status=t.value;else return;save()});
+function snap(){state.revisions.push({date:new Date().toISOString(),design:check(state.design)})}
+function printSheet(){const d=state.design,v=d.v,c=calc(v),w=window.open("","_blank");if(!w){msg("Allow the print preview window, then try again.");return}w.document.write('<!doctype html><title>Engine design sheet</title><style>body{font:15px/1.5 system-ui;max-width:860px;margin:30px auto;padding:0 15px}td,th{padding:4px 12px;text-align:left;border-bottom:1px solid #aaa}small{display:block}.dscalc{margin:10px 0;break-inside:avoid}</style><h1>'+esc(d.name)+'</h1><p>Concept specification · '+esc(new Date().toLocaleDateString())+'</p><table>'+ids.map(k=>'<tr><th>'+specs[k][0]+'</th><td>'+f(v[k],3)+' '+specs[k][1]+'</td></tr>').join("")+'</table><h2>Calculated results</h2>'+analysis(v,c,0)+analysis(v,c,1)+'<h2>Evidence</h2>'+topics.map(([n],i)=>'<h3>'+n+' — '+esc(d.e[i].status)+'</h3><p>'+esc(d.e[i].note||"No evidence recorded.")+'</p>').join(""));w.document.close();w.focus();w.print()}
+root.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.dstab!==undefined){tab=+b.dataset.dstab;render();return}if(b.dataset.dsrestore!==undefined){const r=state.revisions[+b.dataset.dsrestore];if(r){snap();state.design=check(r.design);save();render();msg("Restored; previous working design saved as a revision.")}return}switch(b.dataset.dsact){case "0":snap();save();render();msg("Revision saved.");break;case "1":{const u=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"})),a=document.createElement("a");a.href=u;a.download="inline-engine-design.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),4000);break}case "2":sel("#dsfile").click();break;case "3":printSheet();break}});
+root.addEventListener("change",async e=>{if(e.target.id!=="dsfile"||!e.target.files.length)return;try{const f=e.target.files[0];if(f.size>2e6)throw Error("Use a design file under 2 MB.");const incoming=decode(await f.text());snap();state.revisions.push(...incoming.revisions);state.design=incoming.design;save();render();msg("Imported. Previous working design saved as a revision.")}catch(err){msg(err.message)}});
+render();
+})();
+</script><script>(() => {
+const root=document.querySelector('#verification');
+const refs={
+engine:['MIT · engine processes and performance','https://ocw.mit.edu/courses/2-61-internal-combustion-engines-spring-2017/pages/lecture-notes/'],
+mechanics:['MIT · mechanical design, fatigue and vibration','https://ocw.mit.edu/courses/2-72-elements-of-mechanical-design-spring-2009/pages/lecture-notes/'],
+manufacture:['MIT · machining, variation and quality','https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/lists/lecture-notes/'],
+measurement:['NIST · measurement uncertainty','https://www.nist.gov/pml/nist-technical-note-1297'],
+systems:['NASA · verification and validation, section 2.4','https://www.nasa.gov/reference/2-0-fundamentals-of-systems-engineering/']};
+const reviews=[
+['requirements','Write measurable requirements','Define peak crank power and RPM, fuel, service interval, operating environment, packaging envelope and duty cycle. Give each requirement a unit, tolerance and verification method.','600 mechanical hp at 6000 rpm demands about 712 N·m. This equation gives the required torque. Demonstrating the engine can supply it takes additional evidence.','Which target came from an actual measurement? Which target did you choose? Name the condition that would falsify each.','A numbered requirements sheet and a duty-cycle sketch.','systems'],
+['package','Freeze a dimensioned layout','Draw a cylinder section and a plan view through all eight bores. Dimension bore, stroke, pitch, rod length, piston compression height, deck, block ends and ancillary drives.','At 85 mm pitch the first and last centers are 595 mm apart. Add the end bore radii, wall material and accessories to estimate the assembled length.','What service part needs the most removal space? Identify a vehicle measurement that would settle the fit.','Two dated drawings, a packaging check and an independent displacement calculation.','mechanics'],
+['breathing','Balance power, airflow and fuel','Calculate torque and four-stroke BMEP at peak power. Estimate air and fuel demand at that point and at cruise. Identify your efficiency and volumetric-efficiency assumptions.','Equal displacement and peak power do not establish equal cruise economy. Torque demand, pumping losses and efficiency vary over the operating map.','Repeat both calculations at the ends of a plausible efficiency range. Which component selection might change?','Two operating points, an air-path drawing and a sensitivity table.','engine'],
+['crank','Defend the long crankshaft','Draw separate free-body diagrams for peak gas load and inertia. Sketch the crank as linked inertias and torsional springs. Identify the damper, the fatigue-critical section and a proposed material condition.','An even interval between firings can coexist with a torsional resonance. Overlay excitation orders and natural frequencies across the operating range.','Which load, stiffness or support condition is least certain? Re-run the calculation with that input changed.','A crank layout, load cases, material source and one independent model check.','mechanics'],
+['thermal','Trace heat, coolant and oil','Draw branch paths for coolant and oil, including the rear cylinder. Estimate cooling at peak load. Document the fluid properties and two sensor positions.','40 kW transferred to 1 kg/s of water with heat capacity 4.18 kJ/(kg·K) gives a bulk rise of about 9.6 K. The outlet average can hide a starved rear passage.','How would you distinguish insufficient total flow from an uneven split between branches?','A heat budget, annotated circuits and a measurement plan.','engine'],
+['manufacturing','Plan the machining sequence','Pick one part. Specify stock or casting, alloy and condition, functional datums, workholding, machining steps, tool approach and inspection after release.','A main-bearing bore drawing needs the cap assembly condition and axis alignment. A diameter alone leaves both open.','Can both cutter and inspection instrument reach the tightest feature? Write the question a shop should review.','One drawing revision, operation sequence, material specification and outstanding shop questions.','manufacture'],
+['inspection','Quantify measurement uncertainty','Select one critical fit. Record both parts’ limiting dimensions, gauge range, calibration, temperature, resolution and repeat readings. State the acceptance rule.','For a clearance requirement of 0.040–0.060 mm, a reading of 0.041 mm with expanded uncertainty ±0.004 mm overlaps the lower limit. A full-interval-inside rule yields an inconclusive result.','Which error would persist even if the display had more digits? How could you check it independently?','Worst-case stack, uncertainty budget and completed example inspection record.','measurement'],
+['simulation','Challenge a simulation result','Record geometry revision, loads, supports, material, units and mesh. Compare a quantity away from singularities at three mesh densities and against a hand calculation.','Deflections of 0.116, 0.124 and 0.126 mm change by about 1.6% between the final two runs. A converged solution can still use the wrong support conditions.','Vary a boundary condition and record whether the engineering decision changes.','Convergence table, analytical check and remaining validation gap.','mechanics'],
+['test','Plan prototype verification','Link each requirement to inspection, analysis or a controlled test. Specify revision, conditions, instruments, uncertainty, pass criterion, responsible reviewer and stopping condition.','A simulation is evidence about a model. A prototype measurement applies to the tested configuration and conditions. Durability requires a representative duty cycle and supporting results.','Identify a result that would send the design back for revision. Separate planned checks from completed measurements.','A verification matrix and test-facility review scope.','systems'],
+['defense','Defend a fresh design without hints','Close the lessons. Reduce your available engine length by 5%. Develop two revised eight-cylinder layouts on blank paper. Recalculate displacement, BMEP and mean piston speed. Explain the effects on cooling, vibration, machining and maintenance.','A reduced pitch shortens the block but leaves less space between cylinders for structure and coolant. Your revised drawing must resolve both requirements.','Have another engineer challenge one assumption. Record their objection, what would settle it and the revision you defend.','A dated design dossier, short oral defense and open physical-validation list.','systems']];
+const key='thecar.capstone.evidence.v1';
+let data={};try{const parsed=JSON.parse(localStorage.getItem(key)||'{}');if(parsed&&typeof parsed==='object')data=parsed}catch{}
+const container=root.querySelector('#vr-reviews');
+const choices=['Open','Draft evidence','Ready for review','External review recorded'];
+const rows=[];
+function refresh(){let done=0;for(const row of rows){const record=data[row.id];const actual=record.note.trim()?record.state:0;row.badge.textContent=choices[actual];if(actual>=2)done++}root.querySelector('#vr-progress').textContent=done+' of '+rows.length+' evidence packets prepared'}
+for(const [id,title,task,example,question,proof,ref] of reviews){
+const old=data[id];data[id]={note:typeof old?.note==='string'?old.note:'',state:choices[old?.state]?Number(old.state):0};
+const panel=document.createElement('details');panel.open=id==='requirements';
+panel.innerHTML='<summary>'+title+' · <small></small></summary><div class="vr-body"><h3>Do the work</h3><p>'+task+'</p><h3>Think it through</h3><p>'+example+'</p><h3>Challenge your assumption</h3><p>'+question+'</p><h3>Evidence to keep</h3><p>'+proof+'</p><a target="_blank" rel="noopener noreferrer" href="'+refs[ref][1]+'">'+refs[ref][0]+'</a><label>Your evidence<textarea rows="3" placeholder="Drawing revision, calculation or measurement, reviewer and unresolved issues"></textarea></label><label>Review status<select>'+choices.map(c=>'<option>'+c+'</option>').join('')+'</select></label></div>';
+container.append(panel);const note=panel.querySelector('textarea'),state=panel.querySelector('select');note.value=data[id].note;state.selectedIndex=data[id].state;rows.push({id,title,badge:panel.querySelector('small')});
+const save=()=>{data[id]={note:note.value,state:state.selectedIndex};refresh();try{localStorage.setItem(key,JSON.stringify(data))}catch{root.querySelector('#vr-status').textContent='Browser storage is unavailable. Download your notes to keep them.'}};
+note.oninput=save;state.onchange=save;
+}
+refresh();
+root.querySelector('#vr-download').onclick=()=>{const lines=['# Inline-eight design review',new Date().toLocaleDateString(),''];for(const row of rows)lines.push('## '+row.title,row.badge.textContent,data[row.id].note||'No evidence recorded.','');const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='inline-eight-design-review.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};
+})();</script><script>
+(()=>{
+const panel=document.querySelector('#course');
+const exam=document.createElement('details');
+exam.className='eng-chapter eng-exam'; exam.style.marginTop='22px';
+exam.innerHTML='<summary>Independent design check</summary><p>Start with a blank sheet. Size a different inline-eight, show your units and keep your working. Changing the brief generates new dimensions.</p><div data-brief></div><div data-questions></div><button data-grade>Check results</button> <button class="ghost" data-new>New brief</button><p role="status"></p>';
+panel.append(exam);
+const key='thecar.blank-sheet.v1';
+let state;try{state=JSON.parse(localStorage.getItem(key))}catch{}
+function newBrief(){return {bore:68+2*Math.floor(Math.random()*9),stroke:78+2*Math.floor(Math.random()*9),rpm:5000+250*Math.floor(Math.random()*9),power:260+10*Math.floor(Math.random()*10),ratio:9+Math.floor(Math.random()*4),answers:[]}}
+if(!state?.bore)state=newBrief();
+function store(){try{localStorage.setItem(key,JSON.stringify(state))}catch{}}
+function draw(){
+ const {bore,stroke,rpm,power,ratio}=state,cc=Math.PI*bore*bore*stroke/4000,torque=power*60000/(2*Math.PI*rpm);
+ const questions=[['Swept volume, one cylinder (cc)',cc],['Total engine displacement (L)',8*cc/1000],['Clearance volume per cylinder (cc)',cc/(ratio-1)],['Mean piston speed (m/s)',2*stroke*rpm/60000],['Required torque at the crank (Nm)',torque],['Required four-stroke brake mean effective pressure (bar)',4*Math.PI*torque/(cc*8/1e6)/1e5]];
+ exam.querySelector('[data-brief]').textContent='Four-stroke inline-eight · '+bore+' mm bore · '+stroke+' mm stroke · '+ratio+':1 compression · '+power+' kW at '+rpm+' rpm.';
+ const fields=exam.querySelector('[data-questions]');fields.replaceChildren();
+ questions.forEach(([prompt],i)=>{const label=document.createElement('label');label.textContent=prompt;const input=document.createElement('input');input.type='number';input.step='any';input.value=state.answers[i]??'';input.oninput=()=>{state.answers[i]=input.value;store();exam.querySelector('[role=status]').textContent='';input.removeAttribute('aria-invalid')};label.append(input);fields.append(label)});
+ exam.querySelector('[data-grade]').onclick=()=>{const misses=[];fields.querySelectorAll('input').forEach((input,i)=>{const expected=questions[i][1],ok=input.value!==''&&Math.abs(input.valueAsNumber-expected)<=expected*.015;input.setAttribute('aria-invalid',String(!ok));if(!ok)misses.push(questions[i][0])});exam.querySelector('[role=status]').textContent=misses.length?'Rework these quantities (within 1.5%): '+misses.join(', '):'All six quantities agree. Record the derivations and assumptions in your capstone.'};
+}
+exam.querySelector('[data-new]').onclick=()=>{state=newBrief();store();draw();exam.querySelector('[role=status]').textContent='New brief ready.'};
+draw();store();
+})();
+</script>
 
+<style>/* Black instrument surfaces, high-contrast readouts and one blue interaction color. */
+:root,html[data-theme]{--bg:#050506;--panel:#101012;--raise:#18181b;--soft:#242529;--line:#292a2e;--line2:#414247;--ink:#f6f6f7;--muted:#babac1;--dim:#999ba3;--accent:#88baff;--charge:#7eaff1;--glass:#0b0b0cf2;--metal:#44464d;--metal2:#757981;--side:214px;--r:9px;--f-body:Archivo,Inter,"Segoe UI",Arial,sans-serif;--f-disp:Archivo,Inter,"Segoe UI",Arial,sans-serif;--f-mono:"JetBrains Mono",Consolas,monospace;color-scheme:dark}
+body{background:#050506;color:#f6f6f7;font-size:16px}.appbar{background:#09090af2;border-bottom:1px solid #29292d}.appbar::after{width:66px;height:3px;right:auto;background:linear-gradient(110deg,#83bcff 0 32%,#505eac 32% 63%,#ed5262 63% 95%,transparent 95%)}.appbar .xpchip{background:#141416;border-color:#353538;border-radius:5px}
+.shell .side{background:#09090a;border-color:#27272a}.side a{border-radius:5px;font-weight:550;min-height:45px;line-height:1.2;gap:11px}.side a.on{color:white;background:#202125;box-shadow:inset 2px 0 #73aaf3}.side a:hover{background:#1a1b1d}.side a.on svg{color:#a7caff}.side .foot{font-size:11px;color:#a1a1a8}main{max-width:1430px}
+.bay>h1,#home .home-head h1,#labs>h1{color:#fafafa;font:650 clamp(36px,4.9vw,70px)/1.02 var(--f-disp);letter-spacing:-.067em;margin:.18em 0 .32em;text-transform:none}
+.bay>.eyebrow,#home .home-head .eyebrow,#labs #labsCount,.bench-step,.bench-phase,.catalog-kicker{color:#a9b0ba;font:600 11px/1.4 var(--f-mono);letter-spacing:.11em}
+.bay>.lede{font-size:clamp(16px,1.4vw,19px);line-height:1.53;color:#bbbcc3;max-width:73ch;margin:0 0 24px}
+.bay .panel,.bay .gcard,.bay .study-card,.bay .chap,.bay .unit,.bay .bench-task,.bay .quiz-card{background:#101012;color:#eeeef0;border:1px solid #303034;border-radius:9px;box-shadow:none}
+.bay .panel,.bay .gcard,.bay .chap{padding:clamp(16px,2vw,27px)}.bay .panel>h3,.bay .gcard>h3,.bay .chap h3{color:#d6d6db;font-size:12px;letter-spacing:.07em}
+.catalog-hero{background:linear-gradient(112deg,#181819,#0c0c0e 68%);border:1px solid #3a3b3e;border-radius:12px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.catalog-intro{display:flex;flex-direction:column;align-items:start;justify-content:center;padding:clamp(22px,3vw,42px);min-width:0}.catalog-intro h2{font:650 clamp(30px,3.8vw,55px)/1.035 var(--f-disp);letter-spacing:-.057em;max-width:18ch;color:#fff}.catalog-intro p{font:400 16px/1.5 var(--f-body);color:#c1c2c7}.catalog-hero .catalog-main-action{border-radius:6px;background:#f4f4f5;color:#101012;padding:14px 22px;min-height:48px}
+.catalog-drawing{border-left:1px solid #333337;min-height:260px;background-color:#101011;background-size:contain;background-position:center;background-repeat:no-repeat}.catalog-shortcuts{gap:10px}.catalog-shortcuts a,#labs .lcard,#library .lcard{background:#111113;border-color:#303034;color:#f5f5f5;border-radius:8px;transition:background .15s,border-color .15s}.catalog-shortcuts a:hover,#labs .lcard:hover,#library .lcard:hover{background:#1a1a1e;border-color:#777880}.catalog-shortcuts span,.catalog-desc,#labs .lcard small{color:#b7b8bf}.catalog-details summary{color:#c5c7ce}
+#labs .lgrp h2,.bay .lgrp h2{color:#ededf0;font:600 clamp(21px,2vw,29px)/1.15 var(--f-disp);letter-spacing:-.04em}#labs .lcard b,#library .lcard b{color:#fcfcfc}#labs .lcard .itile,.bay .itile{border:1px solid #35373c;background:#1e1f22;color:#add0ff;border-radius:7px}#labs .catalog-filter input,.bay input[type=search],.bay input[type=number],.bay input[type=text],.bay select,.bay textarea{border-color:#414247;color:#f3f3f4;background-color:#171719;border-radius:6px}
+.bay .workbench h2,.bay .study-card h2{font:625 clamp(26px,2.85vw,42px)/1.09 var(--f-disp);color:#fff;letter-spacing:-.054em}.bench-head{border:0;padding:0;margin:26px 0 16px}.bench-step{margin-bottom:7px;color:#a8a8af}
+.bench-view{border:1px solid #37383c;background-color:#101012;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:25px 25px;border-radius:10px;box-shadow:none}.bench-view figcaption,.bench-instruments small{font:550 11px/1.4 var(--f-mono);letter-spacing:.07em;color:#b1b3bb}.bench-view figcaption{border-color:#343438}.bench-instruments{background:#09090b;border-color:#353639}.bench-instruments>div+div{border-color:#353639}.bench-instruments output{font-variant-numeric:tabular-nums;color:#e8effb;font-size:clamp(22px,2.2vw,33px)}
+.workbench .bench-task{padding:clamp(18px,2.2vw,30px)}.bench-phase,.bay .catalog-solved{color:#a6c9ff}.bench-task p,.study-card p{color:#d3d3d9}.bench-task .drive-task,.bay .note.info{background:#14161b;border:0;border-left:2px solid #769ddb;border-radius:0}.bench-task .drive-task b{color:#bbd4fc}.bench-task .baseline{color:#b6b7bf}
+.bay .bench-task .ghost,.bay .study-card .ghost,.bay button.ghost,.bay .bench-options button,.bay .choices button{background:#1c1d21;border:1px solid #45464d;border-radius:6px;color:#efeff2;line-height:1.32}.bay button:not(.ghost):not([role=tab]):not(.mdt):not(.mdp):not(.mdn):not(.lchk){border-radius:6px}.bay .bench-task button:not(.ghost),.bay .study-card button:not(.ghost){background:#efeff1;color:#101011}.bay .bench-options button:hover,.bay .choices button:hover{background:#2a2b2f;border-color:#9bb6de}
+section.bay .seg{margin:10px 0 20px;max-width:none;background:transparent;border-color:#292a2e}section.bay .seg button[role=tab]{background:transparent;color:#aaaab2;border-radius:0;min-height:45px}section.bay .seg button[aria-selected=true]{color:#fff!important;box-shadow:inset 0 -2px #82b9ff!important;background:#111115!important}
+.bay .work,.bay pre,.bay canvas,.bay .mdock .mdin{background:#080809;border-color:#33343a;border-radius:6px}.bay .kv dt,.bay .kv dd,.bay label.f,.bay .ctl{border-color:#303035}.bay .kv dd,.bay .out,.bay .val,.bay .big,.bay .stroke-name{color:#f4f4f8}
+.bay .quiz-q{font-size:clamp(19px,2.2vw,30px);line-height:1.3;letter-spacing:-.035em}#quiz>.panel,#quiz .quiz-card{max-width:800px}#manual .chap{max-width:84ch}#manual .chap p,#history .ev p,#sources .panel p{line-height:1.65;color:#cdd0d5}.bay .timeline{border-color:#414247}.bay .timeline .yr{color:#9dc4ff}#sources .tag{border-radius:4px}#map .unit-h,#map .lesson{border-color:#303035}#map .lesson a.lgo{color:#eeeef0}#map .unit-h b,#history .ev b,#manual .chap summary{color:#fff}
+#explain textarea,.bay textarea{line-height:1.55}.bay :is(input,button,a):focus-visible{outline:2px solid #9fc7ff;outline-offset:3px}#designstudio,#course{--bg:#050506;--panel:#101012;--raise:#18181b;--line:#2c2d31;--accent:#88baff}#designstudio article,#course article,#designstudio fieldset,#course fieldset{border-color:#343438;color:#f2f2f4}#designstudio h2,#course h2{text-transform:none;letter-spacing:-.044em}
+@media(min-width:980px){main{padding:clamp(27px,3.2vw,48px) clamp(28px,3.8vw,62px) 72px}.side{padding-top:27px}.bench-layout{grid-template-columns:minmax(0,1.16fr) minmax(0,1fr);gap:16px}}
+@media(max-width:740px){.catalog-hero{grid-template-columns:1fr}.catalog-drawing{min-height:185px;border:0;border-top:1px solid #2d2d32}.catalog-intro{padding:20px}.catalog-intro h2{font-size:32px}.bay>h1,#home .home-head h1,#labs>h1{font-size:clamp(34px,10vw,49px)}.bay .bench-view .mechanical-view svg{max-height:185px}.bay .bench-task{padding:17px}.bay .bench-task p{font-size:16px}.bay .seg button[role=tab]{font-size:.81rem}.tabbar{background:#0b0b0cf2;border-color:#343439}.tabbar a{min-height:44px}.catalog-shortcuts{gap:8px}.catalog-shortcuts a{background:#121214}.workbench .bench-layout{gap:12px}}
+@media print{.side,.tabbar,.appbar{display:none!important}.shell{display:block}.bay{color:#141414}}.catalog-drawing{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20360%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22face%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23686f76%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23363a3e%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23191b1d%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22well%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23050607%22%2F%3E%3Cstop%20offset%3D%22.7%22%20stop-color%3D%22%232a2e33%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23737d88%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22p%22%3E%3Cstop%20stop-color%3D%22%2340454b%22%2F%3E%3Cstop%20offset%3D%22.52%22%20stop-color%3D%22%23b0b8c0%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f5861%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cg%20stroke-linejoin%3D%22round%22%3E%3Cg%20transform%3D%22matrix(1%20-.24%20.55%20.76%2039%20222)%22%3E%3Cpath%20d%3D%22M0%2099H470l-6%2060H-6Z%22%20fill%3D%22url(%23face)%22%20stroke%3D%22%2366717c%22%2F%3E%3Cpath%20d%3D%22M470%200v99l-6%2060V64Z%22%20fill%3D%22%23202329%22%20stroke%3D%22%2360676d%22%2F%3E%3Cpath%20d%3D%22M16%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M73%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%2285%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M130%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22142%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M187%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22199%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M244%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M301%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22313%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M358%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22370%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Cpath%20d%3D%22M415%20107l-4%2033h25l9-33%22%20fill%3D%22%23292e33%22%20stroke%3D%22%23656d74%22%2F%3E%3Ccircle%20cx%3D%22427%22%20cy%3D%22148%22%20r%3D%222%22%20fill%3D%22%23b2b9bf%22%2F%3E%3Crect%20width%3D%22470%22%20height%3D%2299%22%20rx%3D%229%22%20fill%3D%22%23777e85%22%20stroke%3D%22%23dbe1e6%22%20stroke-width%3D%221.8%22%2F%3E%3Ccircle%20cx%3D%2235%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%2235%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%2227%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%2227%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%2284%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%2284%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22149%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22149%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22129%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22141%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22129%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22141%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22206%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22206%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22186%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22198%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22186%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22198%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22263%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22263%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22243%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22243%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22312%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22312%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22377%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22377%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22357%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22369%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22357%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22369%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22434%22%20cy%3D%2249%22%20r%3D%2227%22%20fill%3D%22%2334393f%22%20stroke%3D%22%23bfc7cb%22%2F%3E%3Ccircle%20cx%3D%22434%22%20cy%3D%2249%22%20r%3D%2224%22%20fill%3D%22url(%23well)%22%20stroke%3D%22%23222426%22%2F%3E%3Ccircle%20cx%3D%22414%22%20cy%3D%2211%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22426%22%20y%3D%229%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3Ccircle%20cx%3D%22414%22%20cy%3D%2287%22%20r%3D%223%22%20fill%3D%22%2317191b%22%2F%3E%3Crect%20x%3D%22426%22%20y%3D%2285%22%20width%3D%2224%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%23353c42%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(264%20107)%22%3E%3Cpath%20d%3D%22M9%203L7%2042l-6%2021%202%208%2013%206%2012-9-2-9-8-18%204-40z%22%20fill%3D%22url(%23face)%22%20stroke%3D%22%23a5aeb6%22%2F%3E%3Cellipse%20cx%3D%2215%22%20cy%3D%2266%22%20rx%3D%227%22%20ry%3D%226%22%20fill%3D%22%23111317%22%20stroke%3D%22%23aab8c6%22%2F%3E%3Cpath%20d%3D%22M-12-24v24q21%2014%2043-6v-24%22%20stroke%3D%22%23c4cbd1%22%20fill%3D%22url(%23p)%22%2F%3E%3Cellipse%20cx%3D%229%22%20cy%3D%22-28%22%20rx%3D%2222%22%20ry%3D%2210%22%20transform%3D%22rotate(-12%209%20-28)%22%20fill%3D%22%23929ba4%22%20stroke%3D%22%23e0e3e6%22%2F%3E%3Cpath%20d%3D%22M-12-20q16%2011%2043-5m-43%209q19%2010%2043-5%22%20fill%3D%22none%22%20stroke%3D%22%23333a40%22%20stroke-width%3D%222.2%22%2F%3E%3Ccircle%20cx%3D%226%22%20cy%3D%22-3%22%20r%3D%223%22%20fill%3D%22%2334393e%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M279%20188v22%22%20stroke%3D%22%237ab5ed%22%20stroke-dasharray%3D%223%204%22%2F%3E%3Cpath%20d%3D%22M297%2083l32-27h104%22%20fill%3D%22none%22%20stroke%3D%22%237697b3%22%2F%3E%3Ctext%20x%3D%22334%22%20y%3D%2247%22%20fill%3D%22%23c7d5e4%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2214%22%3EPiston%20and%20rod%3C%2Ftext%3E%3Cpath%20d%3D%22M140%20260l-33%2062H45%22%20fill%3D%22none%22%20stroke%3D%22%237697b3%22%2F%3E%3Ctext%20x%3D%2245%22%20y%3D%22343%22%20fill%3D%22%23c7d5e4%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2214%22%3ECylinder%20block%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E")}.catalog-drawing .catalog-plate{opacity:0}</style>
+<script>
+(()=>{const links=document.createElement('div');links.className='eng-actions';links.innerHTML='<a href="#course">Return to design course</a><a href="#designstudio">Apply to my engine</a>';for(const section of document.querySelectorAll('section.bay'))if(section.querySelector('.workbench'))section.append(links.cloneNode(true));})();
+</script><script>
+(()=>{
+const root=document.querySelector("#designstudio");
+if(!root)return;
+function install(){
+ const controls=root.querySelector(".dscontrols");if(!controls||controls.querySelector("[data-deck-dxf]"))return;
+ const button=document.createElement("button");button.dataset.deckDxf="";button.textContent="Export deck sketch (DXF)";controls.append(button);
+ button.onclick=()=>{
+ let v;
+ try{const s=localStorage.getItem("thecar.designstudio.v1");v=s?JSON.parse(s).design.v:{n:8,B:72,p:82,ends:100}}
+ catch{root.querySelector("#dsmessage").textContent="Current design could not be read. Save your design and retry.";return}
+ const L=(v.n-1)*v.p+v.ends;
+ const pairs=[];
+ function emit(...fields){pairs.push(...fields.map(String))}
+ emit(0,"SECTION",2,"HEADER",9,"$ACADVER",1,"AC1015",9,"$INSUNITS",70,4,0,"ENDSEC",0,"SECTION",2,"ENTITIES");
+ for(let i=0;i<v.n;i++)emit(0,"CIRCLE",100,"AcDbEntity",8,"BORES",100,"AcDbCircle",10,i*v.p,20,0,30,0,40,v.B/2);
+ // End datums indicate block length only; transverse wall thickness is unspecified.
+ for(const x of [-v.ends/2,L-v.ends/2])emit(0,"LINE",100,"AcDbEntity",8,"END_DATUMS",100,"AcDbLine",10,x,20,-v.B*.6,30,0,11,x,21,v.B*.6,31,0);
+ emit(0,"TEXT",100,"AcDbEntity",8,"NOTES",100,"AcDbText",10,-v.ends/2,20,-v.B*.8,30,0,40,v.B*.05,1,"Concept center/core layout in mm. Verify machining, liners, coolant and tooling in CAD.",100,"AcDbText",0,"ENDSEC",0,"EOF");
+ const a=document.createElement("a"),url=URL.createObjectURL(new Blob([pairs.join("\r\n")+"\r\n"],{type:"application/dxf"}));a.href=url;a.download="inline-engine-deck-concept-mm.dxf";a.click();setTimeout(()=>URL.revokeObjectURL(url),4000);
+ root.querySelector("#dsmessage").textContent="Exported bore circles and end datums in millimetres. The sketch does not specify machining tolerances.";
+ }
+}
+new MutationObserver(install).observe(root.querySelector("#dswork"),{childList:true,subtree:true});install();
+})();
+</script>
+<script>
+(()=>{
+const panel=document.getElementById("verification");
+const button=document.createElement("button");
+button.type="button";button.className="ghost";button.textContent="Export complete project record";
+panel.querySelector("#vr-download").after(button);
+button.onclick=()=>{
+ function read(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
+ const dossier={format:"Engine Academy project record",exported:new Date().toISOString(),engine:read("thecar.designstudio.v1"),course:read("thecar.designcourse.v1"),independentCheck:read("thecar.blank-sheet.v1"),designReview:read("thecar.capstone.evidence.v1")};
+ const url=URL.createObjectURL(new Blob([JSON.stringify(dossier,null,2)],{type:"application/json"}));
+ const a=document.createElement("a");a.href=url;a.download="inline-eight-project-record.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+})();
+</script>
 <script>
 // Offline support when served over https (GitHub Pages). Skipped inside the iOS app, which bundles the files.
 if ("serviceWorker" in navigator && location.protocol === "https:") {
