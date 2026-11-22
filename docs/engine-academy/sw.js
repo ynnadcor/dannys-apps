@@ -1,5 +1,5 @@
 // Engine Academy offline cache. tools/sync_engine_academy.py rewrites VERSION on every sync.
-const VERSION = "2bbbd8abed";
+const VERSION = "9bed7e2186";
 const SHELL = `ea-shell-${VERSION}`;
 const FONTS = "ea-fonts";
 const FILES = ["./", "index.html", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];

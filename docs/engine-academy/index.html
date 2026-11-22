@@ -3325,7 +3325,7 @@ renderCatalog();
 .seg button[aria-selected=true]{color:#a7d7ff!important;box-shadow:inset 0 -3px #4da2f7!important}
 .bench-task p,.study-card p,.catalog-intro p{color:#d3d9e1}.workbench h2,.study-card h2,#home .home-head h1,#labs>h1,.catalog-intro h2{color:#f5f6f8}
 .bench-task .drive-task{padding:12px 16px;background:#101419;border-left:3px solid #499cee}.drive-task b{display:block;color:#96cfff}.sweep-controls{margin:8px 0}.bench-task input[type=range]{accent-color:#77bfff;min-height:44px}.valve-switch{padding:12px 0}.bench-task button,.catalog-main-action,.seg button[role=tab]{min-height:48px}.bench-view{box-shadow:inset 0 1px #ffffff15}.bench-instruments output{font-variant-numeric:tabular-nums}.bench-head{border-left:3px solid #338fe6;padding-left:14px}
-.cyc-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:10px 0}.cyc-seg{border-radius:8px;padding:10px;background:#1b2230;border-top:4px solid #4fa8f0;display:flex;flex-direction:column;gap:3px;font-size:13px}.cyc-seg b{font-size:15px}.cyc-compression{border-top-color:#f1c47d}.cyc-power{border-top-color:#e4352b}.cyc-exhaust{border-top-color:#8a8b90}.cyc-drill{display:grid;gap:6px;margin:10px 0}.cyc-row{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:6px;align-items:center}.cyc-headrow b{font-size:12px;color:#8a8b90}.cyc-row select{min-height:44px;min-width:0;width:100%}.cyc-row select.ok{outline:2px solid #3fb26b}.cyc-row select.bad{outline:2px solid #e4352b}@media(max-width:600px){.cyc-strip{grid-template-columns:1fr 1fr}.cyc-row{grid-template-columns:1fr 1fr}.cyc-row>b{grid-column:1/-1}.cyc-headrow{display:none}}
+.cyc-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:10px 0}.cyc-seg{border-radius:8px;padding:10px;background:#1b2230;border-top:4px solid #4fa8f0;display:flex;flex-direction:column;gap:3px;font-size:13px}.cyc-seg b{font-size:15px}.cyc-compression{border-top-color:#f1c47d}.cyc-power{border-top-color:#e4352b}.cyc-exhaust{border-top-color:#8a8b90}.cyc-drill{display:grid;gap:6px;margin:10px 0}.cyc-row{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:6px;align-items:center}.cyc-headrow b{font-size:12px;color:#8a8b90}.cyc-row select{min-height:44px;min-width:0;width:100%}.cyc-row select.ok{outline:2px solid #3fb26b}.cyc-row select.bad{outline:2px solid #e4352b}.quiz-q{display:grid;gap:6px}.quiz-q p{margin:0}.quiz-q select{min-height:44px;width:100%}.quiz-q select.ok{outline:2px solid #3fb26b}.quiz-q select.bad{outline:2px solid #e4352b}@media(max-width:600px){.cyc-strip{grid-template-columns:1fr 1fr}.cyc-row{grid-template-columns:1fr 1fr}.cyc-row>b{grid-column:1/-1}.cyc-headrow{display:none}}
 </style>
 <script>window.engineCourse = [
   {
@@ -3343,10 +3343,38 @@ renderCatalog();
     "reason": "The crank passes top dead center twice per cycle. Valve state distinguishes the events.",
     "decision": "Fill in the 720° cycle below: for each half-turn, pick the stroke, which way the piston moves, and whether each valve is open or closed. Study the map above first if you need it; the check tells you which cells are wrong and why.",
     "drill": [
-      ["0–180°", "Intake", "Down", "Open", "Closed", "The piston moves down and pulls fresh air in through the open intake valve."],
-      ["180–360°", "Compression", "Up", "Closed", "Closed", "Both valves shut, so the rising piston squeezes the trapped charge. The spark fires near 360°."],
-      ["360–540°", "Power", "Down", "Closed", "Closed", "Burning gas pushes the piston down. This is the only stroke that makes work."],
-      ["540–720°", "Exhaust", "Up", "Closed", "Open", "The rising piston pushes burned gas out through the open exhaust valve."]
+      [
+        "0–180°",
+        "Intake",
+        "Down",
+        "Open",
+        "Closed",
+        "The piston moves down and pulls fresh air in through the open intake valve."
+      ],
+      [
+        "180–360°",
+        "Compression",
+        "Up",
+        "Closed",
+        "Closed",
+        "Both valves shut, so the rising piston squeezes the trapped charge. The spark fires near 360°."
+      ],
+      [
+        "360–540°",
+        "Power",
+        "Down",
+        "Closed",
+        "Closed",
+        "Burning gas pushes the piston down. This is the only stroke that makes work."
+      ],
+      [
+        "540–720°",
+        "Exhaust",
+        "Up",
+        "Closed",
+        "Open",
+        "The rising piston pushes burned gas out through the open exhaust valve."
+      ]
     ],
     "evidence": "Four labeled cylinder sections and your definition of a stroke.",
     "lab": "cylinder"
@@ -3364,9 +3392,39 @@ renderCatalog();
     "unit": "kW",
     "hint": "Use the mechanical horsepower conversion supplied.",
     "reason": "A requirement becomes testable when quantity, units, operating conditions and tolerance are specified.",
-    "decision": "Write distinct targets for peak output, consumption, service access and packaging.",
+    "decision": "Answer the test-point checks below; each wrong pick tells you why.",
     "evidence": "A requirements table with operating points and acceptance criteria.",
-    "lab": "bench"
+    "lab": "bench",
+    "quiz": [
+      [
+        "Convert a 300 hp crank target to kW.",
+        "223.71 kW",
+        "402.31 kW",
+        "300.00 kW",
+        "Multiply hp by 0.7457: 300 × 0.7457 = 223.71 kW."
+      ],
+      [
+        "How do crank power and wheel power relate?",
+        "They are measured at different boundaries, so they differ",
+        "They are measured at the same place, so they match",
+        "Both are measured at the wheels, after the gearbox",
+        "The unit says crank and wheel power describe different boundaries."
+      ],
+      [
+        "Does a peak power number tell you part-load fuel use?",
+        "No, it says little about it",
+        "Yes, it sets fuel use exactly",
+        "Yes, if you know the kW value",
+        "Peak power says little about part-load fuel use, so write a separate consumption target."
+      ],
+      [
+        "What makes a requirement testable?",
+        "Quantity, units, operating conditions and tolerance",
+        "A big peak power number alone",
+        "Horsepower with no engine speed",
+        "The unit says a requirement is testable when all four are specified."
+      ]
+    ]
   },
   {
     "title": "Choose bore and stroke",
@@ -3381,9 +3439,39 @@ renderCatalog();
     "unit": "L",
     "hint": "Use half the diameter for radius. Multiply by eight only once.",
     "reason": "Volume grows with the square of bore but linearly with stroke. At fixed displacement, these dimensions trade off.",
-    "decision": "Compare an equal-displacement alternative and explain the effects on length and piston speed.",
+    "decision": "Answer the bore-and-stroke checks below; each wrong pick tells you why.",
     "evidence": "Two dimensioned candidate cross sections and a selected configuration.",
-    "lab": "geometry"
+    "lab": "geometry",
+    "quiz": [
+      [
+        "What is the displacement of ONE 80 mm bore, 80 mm stroke cylinder?",
+        "0.402 L",
+        "3.217 L",
+        "1.608 L",
+        "π × 40² × 80 = 402,124 mm³ = 0.402 L. 3.217 L is all eight."
+      ],
+      [
+        "You double the bore and keep stroke. Volume changes how?",
+        "It becomes 4 times bigger",
+        "It becomes 2 times bigger",
+        "It stays the same",
+        "Volume grows with the square of bore, so 2² = 4 times."
+      ],
+      [
+        "You double the stroke and keep bore. Volume changes how?",
+        "It becomes 2 times bigger",
+        "It becomes 4 times bigger",
+        "It becomes 8 times bigger",
+        "Volume grows linearly with stroke, so doubling stroke doubles it."
+      ],
+      [
+        "Same displacement, but a bigger bore. What must the stroke do?",
+        "Get shorter",
+        "Get longer",
+        "Stay exactly the same",
+        "Bore and stroke trade off at fixed displacement; more bore area needs less travel."
+      ]
+    ]
   },
   {
     "title": "Budget combustion-chamber volume",
@@ -3398,9 +3486,39 @@ renderCatalog();
     "unit": "cc",
     "hint": "Subtract one from the desired ratio before dividing.",
     "reason": "Geometric compression alone cannot establish the knock limit. Actual trapped charge and fuel behavior also matter.",
-    "decision": "Allocate clearance volume into gasket, crown, chamber and deck terms.",
+    "decision": "Answer the clearance-volume checks below; each wrong pick tells you why.",
     "evidence": "A signed volume budget with assumptions and a plan for volume measurement.",
-    "lab": "chamber"
+    "lab": "chamber",
+    "quiz": [
+      [
+        "A 500 cc cylinder needs 11:1. What clearance volume is needed?",
+        "50 cc",
+        "45.5 cc",
+        "55 cc",
+        "Vc = Vs/(rc − 1) = 500/10 = 50 cc."
+      ],
+      [
+        "To raise the compression ratio, the clearance volume must:",
+        "Get smaller",
+        "Get bigger",
+        "Stay the same",
+        "rc = (Vs + Vc)/Vc, so less clearance gives a higher ratio."
+      ],
+      [
+        "Vs in the formula means swept volume of:",
+        "One cylinder",
+        "All eight cylinders together",
+        "The whole crankcase",
+        "The symbols say Vs and Vc are for ONE cylinder."
+      ],
+      [
+        "Which parts go into the clearance volume budget?",
+        "Gasket, chamber, piston crown and deck offset",
+        "Bore, stroke and cylinder count",
+        "Sump, mounts and accessories",
+        "The theory lists gasket, chamber, crown and deck offset as affecting the ratio."
+      ]
+    ]
   },
   {
     "title": "Fit eight cylinders in the car",
@@ -3415,9 +3533,39 @@ renderCatalog();
     "unit": "mm",
     "hint": "Sketch the eight centers and count intervals.",
     "reason": "A bare block footprint does not prove installation clearance for an assembled engine.",
-    "decision": "Choose bay datums, measure a usable envelope and reserve tool and accessory space.",
+    "decision": "Answer the packaging-length checks below; each wrong pick tells you why.",
     "evidence": "Dimensioned envelope and a list of remaining physical measurements.",
-    "lab": "fit"
+    "lab": "fit",
+    "quiz": [
+      [
+        "How many gaps are there between eight cylinder centers?",
+        "7",
+        "8",
+        "9",
+        "Eight centers in a row have seven gaps between them."
+      ],
+      [
+        "Pitch 80 mm, 50 mm front and 50 mm rear. What is the length?",
+        "660 mm",
+        "740 mm",
+        "560 mm",
+        "L = 7 × 80 + 50 + 50 = 660 mm."
+      ],
+      [
+        "Pitch grows by 2 mm on an eight-cylinder. Length grows by:",
+        "14 mm",
+        "16 mm",
+        "2 mm",
+        "Seven gaps each grow 2 mm: 7 × 2 = 14 mm."
+      ],
+      [
+        "Does a bare block footprint prove the engine fits?",
+        "No, accessories and service access need space too",
+        "Yes, the block is the whole engine",
+        "Yes, if the pitch is small",
+        "The unit says a bare footprint does not prove installation clearance."
+      ]
+    ]
   },
   {
     "title": "Convert power to torque",
@@ -3432,9 +3580,39 @@ renderCatalog();
     "unit": "Nm",
     "hint": "Convert kW to watts before dividing by angular speed.",
     "reason": "A torque requirement states what is demanded. Breathing and load calculations test whether it is plausible.",
-    "decision": "Choose two peak-power speed candidates and compare required torque.",
+    "decision": "Answer the power-to-torque checks below; each wrong pick tells you why.",
     "evidence": "Two labeled torque/power points and a speed-selection rationale.",
-    "lab": "power"
+    "lab": "power",
+    "quiz": [
+      [
+        "What torque gives 300 kW at 5000 rpm?",
+        "573.0 Nm",
+        "477.5 Nm",
+        "0.573 Nm",
+        "ω = 2π × 5000/60 = 523.6 rad/s; 300,000/523.6 = 573.0 Nm."
+      ],
+      [
+        "Same power, but peak at lower rpm. Required torque:",
+        "Goes up",
+        "Goes down",
+        "Stays the same",
+        "T = P/ω, so a smaller ω needs more torque."
+      ],
+      [
+        "Same torque, but higher rpm. Power:",
+        "Goes up",
+        "Goes down",
+        "Stays the same",
+        "P = Tω; more turns per second means more power at the same torque."
+      ],
+      [
+        "Before dividing by ω, power in kW must become:",
+        "Watts",
+        "Horsepower",
+        "Newton-meters",
+        "The hint says convert kW to watts first, since P in the formula is in watts."
+      ]
+    ]
   },
   {
     "title": "Compare engines with BMEP",
@@ -3449,9 +3627,39 @@ renderCatalog();
     "unit": "bar",
     "hint": "Use total engine displacement at the stated torque point.",
     "reason": "Higher BMEP means more torque per displaced liter. The actual maximum gas pressure will follow a different calculation.",
-    "decision": "Compare your target to two production engines at documented operating points.",
+    "decision": "Answer the BMEP comparison checks below; each wrong pick tells you why.",
     "evidence": "A benchmark table with measurement location, units and a source per row.",
-    "lab": "bench"
+    "lab": "bench",
+    "quiz": [
+      [
+        "Find BMEP for 400 Nm from a 2 L four-stroke.",
+        "25.13 bar",
+        "12.57 bar",
+        "2.51 bar",
+        "4π × 400/(100 × 2) = 25.13 bar."
+      ],
+      [
+        "For an eight-cylinder, Vd in the formula is:",
+        "Total swept liters of all cylinders",
+        "Swept liters of one cylinder",
+        "Clearance volume of one cylinder",
+        "The symbols say Vd is TOTAL swept liters."
+      ],
+      [
+        "Higher BMEP means:",
+        "More torque per displaced liter",
+        "Bigger engine displacement",
+        "Lower torque per liter",
+        "The unit says higher BMEP means more torque per displaced liter."
+      ],
+      [
+        "Is BMEP the peak pressure inside the cylinder?",
+        "No, peak pressure is a separate quantity",
+        "Yes, it is the maximum gas pressure",
+        "Yes, but only at full power",
+        "BMEP is a fictional constant pressure; peak cylinder pressure needs a different calculation."
+      ]
+    ]
   },
   {
     "title": "Compress a trapped gas",
@@ -3466,9 +3674,39 @@ renderCatalog();
     "unit": "K",
     "hint": "Use 0.35 as the exponent.",
     "reason": "The result is a modeled bulk temperature. It does not determine combustion phasing, allowable boost or fuel octane.",
-    "decision": "Draw a pressure-volume cycle and mark where real heat flow and openings violate the assumptions.",
+    "decision": "Answer the compression checks below; they test where the ideal model fits and fails. Each wrong pick tells you why.",
     "evidence": "Annotated cycle and sensitivity table for two compression ratios.",
-    "lab": "thermo"
+    "lab": "thermo",
+    "quiz": [
+      [
+        "Gas at 300 K is compressed 4:1 with gamma = 1.35. About what is the final temperature?",
+        "About 487 K",
+        "About 1,200 K",
+        "About 405 K",
+        "T2 = 300 x 4^0.35 = 300 x 1.62, about 487 K. The exponent is gamma minus 1, which is 0.35."
+      ],
+      [
+        "In the ideal adiabatic model, what happens if you raise the trapped-volume ratio from 8:1 to 9:1?",
+        "Final temperature rises",
+        "Final temperature falls",
+        "Final temperature stays the same",
+        "T2 grows with (V1/V2)^0.35, so a bigger ratio gives a hotter gas."
+      ],
+      [
+        "Which real-engine effect breaks the 'no heat transfer' assumption?",
+        "Heat flowing into the cylinder walls",
+        "Using gamma = 1.35 in the formula",
+        "Writing temperatures in kelvin",
+        "The model assumes no heat transfer. Real wall heat moves energy out, so the real trace differs."
+      ],
+      [
+        "What does the computed final temperature tell you?",
+        "A modeled bulk gas temperature only",
+        "The allowable boost pressure",
+        "The fuel octane needed",
+        "The unit says the result is a modeled bulk temperature. It does not decide combustion phasing, boost or octane."
+      ]
+    ]
   },
   {
     "title": "Fill the engine with air",
@@ -3483,9 +3721,39 @@ renderCatalog();
     "unit": "kg/s",
     "hint": "Convert liters to m³, then count complete cycles each second.",
     "reason": "Boost pressure alone is insufficient. Temperature changes density and restrictions change filling efficiency.",
-    "decision": "Estimate air demand at three speeds and flag the weakest input assumption.",
+    "decision": "Answer the air-demand checks below; they test how you estimate air flow and its weak inputs. Each wrong pick tells you why.",
     "evidence": "Air-demand table with reference state and efficiency range.",
-    "lab": "boost"
+    "lab": "boost",
+    "quiz": [
+      [
+        "A 2 L engine at 6000 rpm, 1.2 kg/m3 density, ideal filling (efficiency 1.0). What is air flow?",
+        "0.12 kg/s",
+        "0.24 kg/s",
+        "12 kg/s",
+        "2 L = 0.002 m3, and 6000/120 = 50 cycles/s. So 1.2 x 0.002 x 50 x 1.0 = 0.12 kg/s."
+      ],
+      [
+        "Why does the formula divide rpm by 120 for a four-stroke?",
+        "It fills once every two crank turns",
+        "It fills twice every crank turn",
+        "120 converts liters into cubic meters",
+        "N/60 gives turns per second. A four-stroke fills once per two turns, so N/120."
+      ],
+      [
+        "Keep density and filling fixed, but double engine speed. What happens to air flow?",
+        "It doubles",
+        "It halves",
+        "It stays the same",
+        "Air flow is directly proportional to N in the formula, so doubling N doubles air flow."
+      ],
+      [
+        "Why is boost pressure alone not enough to know air flow?",
+        "Temperature changes density and restrictions change filling",
+        "Boost pressure has no effect on air flow",
+        "Displacement changes with boost pressure",
+        "The unit says temperature changes density and restrictions change volumetric efficiency, so both must be checked."
+      ]
+    ]
   },
   {
     "title": "Time intake and exhaust events",
@@ -3500,9 +3768,39 @@ renderCatalog();
     "unit": "ms",
     "hint": "Calculate the time for one revolution first.",
     "reason": "Duration is one breathing constraint. Lift history, pressure waves and overlap need separate evidence.",
-    "decision": "Sketch valve openings and exhaust events on a shared 720° axis and mark overlap.",
+    "decision": "Answer the valve-timing checks below; they test turning crank degrees into real time. Each wrong pick tells you why.",
     "evidence": "Event diagram specifying reference lift and two operating speeds.",
-    "lab": "valves"
+    "lab": "valves",
+    "quiz": [
+      [
+        "At 3000 rpm, how long is a 180 degree valve event?",
+        "10 ms",
+        "20 ms",
+        "5 ms",
+        "One turn at 3000 rpm takes 60/3000 s = 20 ms. Half a turn (180 degrees) is 10 ms."
+      ],
+      [
+        "At 7200 rpm, how long does one crank revolution take?",
+        "About 8.33 ms",
+        "About 120 ms",
+        "About 6.67 ms",
+        "60/7200 s = 0.00833 s, which is 8.33 ms."
+      ],
+      [
+        "The same valve window in degrees is used at a higher rpm. What happens to its time?",
+        "It gets shorter",
+        "It gets longer",
+        "It stays the same",
+        "At higher speed the crank crosses the same angle faster, so less time is available."
+      ],
+      [
+        "Besides event duration, what else decides how much gas passes a valve?",
+        "Pressure difference, port losses and curtain area",
+        "Only the crank angle of the window",
+        "Only the engine's displacement",
+        "The unit says duration is one constraint; pressure difference, port losses and effective curtain area also matter."
+      ]
+    ]
   },
   {
     "title": "Supply fuel and air together",
@@ -3517,9 +3815,39 @@ renderCatalog();
     "unit": "kg/h",
     "hint": "Divide by the actual AFR; multiply kg/s by 3600.",
     "reason": "Mass demand does not prove the injection system can deliver it or that the assumed mixture is suitable.",
-    "decision": "Write a fuel mass budget and list timing, pressure and supplier data the hardware choice requires.",
+    "decision": "Answer the fuel-budget checks below; they test building a fuel mass budget and what it cannot prove. Each wrong pick tells you why.",
     "evidence": "A logged fuel assumption and injector verification checklist.",
-    "lab": "fuel"
+    "lab": "fuel",
+    "quiz": [
+      [
+        "Air flow is 0.140 kg/s, lambda = 1, stoichiometric AFR = 14. What fuel per hour is needed?",
+        "36 kg/h",
+        "10 kg/h",
+        "1.96 kg/h",
+        "Fuel = 0.140/(1 x 14) = 0.010 kg/s. Times 3600 gives 36 kg/h."
+      ],
+      [
+        "How do you turn a fuel flow in kg/s into kg/h?",
+        "Multiply by 3600",
+        "Divide by 3600",
+        "Multiply by 60",
+        "One hour has 3600 seconds, so kg/s x 3600 = kg/h."
+      ],
+      [
+        "Air flow stays fixed but lambda goes from 1.0 up to 1.2. What happens to fuel demand?",
+        "It goes down",
+        "It goes up",
+        "It stays the same",
+        "Lambda sits in the bottom of the formula. A bigger lambda means a bigger actual AFR, so less fuel."
+      ],
+      [
+        "Your fuel budget says 64 kg/h. What does that still NOT prove?",
+        "That the injectors can actually deliver it",
+        "That the air-fuel math was done",
+        "That fuel was counted in kg/h",
+        "The unit says mass demand does not prove delivery. Pressure differential, injector data and injection time must be checked."
+      ]
+    ]
   },
   {
     "title": "Connect burn duration to crank angle",
@@ -3534,9 +3862,39 @@ renderCatalog();
     "unit": "°",
     "hint": "Convert ms to seconds first.",
     "reason": "A fixed elapsed time corresponds to more crank degrees at higher rpm.",
-    "decision": "Place spark, approximate burn interval and pressure peak on a cycle sketch. Label which values require test data.",
+    "decision": "Answer the burn-phasing checks below; they test turning burn time into crank degrees. Each wrong pick tells you why.",
     "evidence": "Combustion phasing diagram and measurement plan.",
-    "lab": "chamber"
+    "lab": "chamber",
+    "quiz": [
+      [
+        "At 4000 rpm, how many crank degrees pass during 1 ms?",
+        "24 degrees",
+        "24,000 degrees",
+        "4 degrees",
+        "1 ms = 0.001 s. So 6 x 4000 x 0.001 = 24 crank degrees."
+      ],
+      [
+        "Burn time stays at 1.5 ms but rpm doubles. What happens to the burn in crank degrees?",
+        "It doubles",
+        "It halves",
+        "It stays the same",
+        "Degrees = 6N x time. Doubling N doubles the degrees for the same elapsed time."
+      ],
+      [
+        "Which of these does the unit say changes burn time?",
+        "Mixture motion and residual gas",
+        "The crank-angle formula itself",
+        "The unit used for degrees",
+        "The unit lists bore, mixture motion, residual gas and ignition location as influences on burn time."
+      ],
+      [
+        "On a cycle sketch, which value must come from test data, not the formula?",
+        "The actual burn time and pressure peak",
+        "The degrees per ms at a known rpm",
+        "The number 6 in the formula",
+        "The formula only converts a known time to degrees. Real burn time depends on engine conditions, so it must be measured."
+      ]
+    ]
   },
   {
     "title": "Check firing intervals and moments",
@@ -3551,9 +3909,39 @@ renderCatalog();
     "unit": "Nm",
     "hint": "Multiply one force by the spacing.",
     "reason": "A firing sequence is a timing proposal. A balance claim needs both net-force and moment histories.",
-    "decision": "Map firing events to crank throws. Sum forces and moments about a common datum over a cycle.",
+    "decision": "Answer the firing-and-balance checks below; each wrong pick tells you why.",
     "evidence": "Firing chart, crank sketch and separate force/moment plots.",
-    "lab": "balance"
+    "lab": "balance",
+    "quiz": [
+      [
+        "A six-cylinder four-stroke fires evenly. What is the gap between firings?",
+        "120°",
+        "90°",
+        "60°",
+        "Even firing shares 720° among n cylinders: 720/6 = 120°."
+      ],
+      [
+        "Two opposite 250 N forces are 0.50 m apart. What couple do they make?",
+        "125 Nm",
+        "500 Nm",
+        "0 Nm",
+        "M = Fd uses one force: 250 N × 0.50 m = 125 Nm."
+      ],
+      [
+        "Two equal, opposite inertia forces act at different points along the crank. What results?",
+        "Zero net force, but a rocking moment",
+        "Zero force and zero moment",
+        "A net force twice as large",
+        "Opposite forces cancel as force, but their separation d makes a couple M = Fd."
+      ],
+      [
+        "Your firing chart shows even 90° gaps. What else proves the engine is balanced?",
+        "Net-force and moment sums over a full cycle",
+        "Nothing, even firing proves balance",
+        "Only the firing order list",
+        "Firing order is only timing. A balance claim needs both force and moment histories."
+      ]
+    ]
   },
   {
     "title": "Screen rod and piston loads",
@@ -3568,9 +3956,39 @@ renderCatalog();
     "unit": "kN",
     "hint": "Square angular speed, and divide newtons by 1000.",
     "reason": "The rpm-squared result explains why an apparently small redline increase demands another load review.",
-    "decision": "Compare two speed cases and distinguish gas pressure from reciprocating inertia.",
+    "decision": "Answer the piston-load checks below; each wrong pick tells you why.",
     "evidence": "A piston free-body diagram and provisional alternating load cases.",
-    "lab": "rod"
+    "lab": "rod",
+    "quiz": [
+      [
+        "Engine speed doubles, same parts. What happens to primary inertial load?",
+        "It becomes 4 times larger",
+        "It becomes 2 times larger",
+        "It stays the same",
+        "F ≈ mr(2πN/60)², so load grows with rpm squared: 2² = 4."
+      ],
+      [
+        "Estimate load for 0.50 kg, 0.050 m radius, 3000 rpm.",
+        "About 2.47 kN",
+        "About 0.79 kN",
+        "About 4.93 kN",
+        "ω = 2π×3000/60 ≈ 314.2 rad/s; 0.50 × 0.050 × 314.2² ≈ 2467 N."
+      ],
+      [
+        "In the formula, what is r?",
+        "Half the stroke",
+        "The full stroke",
+        "The rod length",
+        "The symbols define r as half stroke, the crank radius."
+      ],
+      [
+        "Which load grows with rpm squared in this model?",
+        "Reciprocating inertia",
+        "Gas pressure",
+        "Both equally, by definition",
+        "The rpm-squared formula covers inertia only; gas pressure is a separate force."
+      ]
+    ]
   },
   {
     "title": "Screen a long crankshaft",
@@ -3585,9 +4003,39 @@ renderCatalog();
     "unit": "°",
     "hint": "Multiply the old angle by (old diameter/new diameter)⁴.",
     "reason": "Static resistance alone cannot rule out resonance driven by firing harmonics.",
-    "decision": "Draw a lumped torsional model showing inertias and elastic links along the crank.",
+    "decision": "Answer the crankshaft-twist checks below; each wrong pick tells you why.",
     "evidence": "Static sensitivity calculation and a planned modal verification.",
-    "lab": "twist"
+    "lab": "twist",
+    "quiz": [
+      [
+        "Shaft length doubles; torque, material and diameter stay the same. What happens to twist?",
+        "Twist doubles",
+        "Twist halves",
+        "Twist rises 16 times",
+        "φ = TL/(GJ), so twist is directly proportional to length L."
+      ],
+      [
+        "A 40 mm shaft twists 2°. Same torque, length, material. How much does an 80 mm shaft twist?",
+        "0.125°",
+        "1°",
+        "0.5°",
+        "Twist scales with (old d/new d)⁴ = (1/2)⁴ = 1/16, so 2°/16 = 0.125°."
+      ],
+      [
+        "Which single change reduces twist?",
+        "A larger diameter",
+        "A longer shaft",
+        "A higher torque",
+        "J = πd⁴/32, so a larger diameter raises J sharply and cuts twist; the others all increase twist."
+      ],
+      [
+        "The shaft passes the static twist check. Is vibration now ruled out?",
+        "No, firing harmonics can still cause resonance",
+        "Yes, a stiff shaft cannot resonate",
+        "Yes, if the twist is under 1°",
+        "Static resistance alone cannot rule out resonance driven by firing harmonics."
+      ]
+    ]
   },
   {
     "title": "Carry heat from the block",
@@ -3602,9 +4050,39 @@ renderCatalog();
     "unit": "kg/s",
     "hint": "Divide heat per second by heat gain per kg.",
     "reason": "A flow target still needs a pressure-loss network, pump curve and head temperature evidence.",
-    "decision": "Sketch how to compare cooling at cylinders one and eight under a defined load.",
+    "decision": "Answer the coolant-flow checks below; each wrong pick tells you why.",
     "evidence": "Cooling schematic, heat budget and sensor locations.",
-    "lab": "cooling"
+    "lab": "cooling",
+    "quiz": [
+      [
+        "Find mass flow for 60 kW, cp = 4.0 kJ/(kg·K), 15 K rise.",
+        "1.0 kg/s",
+        "4.0 kg/s",
+        "0.25 kg/s",
+        "ṁ = Q̇/(cpΔT) = 60/(4.0 × 15) = 1.0 kg/s."
+      ],
+      [
+        "Same heat and coolant, but the allowed rise drops from 10 K to 5 K. Flow must:",
+        "Double",
+        "Halve",
+        "Stay the same",
+        "ṁ = Q̇/(cpΔT); halving ΔT doubles the required flow."
+      ],
+      [
+        "The average outlet temperature looks fine. What can it hide?",
+        "A poorly fed rear cylinder",
+        "Nothing, the average shows every cylinder",
+        "Too much shaft work",
+        "The unit warns an average outlet reading may conceal a poorly fed rear cylinder."
+      ],
+      [
+        "To compare cooling at cylinders one and eight, where do sensors go?",
+        "Near each cylinder, under one defined load",
+        "Only at the radiator outlet",
+        "Only at the pump inlet",
+        "Comparing cylinders needs readings at both cylinders under the same defined load."
+      ]
+    ]
   },
   {
     "title": "Support and lubricate a journal",
@@ -3619,9 +4097,39 @@ renderCatalog();
     "unit": "MPa",
     "hint": "Use diameter times width, not the curved surface area.",
     "reason": "Similar average pressure does not imply equivalent minimum film thickness or durability.",
-    "decision": "Trace oil from pickup to the most distant journal and back. Specify hot-clearance and supply-data needs.",
+    "decision": "Answer the bearing-and-oil checks below; each wrong pick tells you why.",
     "evidence": "Oil circuit and a bearing demand table.",
-    "lab": "bearings"
+    "lab": "bearings",
+    "quiz": [
+      [
+        "8,000 N on a 40 mm journal, 20 mm wide bearing. Average pressure?",
+        "10 MPa",
+        "20 MPa",
+        "5 MPa",
+        "pavg = F/(db) = 8000/(40 × 20) = 8000/800 = 10 MPa."
+      ],
+      [
+        "Which area goes in pavg = F/(db)?",
+        "Diameter times width, the projected area",
+        "The curved surface area",
+        "Journal circle area, πd²/4",
+        "The hint says use diameter times width, not the curved surface area."
+      ],
+      [
+        "Two bearings have the same average pressure. Are they equally durable?",
+        "No, film depends on viscosity, speed, clearance, temperature",
+        "Yes, same pressure means same durability",
+        "Yes, if the widths are the same",
+        "Similar average pressure does not imply equal minimum film thickness or durability."
+      ],
+      [
+        "When tracing the oil circuit, which journal deserves most attention?",
+        "The most distant journal from the pickup",
+        "The journal nearest the pickup",
+        "The widest journal only",
+        "The task traces oil to the most distant journal, the hardest one to supply."
+      ]
+    ]
   },
   {
     "title": "Model the head joint",
@@ -3636,9 +4144,39 @@ renderCatalog();
     "unit": "kN",
     "hint": "Use bore in meters and pressure in Pa.",
     "reason": "A credible head joint design needs real peak-load evidence and a joint model.",
-    "decision": "Draw the load path from chamber pressure into fasteners, block and main structure.",
+    "decision": "Answer the head-joint load checks below; each wrong pick tells you why.",
     "evidence": "A joint free-body diagram with an assumed pressure case clearly marked.",
-    "lab": "bolts"
+    "lab": "bolts",
+    "quiz": [
+      [
+        "Find gas force for 100 bar across an 80 mm bore.",
+        "About 50.3 kN",
+        "About 201 kN",
+        "About 0.50 kN",
+        "Δp = 10,000,000 Pa; 10,000,000 × π × 0.080²/4 ≈ 50,265 N."
+      ],
+      [
+        "Bore doubles, same pressure. What happens to the separating force?",
+        "It becomes 4 times larger",
+        "It doubles",
+        "It stays the same",
+        "F = ΔpπB²/4, so force scales with bore squared: 2² = 4."
+      ],
+      [
+        "Before using the formula, how do you convert 90 bar?",
+        "9,000,000 Pa",
+        "90,000 Pa",
+        "9,000 Pa",
+        "1 bar = 100,000 Pa, so 90 bar = 9,000,000 Pa."
+      ],
+      [
+        "Can you set bolt torque by dividing gas force among the bolts?",
+        "No, preload, stiffness and load sharing also matter",
+        "Yes, that is the full method",
+        "Yes, if all bolts are equal",
+        "The unit says direct division is insufficient; a joint model is needed."
+      ]
+    ]
   },
   {
     "title": "Select materials and screen thermal growth",
@@ -3653,9 +4191,39 @@ renderCatalog();
     "unit": "mm",
     "hint": "Subtract bore growth from piston growth.",
     "reason": "The higher-expansion part can consume clearance even if both parts heat by the same amount.",
-    "decision": "Compare two material systems across expansion, wear, machinability and evidence quality.",
+    "decision": "Answer the material and thermal growth checks below; they test this unit's material trade-off task, and each wrong pick tells you why.",
     "evidence": "A material trade study with thermal assumptions and source requirements.",
-    "lab": "stack"
+    "lab": "stack",
+    "quiz": [
+      [
+        "Piston and bore are the same size and heat up by the same amount. Which part grows more?",
+        "The part with the higher α",
+        "The part with the lower α",
+        "Both grow exactly the same",
+        "Growth is ΔD = αD₀ΔT, so with equal D₀ and ΔT, the larger α gives the larger growth."
+      ],
+      [
+        "Same-size aluminum piston (α = 23 × 10⁻⁶/K) in an iron bore (α = 11 × 10⁻⁶/K). Both heat equally. Clearance?",
+        "Clearance shrinks",
+        "Clearance grows",
+        "Clearance stays the same",
+        "ΔC = ΔDbore − ΔDpiston is negative here, because the higher-expansion piston grows more and eats up clearance."
+      ],
+      [
+        "Both parts 72 mm, 80 K rise, piston α = 23 × 10⁻⁶/K, bore α = 11 × 10⁻⁶/K. How much clearance is lost?",
+        "0.069 mm",
+        "0.132 mm",
+        "0.063 mm",
+        "Piston grows 72 × 23 × 10⁻⁶ × 80 = 0.13248 mm and bore grows 0.06336 mm; the difference is 0.06912 mm."
+      ],
+      [
+        "Why is the uniform model ΔD = αD₀ΔT not enough to set real clearances?",
+        "It ignores gradients, coatings, distortion and shape",
+        "It only works for aluminum parts",
+        "It ignores the reference diameter",
+        "The unit says the simple model only shows sensitivity; real clearances need gradients, coatings, distortion, shape and supplier data."
+      ]
+    ]
   },
   {
     "title": "Tolerance the assembly",
@@ -3670,9 +4238,39 @@ renderCatalog();
     "unit": "mm",
     "hint": "Subtract each adverse contribution once.",
     "reason": "Cold manufacturing limits are one budget. Hot growth, operating deflection and surface finish need further checks.",
-    "decision": "Name reference datums, tolerances, and an inspection operation for each contributing dimension.",
+    "decision": "Answer the tolerance stack checks below; they test this unit's datum and tolerance task, and each wrong pick tells you why.",
     "evidence": "A dimension chain, drawing revision and inspection plan.",
-    "lab": "stack"
+    "lab": "stack",
+    "quiz": [
+      [
+        "In a worst-case stack, how do the individual deviations combine?",
+        "All add up in the bad direction",
+        "They cancel each other on average",
+        "Only the largest one counts",
+        "Worst case assumes every deviation pushes the gap the wrong way at once, so you subtract the sum of all of them."
+      ],
+      [
+        "Nominal gap 0.42 mm can lose 0.06, 0.09 and 0.04 mm. Worst-case remaining gap?",
+        "0.23 mm",
+        "0.33 mm",
+        "0.19 mm",
+        "Total loss is 0.06 + 0.09 + 0.04 = 0.19 mm, and 0.42 − 0.19 = 0.23 mm."
+      ],
+      [
+        "What do you need for a statistical yield estimate, beyond limit tolerances?",
+        "Process distributions for each dimension",
+        "Only the nominal gap value",
+        "A larger worst-case margin",
+        "The unit says yield needs real process distributions; limit tolerances alone only give the worst case."
+      ],
+      [
+        "A cold worst-case gap passes. What still needs checking?",
+        "Hot growth, deflection and surface finish",
+        "Nothing, the gap is proven",
+        "Only the drawing revision number",
+        "Cold manufacturing limits are one budget; hot growth, operating deflection and surface finish need separate checks."
+      ]
+    ]
   },
   {
     "title": "Build the CAD skeleton",
@@ -3687,9 +4285,39 @@ renderCatalog();
     "unit": "mm",
     "hint": "Count seven intervals from cylinder one.",
     "reason": "A properly constrained skeleton propagates pitch changes to all dependent bore centers and reveals interference.",
-    "decision": "Create the parametric skeleton; change pitch; regenerate and review affected passages, supports and external clearance.",
+    "decision": "Answer the CAD skeleton checks below; they test this unit's parametric skeleton task, and each wrong pick tells you why.",
     "evidence": "A CAD file, dimensioned section and regeneration check.",
-    "lab": "cad"
+    "lab": "cad",
+    "quiz": [
+      [
+        "With x₁ = 52 mm and pitch 81 mm, where is cylinder eight from the front datum?",
+        "619 mm",
+        "700 mm",
+        "648 mm",
+        "Cylinder eight is seven intervals from cylinder one: 52 + 7 × 81 = 619 mm."
+      ],
+      [
+        "Which features should be named datums for the block skeleton?",
+        "Crank axis, front face and deck plane",
+        "Bolt holes, oil galleries and water jackets",
+        "Accessory brackets and service envelopes",
+        "The unit names crank axis, front face and deck plane as datums; other features are added after."
+      ],
+      [
+        "What order does the unit give for building the skeleton?",
+        "Datums, bore pattern, then passages and envelopes",
+        "Water jackets first, then datums",
+        "Detail geometry first, then set the pitch",
+        "Set datums, constrain the bore pattern, then add bolt paths, galleries, jackets, accessories and envelopes."
+      ],
+      [
+        "You change the pitch in a well-built skeleton. What should happen?",
+        "All bore centers move and interference shows",
+        "Only cylinder one moves",
+        "Nothing moves until you redraw each bore",
+        "A properly constrained skeleton passes the pitch change to every dependent bore center and reveals interference."
+      ]
+    ]
   },
   {
     "title": "Estimate daily cruise consumption",
@@ -3704,9 +4332,39 @@ renderCatalog();
     "unit": "kg/h",
     "hint": "Calculate engine power before applying BSFC.",
     "reason": "Meeting a peak-power goal does not establish a cruising MPG figure. Gear ratio, road load and operating map matter.",
-    "decision": "Document a cruise case and a sensitivity case, then state added evidence needed for gas, HEV and PHEV comparisons.",
+    "decision": "Answer the cruise fuel checks below; they test this unit's cruise and sensitivity case task, and each wrong pick tells you why.",
     "evidence": "A cruise-load budget and a labeled source for each efficiency assumption.",
-    "lab": "bench"
+    "lab": "bench",
+    "quiz": [
+      [
+        "Which step comes first when estimating cruise fuel use?",
+        "Divide wheel power by driveline efficiency",
+        "Multiply wheel power by BSFC",
+        "Multiply wheel power by efficiency",
+        "Engine (crank) power is Pwheel/η; only then do you apply BSFC."
+      ],
+      [
+        "18 kW at the wheels with η = 0.90. What crank power does the engine make?",
+        "20 kW",
+        "16.2 kW",
+        "18 kW",
+        "Pcrank = 18/0.90 = 20 kW, since driveline losses mean the engine must make more than the wheels get."
+      ],
+      [
+        "Crank power 20 kW with assumed BSFC 250 g/kWh. Fuel consumption?",
+        "5.0 kg/h",
+        "4.5 kg/h",
+        "5000 kg/h",
+        "Fuel = 20 × 250/1000 = 5.0 kg/h; dividing by 1000 turns grams into kilograms."
+      ],
+      [
+        "An engine meets its peak-power goal. Does that prove its cruising MPG?",
+        "No, gearing, road load and map matter",
+        "Yes, peak power sets cruise fuel use",
+        "Yes, if driveline efficiency is high",
+        "The unit says peak power does not establish cruise MPG; gear ratio, road load and operating map matter."
+      ]
+    ]
   },
   {
     "title": "Design a validation campaign",
@@ -3721,9 +4379,39 @@ renderCatalog();
     "unit": "%",
     "hint": "Divide the magnitude of the difference by the measured reference.",
     "reason": "A design claim is only as strong as the evidence at the operating conditions it names.",
-    "decision": "Create a requirements-to-evidence matrix. For each gap name the test, facility, measurement method, pass threshold and next revision.",
+    "decision": "Answer the validation checks below; they test this unit's requirements-to-evidence task, and each wrong pick tells you why.",
     "evidence": "A validation matrix, uncertainty budget and unresolved-risk register.",
-    "lab": "bench"
+    "lab": "bench",
+    "quiz": [
+      [
+        "Model predicts 74 Nm; measurement is 70 Nm. Absolute relative error?",
+        "5.7 %",
+        "5.4 %",
+        "4.0 %",
+        "Error = 100 × |74 − 70| / 70 = 5.71 %; divide by the measured value, not the prediction."
+      ],
+      [
+        "What must you decide before comparing model and measurement?",
+        "Claim, operating condition and pass criterion",
+        "Which result looks best",
+        "Only the instrument brand",
+        "The unit says to set the claim, condition and acceptance criterion first, so the test is not judged after the fact."
+      ],
+      [
+        "One test point matches the model well. What does it validate?",
+        "Only that one operating point",
+        "The whole engine map",
+        "The engine lifetime",
+        "A single point cannot validate a map or lifetime; it only covers the condition it was tested at."
+      ],
+      [
+        "After finding a 2 kW (4%) discrepancy, what should you compare it with?",
+        "The measurement uncertainty",
+        "The engine's peak power",
+        "A different engine's results",
+        "The worked example says to compare the discrepancy with measurement uncertainty, from accuracy, repeatability and calibration."
+      ]
+    ]
   }
 ];</script>
 <script>
@@ -3736,18 +4424,18 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 function save(){try{localStorage.setItem(key,JSON.stringify(book))}catch{}}
 function render(){
 const u=units[i],state=book.units[i]||(book.units[i]={}),done=Object.values(book.units).filter(x=>x.complete).length;
-root.innerHTML='<div class="eng-path"><details class="eng-index" '+(innerWidth>800?'open':'')+'><summary>Course outline</summary><p>'+done+' / '+units.length+' design records complete</p><ol>'+units.map((v,n)=>'<li><button data-unit="'+n+'" '+(n===i?'aria-current="step"':'')+'>'+esc(v.title)+(book.units[n]?.complete?' ✓':'')+'</button></li>').join('')+'</ol></details><article class="eng-chapter"><small>UNIT '+(i+1)+' / '+units.length+'</small><h2>'+esc(u.title)+'</h2><p>'+esc(u.goal)+'</p><h3>How it works</h3><p>'+esc(u.theory)+'</p>'+(u.drill?'<details class="cyc-map"><summary>Show the 720° map (study it, then hide it)</summary><div class="cyc-strip">'+u.drill.map(r=>'<div class="cyc-seg cyc-'+r[1].toLowerCase()+'"><small>'+esc(r[0])+'</small><b>'+esc(r[1])+'</b><span>Piston '+esc(r[2].toLowerCase())+'</span><span>Intake '+esc(r[3].toLowerCase())+' · Exhaust '+esc(r[4].toLowerCase())+'</span></div>').join('')+'</div><p>Two full crank turns (720°) make one cycle. The piston goes down twice and up twice; only the power stroke pushes the crank.</p></details>':'')+'<div class="eng-equation">'+esc(u.formula)+'</div><p>'+esc(u.symbols)+'</p><details><summary>Walk through a worked example</summary><p>'+esc(u.worked)+'</p></details><p><a href="#'+esc(u.lab.replace(/^#/,''))+'">Run the related lab</a></p><hr><h3>Calculate it yourself</h3><p>'+esc(u.problem)+'</p><label>Your result ('+esc(u.unit)+')<input type="number" step="any" data-result></label><button data-check>Check calculation</button><p role="status" data-feedback></p><details><summary>Show a hint</summary><p>'+esc(u.hint)+'</p></details><hr><h3>Apply it to your inline-eight</h3><p>'+esc(u.decision)+'</p>'+(u.drill?'<div class="cyc-drill"><div class="cyc-row cyc-headrow"><b>Crank angle</b><b>Stroke</b><b>Piston</b><b>Intake valve</b><b>Exhaust valve</b></div>'+u.drill.map((r,n)=>'<div class="cyc-row" data-row="'+n+'"><b>'+esc(r[0])+'</b>'+[['Intake','Compression','Power','Exhaust'],['Up','Down'],['Open','Closed'],['Open','Closed']].map((o,c)=>'<select data-c="'+(c+1)+'" aria-label="'+esc(r[0])+'"><option value="">pick</option>'+o.map(v=>'<option>'+v+'</option>').join('')+'</select>').join('')+'</div>').join('')+'<button data-drill>Check my cycle</button><div data-drillout></div></div>':'<p>'+esc(u.evidence)+'</p>')+'<label>Your choice, working and evidence<textarea data-note rows="4"></textarea></label><small>Saved in this browser as you type.</small><div class="eng-actions"><a href="#designstudio">Open my engine</a><button data-finish>Finish unit</button></div><p role="status" data-status></p><div class="eng-actions"><button data-export>Export course notebook</button><a href="#verification">Capstone review</a></div></article></div>';
+root.innerHTML='<div class="eng-path"><details class="eng-index" '+(innerWidth>800?'open':'')+'><summary>Course outline</summary><p>'+done+' / '+units.length+' design records complete</p><ol>'+units.map((v,n)=>'<li><button data-unit="'+n+'" '+(n===i?'aria-current="step"':'')+'>'+esc(v.title)+(book.units[n]?.complete?' ✓':'')+'</button></li>').join('')+'</ol></details><article class="eng-chapter"><small>UNIT '+(i+1)+' / '+units.length+'</small><h2>'+esc(u.title)+'</h2><p>'+esc(u.goal)+'</p><h3>How it works</h3><p>'+esc(u.theory)+'</p>'+(u.drill?'<details class="cyc-map"><summary>Show the 720° map (study it, then hide it)</summary><div class="cyc-strip">'+u.drill.map(r=>'<div class="cyc-seg cyc-'+r[1].toLowerCase()+'"><small>'+esc(r[0])+'</small><b>'+esc(r[1])+'</b><span>Piston '+esc(r[2].toLowerCase())+'</span><span>Intake '+esc(r[3].toLowerCase())+' · Exhaust '+esc(r[4].toLowerCase())+'</span></div>').join('')+'</div><p>Two full crank turns (720°) make one cycle. The piston goes down twice and up twice; only the power stroke pushes the crank.</p></details>':'')+'<div class="eng-equation">'+esc(u.formula)+'</div><p>'+esc(u.symbols)+'</p><details><summary>Walk through a worked example</summary><p>'+esc(u.worked)+'</p></details><p><a href="#'+esc(u.lab.replace(/^#/,''))+'">Run the related lab</a></p><hr><h3>Calculate it yourself</h3><p>'+esc(u.problem)+'</p><label>Your result ('+esc(u.unit)+')<input type="number" step="any" data-result></label><button data-check>Check calculation</button><p role="status" data-feedback></p><details><summary>Show a hint</summary><p>'+esc(u.hint)+'</p></details><hr><h3>Apply it to your inline-eight</h3><p>'+esc(u.decision)+'</p>'+(u.drill?'<div class="cyc-drill"><div class="cyc-row cyc-headrow"><b>Crank angle</b><b>Stroke</b><b>Piston</b><b>Intake valve</b><b>Exhaust valve</b></div>'+u.drill.map((r,n)=>'<div class="cyc-row" data-row="'+n+'"><b>'+esc(r[0])+'</b>'+[['Intake','Compression','Power','Exhaust'],['Up','Down'],['Open','Closed'],['Open','Closed']].map((o,c)=>'<select data-c="'+(c+1)+'" aria-label="'+esc(r[0])+'"><option value="">pick</option>'+o.map(v=>'<option>'+v+'</option>').join('')+'</select>').join('')+'</div>').join('')+'<button data-drill>Check my cycle</button><div data-drillout></div></div>':u.quiz?'<div class="cyc-drill">'+u.quiz.map((r,n)=>{const o=[r[1],r[2],r[3]],k=(n*2+1)%3,ord=o.slice(k).concat(o.slice(0,k));return '<div class="quiz-q" data-row="'+n+'"><p><b>'+(n+1)+'.</b> '+esc(r[0])+'</p><select data-c="1" aria-label="Question '+(n+1)+'"><option value="">pick an answer</option>'+ord.map(v=>'<option>'+esc(v)+'</option>').join('')+'</select></div>'}).join('')+'<button data-drill>Check my answers</button><div data-drillout></div></div>':'<p>'+esc(u.evidence)+'</p>')+'<label>Your choice, working and evidence<textarea data-note rows="4"></textarea></label><small>Saved in this browser as you type.</small><div class="eng-actions"><a href="#designstudio">Open my engine</a><button data-finish>Finish unit</button></div><p role="status" data-status></p><div class="eng-actions"><button data-export>Export course notebook</button><a href="#verification">Capstone review</a></div></article></div>';
 const q=s=>root.querySelector(s), input=q('[data-result]'),note=q('[data-note]'),feedback=q('[data-feedback]');
 input.value=state.value??'';note.value=state.note||'';if(state.passed)feedback.textContent='Calculation checked. '+u.reason;
 input.oninput=()=>{Object.assign(state,{value:input.value,passed:false,complete:false});feedback.textContent='';save()};
 note.oninput=()=>{state.note=note.value;if(!note.value.trim())state.complete=false;save()};
 const dr=q('[data-drill]');if(dr){const sels=[...root.querySelectorAll('.cyc-drill select')];sels.forEach((s,k)=>{s.value=(state.drill||[])[k]||'';s.onchange=()=>{state.drill=sels.map(x=>x.value);state.drillOk=false;save()}});
- dr.onclick=()=>{let wrong=[];u.drill.forEach((r,n)=>{root.querySelectorAll('[data-row="'+n+'"] select').forEach(s=>{const c=Number(s.dataset.c),ok=s.value===r[c];s.classList.toggle('ok',ok);s.classList.toggle('bad',!ok);if(!ok&&!wrong.includes(n))wrong.push(n)})});
+ dr.onclick=()=>{const D=u.drill||u.quiz,ex=u.drill?5:4,lab=n=>u.drill?u.drill[n][0]:'Question '+(n+1);let wrong=[];D.forEach((r,n)=>{root.querySelectorAll('[data-row="'+n+'"] select').forEach(s=>{const c=Number(s.dataset.c),ok=s.value===r[c];s.classList.toggle('ok',ok);s.classList.toggle('bad',!ok);if(!ok&&!wrong.includes(n))wrong.push(n)})});
   state.drillOk=!wrong.length;const out=q('[data-drillout]');
-  out.innerHTML=state.drillOk?'<div class="verdict ok"><b>✓ Correct · the whole cycle</b><p>You can now finish the unit.</p></div>':'<div class="verdict bad"><b>✗ Not right · '+wrong.length+' of 4 rows have mistakes (red cells)</b>'+wrong.map(n=>'<p><b>'+esc(u.drill[n][0])+':</b> '+esc(u.drill[n][5])+'</p>').join('')+'<p>Fix the red cells and check again.</p></div>';
+  out.innerHTML=state.drillOk?'<div class="verdict ok"><b>✓ Correct · '+(u.drill?'the whole cycle':'all '+D.length+' answers')+'</b><p>You can now finish the unit.</p></div>':'<div class="verdict bad"><b>✗ Not right · '+wrong.length+' of '+D.length+(u.drill?' rows have mistakes (red cells)':' answers wrong (red)')+'</b>'+wrong.map(n=>'<p><b>'+esc(lab(n))+':</b> '+esc(D[n][ex])+'</p>').join('')+'<p>Fix the red ones and check again.</p></div>';
   if(typeof addXP==='function')addXP(state.drillOk?10:-5);save()}}
 q('[data-check]').onclick=()=>{state.passed=input.value!==''&&Math.abs(Number(input.value)-u.answer)<=u.tolerance+1e-10;feedback.innerHTML=state.passed?'<div class="verdict ok"><b>✓ Correct</b><p>'+esc(u.reason)+'</p></div>':'<div class="verdict bad"><b>✗ Not right</b><p>You entered '+esc(input.value||'nothing')+'. '+esc(u.hint)+'</p></div>';if(typeof addXP==='function')addXP(state.passed?10:-5);save()};
-q('[data-finish]').onclick=()=>{if(u.drill&&!state.drillOk){q('[data-status]').textContent='Get the 720° cycle fully right first.';return}if(!state.passed||(!u.drill&&!note.value.trim())){q('[data-status]').textContent='Check your calculation and record your design reasoning first.';return}state.complete=true;if(i<units.length-1)i++;else location.hash='verification';book.active=i;save();render();window.scrollTo(0,0)};
+q('[data-finish]').onclick=()=>{if((u.drill||u.quiz)&&!state.drillOk){q('[data-status]').textContent=u.drill?'Get the 720° cycle fully right first.':'Get all the design checks right first.';return}if(!state.passed||(!u.drill&&!u.quiz&&!note.value.trim())){q('[data-status]').textContent='Check your calculation and record your design reasoning first.';return}state.complete=true;if(i<units.length-1)i++;else location.hash='verification';book.active=i;save();render();window.scrollTo(0,0)};
 root.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{i=Number(b.dataset.unit);book.active=i;save();render();window.scrollTo(0,0)});
 q('[data-export]').onclick=()=>{const lines=units.map((v,n)=>{const x=book.units[n]||{};return '## '+(n+1)+'. '+v.title+'\n\n'+(x.complete?'Completed':'In progress')+'\n\nCalculation: '+(x.value??'—')+' '+v.unit+'\n\n'+(x.note||'No design entry yet.')});const url=URL.createObjectURL(new Blob(['# Inline-eight course notebook\n\n'+lines.join('\n\n')],{type:'text/markdown'}));const a=document.createElement('a');a.href=url;a.download='inline-eight-course-notebook.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
 }
